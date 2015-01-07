@@ -1,3 +1,9 @@
+# previous outline directory
+20140513_outline/
+
+# vim temp files
+*.sw[op]
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

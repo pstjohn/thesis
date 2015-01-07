@@ -1,0 +1,327 @@
+\chapter{Spatiotemporal separation of PER and CRY posttranslational regulation}
+% \section{Biological motivation}\blindtext
+% \subsection{Longdaysin vs KL001}\blindtext
+% \subsection{Post-translational regulators CKI and FBXL3}\blindtext
+% \subsection{Opposite amplitude effect, same period effect}\blindtext
+% \section{Identifiability analysis}\blindtext
+% \subsection{remove dependence on both parameterization and model assumptions }\blindtext
+% \section{Prediction of Longdaysin vs KL001 mechanisms}\blindtext
+% \subsection{explanation using single model}\blindtext
+
+
+\section{Introduction}
+Circadian rhythms are autonomous, near-24 hour oscillations that
+coordinate daily changes in physiology and metabolism. Since circadian and
+metabolic regulators are tightly integrated, circadian disruptions often
+manifest in metabolic disease \cite{Bass2012}. Recent efforts have therefore
+sought to gain a mechanistic understanding of these pathways, such that the
+metabolic burdens imposed by a 24-hour society might be mitigated.
+Post-translational regulators, which play key roles in connecting circadian and
+metabolic processes, serve as likely targets for future therapeutics --
+demonstrated by the wealth of available circadian-active small molecules
+\cite{Chen2013}.
+
+Oscillations in circadian gene transcription are generated through a
+time-delayed transcription-translation negative-feedback loop. In mammals,
+transcription factors CLOCK and BMAL1 promote transcription of E box-containing
+genes {\it Period} ({\it Per}) and {\it Cryptochrome} ({\it Cry}) (Fig. 1A).
+PER and CRY protein products form heterodimers to accumulate in the nucleus, in
+which PER is stoichiometrically limiting \cite{Lee2001}, and subsequently close
+the negative feedback loop by inhibiting CLOCK-BMAL1-promoted gene expression.
+While steady-state endpoint assays have shown the possibility of nuclear entry
+of CRY without PER \cite{Ye2011, Kume1999, Yagita2002}, experiments from {\it
+Per1}\textsuperscript{-/-} {\it Per2}\textsuperscript{-/-} mice demonstrated
+that PER proteins are required for the timely nuclear accumulation of CRY
+\cite{Lee2001}.  Clearance of nuclear repressors reactivates CLOCK-BMAL1,
+allowing the cycle to begin anew \cite{Takahashi2008}. 
+
+Experimental evidence on PER/CRY nuclear entry is seemingly contradictory. For
+nuclear localization of the PER and CRY proteins, experiments from {\it
+Per1}\textsuperscript{-/-} {\it Per2}\textsuperscript{-/-} mice demonstrate
+that PER proteins are required for timely nuclear accumulation of CRY
+\cite{Lee2001}.  While other studies have shown the possibility of nuclear
+entry of CRY without PER, these results are typically based on steady-state
+endpoint assays which do not consider the speed of CRY nuclear entry
+\cite{Ye2011, Kume1999, Yagita2002}. We therefore consider the formation of
+the PER-CRY heterodimer as a key step in nuclear entry, which is supported by
+the fact that to the best of our knowledge all circadian models that consider
+both PER and CRY employ this kinetic assumption \cite{Hirota2012, Relogio2011,
+Leloup2003, Forger2003, Mirsky2009}.
+
+The stabilities of PER and CRY are tightly regulated: PER proteins are
+phosphorylated by the casein kinase I family of proteins (CKI$\delta/\epsilon$),
+prompting $\beta$-TrCP-mediated degradation \cite{Reischl2007} and nuclear
+import \cite{Takano2004}. The degradation of CRY proteins is separately
+regulated by the SCF\textsuperscript{FBXL3} ubiquitin ligase complex
+\cite{Busino2007, Godinho2007, Siepka2007}. The activities of both CKI-PER and
+FBXL3-CRY may be further coupled to the cell's metabolic state through AMPK
+signalling \cite{Lee2013}. These post-translational regulatory mechanisms have a
+strong effect on period length: the gain-of-function mutant
+CKI$\epsilon^\mathrm{tau}$ leading to hyperphosphorylation of PER
+\cite{Gallego2006} and small molecule CKI inhibitors, such as longdaysin
+\cite{Hirota2010}, demonstrated that increasing or decreasing CKI-dependent PER
+phosphorylation shortens or lengthens the period, respectively. In contrast,
+genetic mutations of FBXL3 \cite{Godinho2007, Siepka2007} and KL001, a small
+molecule inhibitor of FBXL3-dependent CRY degradation \cite{Hirota2012}, showed
+that increased CRY stability leads to longer periods. Since the scale and
+complexity of the circadian network complicates an intuitive understanding of
+these relationships, mathematical models have played important roles in
+understanding how these manipulations affect circadian period \cite{Gallego2006,
+Hirota2012, Reischl2007}.
+
+Given that both CKI and FBXL3 pathways regulate the stability of linked
+negative factors, it was thought that simultaneous perturbations to both
+pathways might lead to non-additive effects: {\it i.e.}, the slowest link would
+determine the period.  However, both small molecule \cite{Hirota2012} and
+genetic experiments \cite{Maywood2011} have demonstrated the independent period
+effects of these two post-translational regulations. A recent clarification of
+the canonical clock feedback circuit has shown that dissociated CRY is the
+dominant repressor of CLOCK-BMAL1 mediated E box transcription \cite{Ye2011}.
+This distinction helps differentiate between the roles of the otherwise similar
+PER and CRY proteins, in which the main role of PER in transcriptional
+repression is likely regulating the timing of nuclear accumulation of CRY.
+Therefore, while previous mathematical models in which PER acts as a direct
+repressor have proposed mechanisms for CKI-dependent period lengthening
+\cite{Gallego2006, Vanselow2006}, they are likely not suitable for
+distinguishing between CKI-PER and FBXL3-CRY mediated period change.
+
+In this study, we used human cells harboring clock gene reporters together with
+mathematical modeling to gain insight into the relationship between PER and CRY
+post-translational regulation. Consequently, we provide a new mechanism by
+which CKI-dependent PER phosphorylation controls the circadian period
+separately from the FBXL3-CRY pathway. The resulting detailed understanding of
+PER and CRY regulation in the core feedback loop provides a framework on which
+to interpret metabolic and pharmacological control of circadian rhythms.
+
+\section{Materials and Methods}
+\subsection{Analysis of luminescence profiles}
+Raw luminescence data was first separated into a moving baseline and oscillatory
+component using a Hodrick-Prescott filter with a smoothing parameter of 1600.
+Example trajectory decompositions are shown in Figure S1. Amplitudes (as shown
+in Fig. 1C) were determined by taking the standard deviation in the
+baseline-subtracted data. Periods were obtained by nonlinear curve fitting, in
+which a four parameter (initial amplitude, decay, period and phase) damped
+cosine curve was fit to the baseline-subtracted data. Periods were not shown if
+the relative amplitude (found by standard deviation) fell below 25\%, since
+noise dominated the periodic trajectory. 
+
+\subsection{Cost function}
+Models were fit to a cost function of experimental results. {\it Per}, {\it
+Cry}, {\it Clock}, and {\it Bmal1} protein and mRNA levels were taken from
+\cite{Lee2001}, along with profiles of CRY nuclear localization. For the model
+from \cite{Relogio2011}, additional activity profiles on {\it Rev-Erb} and {\it
+Ror} were obtained from CircaDB (http://bioinf.itmat.upenn.edu/circa/). To score
+a model trajectory, mRNA state variables were scaled independently to minimize
+the squared error between model and experiment, since model parameters could be
+adjusted to give mRNA profiles arbitrary amplitudes. For protein species, where
+stoichiometric interactions are important, a single scaling parameter was used
+for all species. Nuclear repressor species, in which only relative measurements
+were available, were scaled independently. Full model equations are shown in the SI.
+
+\subsection{Parameter estimation and bootstrap analysis}
+Bootstrap parameter estimations were performed as described previously
+\cite{St.John2013}, with data from \cite{Lee2001} assumed to have a normally
+distributed 10\% relative and 5\% absolute error. Since not all states in the
+models were measured, initial guess values for the trajectory and parameter
+variables were generated by optimizing the parameter sets first with a genetic
+algorithm approach, described in \cite{Mirsky2009}. To help ensure bootstrap
+trials remained in a similar stability region of parameter space (and protect
+against steady-state solutions), bootstrap parameters were bound between 50\%
+and 150\% of their initial value. 
+
+\subsection{Selection of parameters for FBXL3-CRY and CKI-PER mechanisms}
+For FBXL3-CRY, parameters that determined the degradation rate of CRY (or CRY
+containing complexes) were considered to be the most likely candidates.
+Michealis-Menten degradation parameters were omitted from Fig. 3 since
+perturbations to such parameters are not easily attributable to changes in
+FBXL3 binding affinity. In the model presented in \cite{Leloup2003}, CRY is
+degraded through a series of phosphorylation events, and these parameters were
+considered as representative of the rate of progression toward ubiquitination
+of CRY. The forward phosphorylation rates of CRY and nuclear PER-CRY complex
+were therefore also considered.  For CKI-PER, we considered rates that
+determined the degradation rate and nuclear import rate of PER.
+Michealis-Menten parameters were not included, similar to FBXL3-CRY. With CRY
+being the main repressor of E box transcription \cite{Ye2011}, the degradation
+rates of PER-CRY complex were not considered as potential mechanisms of CKI. In
+the models of \cite{Leloup2003} and \cite{Relogio2011}, the nuclear entry of
+PER-CRY requires two independent steps: the formation of the PER-CRY complex
+and the subsequent import of the complex.  Therefore, the forward reaction
+rates of each of these steps were included.
+
+\subsection{Numerical experiments}
+Numerical parameter inhibitions were performed by recalculating the limit cycle
+trajectory for each new parameter set to a tolerance of $10^{-8}$, using
+computational methods described previously \cite{Wilkins2009}.
+
+
+\section{Results and Discussion}
+\subsection{Longdaysin and KL001 yield opposite effects on the amplitude of
+circadian reporter expression}
+To gain a more detailed understanding of the roles of CKI-PER and FBXL3-CRY
+pathways, we applied small molecule
+compounds longdaysin and KL001, which cause stabilization of PER and CRY,
+respectively \cite{Hirota2010, Hirota2012} (Fig. 1A). We used {\it Bmal1}- and
+{\it Per2-dLuc} as circadian reporters, which represent different loops of the
+core clock mechanism and show circadian luminescence rhythms with mutually
+opposite phase.  Time-course data on circadian reporter expression under
+increasing concentrations of longdaysin and KL001 \cite{Hirota2012} was
+analyzed for period and amplitude change (Figs. 1B, 1C, S1). Longdaysin caused
+dose-dependent increases in period and detrended amplitude to $\approx 50\%$ of
+control values in both {\it Bmal1}- and {\it Per2-dLuc} reporter cells. In
+contrast, KL001 induced a simultaneous increase in period and strong reduction
+in amplitude. Modulation of the activity of CKI-PER and FBXL3-CRY is therefore
+differentiated by an opposite amplitude response.
+
+\subsection{Bootstrap approach reveals main period-determining perturbations}
+
+We next used {\it in silico} modeling to gain mechanistic insight into CKI-PER
+and FBXL3-CRY mediated circadian regulation. We previously described the
+connection between inhibition of FBXL3-dependent CRY degradation and period
+change \cite{Hirota2012}: increasing the stability of nuclear CRY results in
+longer transcriptional repression and increased period length. However, while
+CKI has been linked to modulating PER stability and nuclear entry, it remained
+unclear which perturbation dominates the period effect, and whether these
+processes are sufficient to separate the effects of CKI and FBXL3.
+
+To generate predictions that are consistent across slight differences in model
+assumptions, we chose three mathematical models from the literature based on
+their moderate size and similar scope \cite{Hirota2012, Leloup2003,
+Relogio2011}. The models included, at a minimum, the expression and nuclear
+entry mechanisms of PER and CRY. We considered the formation of the PER-CRY
+heterodimer as a key step in nuclear entry, which is supported by the fact that,
+to the best of our knowledge, all circadian models that consider both PER and
+CRY employ this kinetic assumption \cite{Hirota2012, Relogio2011, Leloup2003,
+Forger2003, Mirsky2009}.
+
+Since dynamic models of genetic regulatory networks typically suffer from poor
+parameter identifiability \cite{Gunawan2006}, we demonstrate that our
+predictions are parameter-independent by employing a bootstrap identifiability
+analysis \cite{St.John2013}. As part of the bootstrap method, the models were
+re-fit to experimental data \cite{Lee2001} while ensuring appropriate protein
+stoichiometry. The state
+trajectories of the resulting 2000 parameter sets for each model are shown in
+Fig. 2, with reasonable agreement between models and experiment.
+
+A first-order period sensitivity analysis, performed on each of the parameter
+sets, identified which parameters associated with PER and CRY protein activity
+had the greatest effect on period (Fig. S2). To simplify analysis, we present
+only those parameters that are associated with experimentally supported
+mechanisms of CKI and FBXL3 in Fig. 3. We first tested parameters associated
+with potential FBXL3-CRY activity (Fig. 3A) to evaluate if our method matched
+the experimentally verified effect of KL001 \cite{Hirota2012}. Since CRY is the
+dominant repressor of CLOCK-BMAL1 \cite{Ye2011}, we attribute degradation rates
+of the PER-CRY complex to be representative of CRY clearance rates. We found
+that only parameters governing nuclear CRY degradation show a period
+lengthening effect upon inhibition, while rates associated with cytoplasmic CRY
+degradation show period shortening effects. These results match with our
+previous assertion that period lengthening occurs via nuclear CRY stabilization
+\cite{Hirota2012}. Experimental evidence has also indicated cytoplasmic CRY
+stabilization may lead to period shortening \cite{Kurabayashi2010}, a result
+consistent with our mathematical results.
+
+We next describe parameters potentially associated with CKI-dependent
+regulation of PER localization and stability (Fig. 3B). Since PER is
+rate-limiting in the formation of the PER-CRY complex \cite{Lee2001}, rates
+associated with complex formation or nuclear import were included in this
+analysis. Conversely, we did not include degradation rates of PER-CRY nuclear
+repressive complex, since CRY alone is considered the main repressor. While it
+was hypothesized in models where PER acts as a direct repressor that the
+regulation of PER stability would play the dominant role determining the period
+\cite{Gallego2006, Vanselow2006}, our new assumptions revealed that parameters
+governing PER degradation showed only non-identifiable responses.  However,
+inhibition of rates associated with the nuclear entry of the PER-CRY complex
+showed strong period lengthening effects. These results indicate
+that under our current understanding of clock kinetics, the regulation of
+nuclear import likely plays the prominent role in CKI-dependent period
+regulation.
+
+\subsection{Mathematical insights into the different and independent mechanisms
+of PER and CRY regulation}
+Using the model and parameter set of Hirota {\it et al.}, 2012
+\cite{Hirota2012} and the perturbations identified in Fig. 3, we first
+confirmed that inhibition of nuclear CRY degradation (vdCn) and PER-CRY nuclear
+import (vaC1P) reproduced the experimental period and amplitude effects of the
+small molecules KL001 and longdaysin, respectively (Fig.  4A, compare with Fig.
+1C). Comparison of the oscillatory profiles of {\it Per} mRNA and nuclear CRY
+protein (Fig. 4B) revealed that inhibition of FBXL3-dependent CRY degradation
+caused lingering nuclear CRY to not be completely purged each cycle.  This
+excess repressor during the accumulating phase of {\it Per} and {\it Cry}
+transcripts resulted in lower E box amplitudes, providing a likely explanation
+for the effect of KL001.
+
+In contrast, stabilization of cytoplasmic PER (lowering vdP) resulted in reduced
+transcriptional amplitude with minimal period effect (Fig. S3), consistent with
+experimental findings from the knockdown of $\beta$-TrCP, an F box protein
+responsible for PER degradation \cite{Ohsaki2008}. However, other experimental
+results have shown that down-regulation of $\beta$-TrCP leads to longer periods
+\cite{Reischl2007}, suggesting that further modeling and experimental inquiry is
+needed on the role of $\beta$-TrCP in clock regulation. This period lengthening
+might be explained through $\beta$-TrCP-mediated stabilization of nuclear
+PER-CRY or by using alternative kinetic assumptions for the rate of PER-CRY
+binding. 
+
+We further compared the effect of inhibiting PER degradation with inhibiting
+nuclear import on the oscillatory profile of key clock proteins (Fig. 4C) to
+identify mechanistic differences between the two potential effects of CKI
+inhibition. Both perturbations increased cytoplasmic PER, suggesting the two
+mechanisms are difficult to distinguish experimentally. Direct stabilization of
+PER in the cytoplasm (lowering vdP) lead to two simultaneous trends which shift
+the period in opposite directions: it shortened the time delay between
+transcription and inactivation by accelerating the accumulation of cytoplasmic
+PER and nuclear PER-CRY; and lengthened the repressive phase by increasing the
+total amount of PER-CRY which enters the nucleus. These perturbations sped and
+slowed the clock, respectively, and resulted in little period change. In
+contrast, inhibiting PER-CRY nuclear entry (lowering vaC1P) caused additional
+free protein to build in the cytoplasm, delaying nuclear accumulation and
+ultimately increasing the total amount of nuclear PER-CRY. Since both of these
+trends work to increase period length, inhibiting PER-CRY nuclear entry
+resulted in significantly longer cycles. Additionally, the longer cytoplasmic
+time delay resulted in increased transcription, yielding slightly higher
+amplitudes (Fig. 4B) that closely match the experimental results of the small
+molecule longdaysin.
+
+Since CKI likely regulates both stability and subcellular localization of PER
+{\it in vivo}, we considered the effects of simultaneously lowering both PER
+cytoplasmic degradation and nuclear entry rates (Fig. 5A).  The loss of
+oscillations under extreme reduction of both parameters (Fig. 5A, shaded
+regions) highlights an interesting role of CKI in conferring robustness to the
+circadian clock: since oscillations are lost when import of the PER-CRY complex
+to the nucleus ceases to be rhythmic, CKI ensures lingering PER is purged from
+the cytoplasm by one pathway or another before E box transcription resumes.
+This importance has been proven experimentally, as disruption of CKI-mediated
+regulation leads to compromised circadian oscillations \cite{Lee2009a}.
+
+Together, inhibition of CKI by longdaysin may increase the time required
+before PER-CRY can enter the nucleus to repress transcription, leading to a
+higher amplitude and longer period. In contrast, KL001 lengthens the period by
+stabilizing nuclear CRY, resulting in a longer time delay before transcription
+resumes and lower amplitude from increased E box repression. PER regulation
+through CKI is therefore partitioned to the accumulating phase, controlling the
+speed and amount of PER-CRY complex that enters the nucleus. CRY regulation
+through FBXL3 is partitioned independently to the repressive phase, controlling
+the length of time until CLOCK-BMAL1-dependent transcription resumes (Fig. 6). This
+independence was reproduced {\it in silico} by the simultaneous reduction of
+nuclear CRY degradation and PER-CRY nuclear import (Fig. 5B), where nonlinear
+interactions in amplitude and period between the two perturbations are all but
+absent.
+
+\subsection{Conclusion}
+An understanding of the interactions between post-translational regulators is
+crucial for the further development of circadian pharmacological reagents, as
+efficient modulation of clock function will assuredly come from simultaneous
+perturbations to many connected species. In this study, we used circadian
+reporter cells together with mathematical modeling to provide mechanistic
+insight into the differences of CKI- and FBXL3- mediated post-translational
+regulation of PER and CRY. As a result, we clarified a process by which CKI
+exerts control over the circadian period, demonstrated through both the
+hyperphosphorylating CKI$\epsilon^\mathrm{tau}$ mutant and small molecule CKI
+inhibitors, such as longdaysin. In developing our predictions, we have used
+multiple models and parameterizations to ensure our mechanisms are consistent
+across many {\it in silico} realizations. These results reinforce the notion
+that computational modeling is essential in interpreting results in systems
+with complicated oscillatory feedback. Additionally, {\it in silico} analyses
+reveal hidden design principles of biological networks, as this work highlights
+the importance of the CKI family of kinases in conferring robustness to the
+circadian cycle. 
+ 
+
