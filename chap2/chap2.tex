@@ -1,4 +1,4 @@
-\chapter{Model of the core circadian feedback loop}
+\chapter{A new model of the core circadian feedback loop}
 % \section{Results of KL001}
 % \section{Biological motivation for model structure}
 % \subsection{Network structure}\blindtext
@@ -14,12 +14,35 @@
 % \subsection{Cry Knockouts}\blindtext
 % \section{Prediction and verification of KL001 mechanism}\blindtext
 
-\section{Biological Motivation}
-The functional roles of the cryptochrome isoforms ({\it Cry1} and {\it Cry2}) in circadian rhythms have long eluded biologists, as although they share a similar structure, perturbations to these genes typically result in opposite trends \cite{McCarthy2009}. Existing genetic evidence and siRNA knockdown studies agree that while suppressing {\it Cry1} leads to shorter periods, suppressing {\it Cry2} leads to longer periods \cite{VanderHorst1999,Zhang2009}. However, some evidence shows the similarity between the two {\it Crys}. The knockouts $\text{\it Cry1}^{+/-}$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/-}$ both show shorter wheel-running activity their respective WT/double knockouts $\text{\it Cry1}^{+/+}$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/+}$ \cite{VanderHorst1999}.
+\section 
 
-In unpublished work, experimental collaborators from Steve Kay's lab in UCSD have identified a small molecule modulator of cryptochrome through forward chemical genetic screening. The compound was found to simultaneously increase the half-life of CRY and cause period lengthening. The molecule, a carbazole derivative, is tentatively named KL001. In order to explain these new experimental results while maintaining consistency with published evidence, I constructed a simple mathematical model of the Per/Cry negative feedback loop. The design of the model was inspired by the experimental evidence described below:
+\section{Background}
 
-\subsection{Network Structure} In the core feedback loop, Per and Cry transcription is activated by the CLOCK-BMAL1 complex. The protein products of these genes are transported to the nucleus after a time delay and bind to CLOCK-BMAL1, repressing their own transcription. Evidence indicates that an interaction of PER and CRY proteins is required for the timely nuclear entry of both proteins \cite{Miyazaki2001,Ko2006,Kume1999}. I therefore assume that PER and CRY bind and enter the nucleus in a 1:1 stoichiometric ratio, similar to more complicated models of mammalian circadian rhythms \cite{Leloup2003,Mirsky2009,Forger2003}.
+\subsection{Small molecule modulators}
+Circadian rhythms help to regulate metabolic homeostasis, and therefore compromised circadian oscillations often result in negative health consequences.
+ Since circadian rhythms may be damped by lifestyle factors, many researchers have begun searching for pharmacological agents which might alter circadian rhythmicity.
+ Several proof-of-concept molecules have been found which cause dose-dependent period change in cultured fibroblasts \cite{Chen2013}.
+ While chemical biology approaches are able to localize the effects of these molecules to specific targets in the circadian network, it is often difficult to reconcile individual rate changes with the observed systems-level changes in period or amplitude.
+ Mathematical models are therefore essential to understanding the effects of such drugs, as they are able to verify that hypothesized mechanisms of action are mathematically consistent.
+ Furthermore, mathematical models provide a systematic framework by which to examine consequences of various mechanistic assumptions - many of which can be subsequently verified by experimental inquiry.
+ The search for small molecule modulators of circadian rhythms therefore yields the added benefit of strengthening our knowledge of the core clock feedback circuit, as inconsistencies between assumed kinetics and experimental results often lead to a more refined knowledge of the network's dynamics.
+
+ In this chapter, I describe a collaborative project in which experimental results inspired the creation of a new model of the core mammalian feedback network.
+ A new small molecule modulator of cryptochrome, KL001, was identified through forward chemical genetic screening \cite{Hirota2012}.
+ The compound was found to simultaneously increase the half-life of CRY and cause period lengthening.
+ In order to explain these new experimental results while maintaining consistency with published evidence, I constructed a simple mathematical model of the Per/Cry negative feedback loop.
+
+The functional roles of the cryptochrome isoforms ({\it Cry1} and {\it Cry2}) in circadian rhythms have long eluded biologists, as although they share a similar structure, perturbations to these genes typically result in opposite trends \cite{McCarthy2009}.
+ Existing genetic evidence and siRNA knockdown studies agree that while suppressing {\it Cry1} leads to shorter periods, suppressing {\it Cry2} leads to longer periods \cite{VanderHorst1999, Zhang2009}.
+ However, some evidence shows the similarity between the two {\it Crys}.
+ The knockouts $\text{\it Cry1}^{+/-}\ll$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/-}$ both show shorter wheel-running activity their respective WT/double knockouts $\text{\it Cry1}^{+/+}$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/+}$ \cite{VanderHorst1999}.
+
+
+\subsection{Network Structure}
+In the core feedback loop, Per and Cry transcription is activated by the CLOCK-BMAL1 complex.
+ The protein products of these genes are transported to the nucleus after a time delay and bind to CLOCK-BMAL1, repressing their own transcription.
+ Evidence indicates that an interaction of PER and CRY proteins is required for the timely nuclear entry of both proteins \cite{Miyazaki2001,Ko2006,Kume1999}.
+ I therefore assume that PER and CRY bind and enter the nucleus in a 1:1 stoichiometric ratio, similar to more complicated models of mammalian circadian rhythms \cite{Leloup2003,Mirsky2009,Forger2003}.
 
 \subsection{Protein Stoichiometry} Quantitative protein assays have revealed that the PER proteins are present at levels nearly ten times less than the CRYs, and are completely consumed at their trough. The CRYs, on the other hand, only fall to about one quarter of their peak value  \cite{Lee2001}. These results indicate that PER is the rate-limiting component for nuclear entry. This configuration explains why, since {/it Cry} is in excess, a knockout of either {\it Cry} does not lead to loss of function at the tissue level. Additionally {\it Cry1}, the more dominant repressor, is consistently found at higher levels than {\it Cry2}. However, since the ratio of nuclear to total protein is nearly equivalent for CRY1 and CRY2, PER must import each with equal affinity \cite{Lee2001,Lee2011b}.
 
