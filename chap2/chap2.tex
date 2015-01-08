@@ -1,66 +1,50 @@
-\chapter[A new model of the core circadian feedback loop]{
-  A new model of the core circadian feedback loop\footnote{
-    Portions of this chapter are published in T. Hirota, J. W. Lee, P. C. St. John, M. Sawa, K. Iwaisako, T. Noguchi, P. Y. Pongsawakul, T. Sonntag, D. K. Welsh, D. A. Brenner, F. J. Doyle, P. G. Schultz, and S. A. Kay, ``Identification of Small Molecule Activators of Cryptochrome.,'' {\itshape Science}, vol. 337, pp. 1094–1097, July 2012.}}
-% \section{Results of KL001}
-% \section{Biological motivation for model structure}
-% \subsection{Network structure}\blindtext
-% \subsection{Protein stoichiometry}\blindtext
-% \subsection{Importance of degradation}\blindtext
-% \subsubsection{Shared enzymatic rate law}\blindtext
-% \subsection{Key time delays}\blindtext
-% \section{CRY1/CRY2 ratio}\blindtext
-% \section{Parameter estimation}\blindtext
-% \section{Model validation}\blindtext
-% \subsection{siRNA knockdowns}\blindtext
-% \subsection{CRY2 cytoplasmic stabilization}\blindtext
-% \subsection{Cry Knockouts}\blindtext
-% \section{Prediction and verification of KL001 mechanism}\blindtext
+\chapter[A new model of the core circadian feedback loop]{A new model of the core circadian feedback loop\footnote{ Portions of this chapter are published in T. Hirota, J. W. Lee, P. C. St. John, M. Sawa, K. Iwaisako, T. Noguchi, P. Y. Pongsawakul, T. Sonntag, D. K. Welsh, D. A. Brenner, F. J. Doyle, P. G. Schultz, and S. A. Kay, ``Identification of Small Molecule Activators of Cryptochrome.,'' {\itshape Science}, vol. 337, pp. 1094–1097, July 2012.}}\label{chap:model}
 
 \section{Background}
 
 \subsection{Small molecule modulators}
 Circadian rhythms help to regulate metabolic homeostasis, and therefore compromised circadian oscillations often result in negative health consequences.
- Since circadian rhythms may be damped by lifestyle factors, many researchers have begun searching for pharmacological agents which might alter circadian rhythmicity.
- Several proof-of-concept molecules have been found which cause dose-dependent period change in cultured fibroblasts \cite{Chen2013}.
- While chemical biology approaches are able to localize the effects of these molecules to specific targets in the circadian network, it is often difficult to reconcile individual rate changes with the observed systems-level changes in period or amplitude.
- Mathematical models are therefore essential to understanding the effects of such drugs, as they are able to verify that hypothesized mechanisms of action are mathematically consistent.
- Furthermore, mathematical models provide a systematic framework by which to examine consequences of various mechanistic assumptions - many of which can be subsequently verified by experimental inquiry.
- The search for small molecule modulators of circadian rhythms therefore yields the added benefit of strengthening our knowledge of the core clock feedback circuit, as inconsistencies between assumed kinetics and experimental results often lead to a more refined knowledge of the network's dynamics.
+Since circadian rhythms may be damped by lifestyle factors, many researchers have begun searching for pharmacological agents which might alter circadian rhythmicity.
+Several proof-of-concept molecules have been found which cause dose-dependent period change in cultured fibroblasts \cite{Chen2013}.
+While chemical biology approaches are able to localize the effects of these molecules to specific targets in the circadian network, it is often difficult to reconcile individual rate changes with the observed systems-level changes in period or amplitude.
+Mathematical models are therefore essential to understanding the effects of such drugs, as they are able to verify that hypothesized mechanisms of action are mathematically consistent.
+Furthermore, mathematical models provide a systematic framework by which to examine consequences of various mechanistic assumptions - many of which can be subsequently verified by experimental inquiry.
+The search for small molecule modulators of circadian rhythms therefore yields the added benefit of strengthening our knowledge of the core clock feedback circuit, as inconsistencies between assumed kinetics and experimental results often lead to a more refined knowledge of the network's dynamics.
 
- In this chapter, I describe a collaborative project in which experimental results inspired the creation of a new model of the core mammalian feedback network.
- A new small molecule modulator of cryptochrome, KL001, was identified through forward chemical genetic screening \cite{Hirota2012}.
- The compound was found to simultaneously increase the half-life of CRY and cause period lengthening.
- In order to explain these new experimental results while maintaining consistency with published evidence, I constructed a simple mathematical model of the Per/Cry negative feedback loop.
+In this chapter, I describe a collaborative project in which experimental results inspired the creation of a new model of the core mammalian feedback network.
+A new small molecule modulator of cryptochrome, KL001, was identified through forward chemical genetic screening \cite{Hirota2012}.
+The compound was found to simultaneously increase the half-life of CRY and cause period lengthening.
+In order to explain these new experimental results while maintaining consistency with published evidence, I constructed a simple mathematical model of the Per/Cry negative feedback loop.
 
 The functional roles of the cryptochrome isoforms ({\it Cry1} and {\it Cry2}) in circadian rhythms have long eluded biologists, as although they share a similar structure, perturbations to these genes typically result in opposite trends \cite{McCarthy2009}.
- Existing genetic evidence and siRNA knockdown studies agree that while suppressing {\it Cry1} leads to shorter periods, suppressing {\it Cry2} leads to longer periods \cite{VanderHorst1999, Zhang2009}.
- However, some evidence shows the similarity between the two {\it Crys}.
- The knockouts $\text{\it Cry1}^{+/-}\ll$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/-}$ both show shorter wheel-running activity their respective WT/double knockouts $\text{\it Cry1}^{+/+}$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/+}$ \cite{VanderHorst1999}.
- Using new data from the application of KL001 together with existing experimental results, I developed a hypothesized mechanism to reconcile these seemingly contradictory results:
+Existing genetic evidence and siRNA knockdown studies agree that while suppressing {\it Cry1} leads to shorter periods, suppressing {\it Cry2} leads to longer periods \cite{VanderHorst1999, Zhang2009}.
+However, some evidence shows the similarity between the two {\it Crys}.
+The knockouts $\text{\it Cry1}^{+/-}\ll$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/-}$ both show shorter wheel-running activity their respective WT/double knockouts $\text{\it Cry1}^{+/+}$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/+}$ \cite{VanderHorst1999}.
+Using new data from the application of KL001 together with existing experimental results, I developed a hypothesized mechanism to reconcile these seemingly contradictory results:
 
 \subsubsection{Network structure}
 In the core feedback loop, Per and Cry transcription is activated by the CLOCK-BMAL1 complex.
- The protein products of these genes are transported to the nucleus after a time delay and bind to CLOCK-BMAL1, repressing their own transcription.
- Evidence indicates that an interaction of PER and CRY proteins is required for the timely nuclear entry of both proteins \cite{Miyazaki2001,Ko2006,Kume1999}.
- I therefore assume that PER and CRY bind and enter the nucleus in a 1:1 stoichiometric ratio, similar to more complicated models of mammalian circadian rhythms \cite{Leloup2003,Mirsky2009,Forger2003}.
+The protein products of these genes are transported to the nucleus after a time delay and bind to CLOCK-BMAL1, repressing their own transcription.
+Evidence indicates that an interaction of PER and CRY proteins is required for the timely nuclear entry of both proteins \cite{Miyazaki2001,Ko2006,Kume1999}.
+I therefore assume that PER and CRY bind and enter the nucleus in a 1:1 stoichiometric ratio, similar to more complicated models of mammalian circadian rhythms \cite{Leloup2003,Mirsky2009,Forger2003}.
 
 \subsubsection{Protein stoichiometry}
 Quantitative protein assays have revealed that the PER proteins are present at levels nearly ten times less than the CRYs, and are completely consumed at their trough.
- The CRYs, on the other hand, only fall to about one quarter of their peak value  \cite{Lee2001}.
- These results indicate that PER is the rate-limiting component for nuclear entry.
- This configuration explains why, since {/it Cry} is in excess, a knockout of either {\it Cry} does not lead to loss of function at the tissue level.
- Additionally {\it Cry1}, the more dominant repressor, is consistently found at higher levels than {\it Cry2}.
- However, since the ratio of nuclear to total protein is nearly equivalent for CRY1 and CRY2, PER must import each with equal affinity \cite{Lee2001,Lee2011b}.
+The CRYs, on the other hand, only fall to about one quarter of their peak value  \cite{Lee2001}.
+These results indicate that PER is the rate-limiting component for nuclear entry.
+This configuration explains why, since {/it Cry} is in excess, a knockout of either {\it Cry} does not lead to loss of function at the tissue level.
+Additionally {\it Cry1}, the more dominant repressor, is consistently found at higher levels than {\it Cry2}.
+However, since the ratio of nuclear to total protein is nearly equivalent for CRY1 and CRY2, PER must import each with equal affinity \cite{Lee2001,Lee2011b}.
 
 \subsubsection{Importance of degradation}
 Studies of the simplest cellular oscillators have illustrated the importance of the degradation of repressor complexes in determining the period of oscillation \cite{Cookson2009}.
- In the mammalian circadian clock, FBXL3 has been indicated as a key protein in clearing the nucleus of CRY, and siRNA knockdowns of {\it Fbxl3} result in period lengthening \cite{Zhang2009}.
- While FBXL3 localizes primarily in the nucleus, CRY2 possesses a distinct phosphorylation domain that flags it for cytosolic proteolysis \cite{Kurabayashi2010}.
- Knocking down this domain shortens the period, indicating that degradation rates play a major role in determining the oscillatory period and that stabilization in the cytosol and nucleus are likely not equivalent.
+In the mammalian circadian clock, FBXL3 has been indicated as a key protein in clearing the nucleus of CRY, and siRNA knockdowns of {\it Fbxl3} result in period lengthening \cite{Zhang2009}.
+While FBXL3 localizes primarily in the nucleus, CRY2 possesses a distinct phosphorylation domain that flags it for cytosolic proteolysis \cite{Kurabayashi2010}.
+Knocking down this domain shortens the period, indicating that degradation rates play a major role in determining the oscillatory period and that stabilization in the cytosol and nucleus are likely not equivalent.
 
 \subsubsection{Key time delays}
 Similar to {\it Drosophila}, mammalian circadian oscillations are generated by three main time delays in the negative feedback loop: mRNA transcription, nuclear localization of protein, and degradation of the nuclear complexes \cite{Vielhaber2000a}.
- In order to capture these dynamics without introducing unnecessary stiffness, I explicitly consider only the concentrations of nuclear mRNA, cytosolic unbound protein, and nuclear protein complexes.
+In order to capture these dynamics without introducing unnecessary stiffness, I explicitly consider only the concentrations of nuclear mRNA, cytosolic unbound protein, and nuclear protein complexes.
 
 \section{Results}
 
@@ -68,7 +52,7 @@ Similar to {\it Drosophila}, mammalian circadian oscillations are generated by t
 Since the circadian clock is largely insensitive to the total amount {\it Cry}, it follows that the core negative loop is comprised of two redundant coupled inhibitory mechanisms. 
 The natural periods of these two loops (running in isolation of the other) can be inferred from their corresponding knockout phenotype, i.e., the CRY1 feedback loop has a long period, while the CRY2 loop has a short period. 
 In the wild-type phenotype, the two isoforms of CRY must compete for the available PER, and thus the nuclear CRY1/CRY2 levels are constrained with a ratio proportional to their relative expression. 
-This suggests that the period of the clock is governed by the nuclear CRY1/CRY2 ratio, where higher amounts of {\it Cry1} shift the clock closer to the $\text{\it Cry2}^{-/-}$ phenotype, and higher amounts of {\it Cry2} shift the clock closer to the $\text{\it Cry1}^{-/-}$ phenotype, described in figure~\ref{fig:twoloops}.
+This suggests that the period of the clock is governed by the nuclear CRY1/CRY2 ratio, where higher amounts of {\it Cry1} shift the clock closer to the $\text{\it Cry2}^{-/-}$ phenotype, and higher amounts of {\it Cry2} shift the clock closer to the $\text{\it Cry1}^{-/-}$ phenotype, described in \fref{fig:twoloops}.
 
 \begin{figure}[bt]
   \centering
@@ -86,7 +70,7 @@ The 21 unknown kinetic parameters were found by fitting the stoichiometric data 
 
 I investigated two possible mechanisms to explain the long/short period phenotype of the CRY1/CRY2 loops. 
 First, following experimental evidence, I allowed CRY1 and CRY2 to have different inhibitory efficiency \cite{GriffinJr.1999}. 
-However, optimizations with this structure were unable to find a parameter set with appropriate period sensitivities, described in section~\ref{sec:parameter}. 
+However, optimizations with this structure were unable to find a parameter set with appropriate period sensitivities, described in \fref{sec:parameter}. 
 Instead, I investigated whether the difference in potency between {\it Crys} could be explained through difference in degradation rates. 
 To this end, I allowed the degradation rates of nuclear CRY1 and CRY2 to differ, while holding their inhibition constants equal. 
 Using this configuration, the structure was able to fit the experimental sensitivities. 
@@ -94,7 +78,7 @@ In the optimized parameter set, the degradation rate of nuclear CRY2 is higher t
 Since PER is the limiting reagent in nuclear entry, the amount of total CRY that enters the nucleus is largely insensitive to perturbations in cytosolic CRY expression. 
 In effect, the two isoforms of CRY must compete for the available PER, and thus the nuclear CRY1/CRY2 levels are constrained with a ratio proportional to their relative expression. 
 The period of the clock is thus governed by the nuclear CRY1/CRY2 ratio, where higher amounts of {\it Cry1} shift the clock closer to the $\text{\it Cry2}^{-/-}$ phenotype, and higher amounts of {\it Cry2} shift the clock closer to the $\text{\it Cry1}^{-/-}$ phenotype. 
-Figure~\ref{fig:nucleartimecourse} shows the time varying total complex concentration under various perturbations, with the relative contributions from CRY1 and CRY2 highlighted.
+\Fref{fig:nucleartimecourse} shows the time varying total complex concentration under various perturbations, with the relative contributions from CRY1 and CRY2 highlighted.
 
 \begin{figure}[bt]
   \centering
@@ -125,59 +109,59 @@ Additional assumptions made while formulating the model equations are listed bel
 
 \begin{table}[p]
   \centering
-    \titlecaption{Model Equations for the Degradation Model}{Lower case letters (p: {\it Per}, c1: {\it Cry1}, c2: {\it Cry2}) are mRNA state variables. Uppercase letters (P: PER, C1: CRY1, C2: CRY2) are the free (cytosolic) proteins. C1N: CRY1 and C2N: CRY2 are the nuclear proteins. \label{tab:modelfns}}
+  \titlecaption{Model Equations for the Degradation Model}{Lower case letters (p: {\it Per}, c1: {\it Cry1}, c2: {\it Cry2}) are mRNA state variables. Uppercase letters (P: PER, C1: CRY1, C2: CRY2) are the free (cytosolic) proteins. C1N: CRY1 and C2N: CRY2 are the nuclear proteins. \label{tab:modelfns}}
 
-    \begin{align}
-      \label{eq:p}
-      \frac{d\mathrm{\bf p}}{dt}    & = \frac{v_{\text{txn,{\bf p}}}}{k_{\text{txn,{\bf p}}} + \left(\text{\bf C1N} + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf p}}} \;\text{\bf p} }{k_{\text{deg,{\bf p}}} +\text{\bf p} } \\
+  \begin{align}
+    \label{eq:p}
+    \frac{d\mathrm{\bf p}}{dt}    & = \frac{v_{\text{txn,{\bf p}}}}{k_{\text{txn,{\bf p}}} + \left(\text{\bf C1N} + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf p}}} \;\text{\bf p} }{k_{\text{deg,{\bf p}}} +\text{\bf p} } \\
         %
-      \label{eq:c1}
-      \frac{d\text{\bf c1}}{dt}   & = \frac{v_{\text{txn,{\bf c1}}}}{k_{\text{txn,{\bf c}}} + \left(\text{\bf C1N} + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf c1}}} \;\text{\bf c1} }{k_{\text{deg,{\bf c}}} +\text{\bf c1} } \\
+    \label{eq:c1}
+    \frac{d\text{\bf c1}}{dt}   & = \frac{v_{\text{txn,{\bf c1}}}}{k_{\text{txn,{\bf c}}} + \left(\text{\bf C1N} + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf c1}}} \;\text{\bf c1} }{k_{\text{deg,{\bf c}}} +\text{\bf c1} } \\
         %
-      \label{eq:c2}
-      \frac{d\text{\bf c2}}{dt}   & = \frac{v_{\text{txn,{\bf c2}}}}{k_{\text{txn,{\bf c}}} + \left(\text{\bf C1N} + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf c2}}} \;\text{\bf c2} }{k_{\text{deg,{\bf c}}} +\text{\bf c2} } \\
+    \label{eq:c2}
+    \frac{d\text{\bf c2}}{dt}   & = \frac{v_{\text{txn,{\bf c2}}}}{k_{\text{txn,{\bf c}}} + \left(\text{\bf C1N} + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf c2}}} \;\text{\bf c2} }{k_{\text{deg,{\bf c}}} +\text{\bf c2} } \\
         %
-      \begin{split}
-        \frac{d\text{\bf P}}{dt}  & = k_\text{tln,{\bf p}} \;\text{\bf p}  - \frac{v_{\text{deg,{\bf P}}} \;\text{\bf P} }{k_{\text{deg,{\bf P}}} +\text{\bf P} } - v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C1}  + v_{\text{d,{\bf CP}}} \;\text{\bf C1N} \\
-                                  & \quad - v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C2}  + v_{\text{d,{\bf CP}}} \; \text{\bf C2N}
-      \end{split} \\
+    \begin{split}
+      \frac{d\text{\bf P}}{dt}  & = k_\text{tln,{\bf p}} \;\text{\bf p}  - \frac{v_{\text{deg,{\bf P}}} \;\text{\bf P} }{k_{\text{deg,{\bf P}}} +\text{\bf P} } - v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C1}  + v_{\text{d,{\bf CP}}} \;\text{\bf C1N} \\
+      & \quad - v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C2}  + v_{\text{d,{\bf CP}}} \; \text{\bf C2N}
+    \end{split} \\
         %
-      \frac{d\text{\bf C1}}{dt}   & =\text{\bf c1}  - \frac{v_{\text{deg,{\bf C1}}} \;\text{\bf C1} }{k_{\text{deg,{\bf C}}} +\text{\bf C1} } - v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C1}  + v_{\text{d,{\bf CP}}} \;\text{\bf C1N} \\
+    \frac{d\text{\bf C1}}{dt}   & =\text{\bf c1}  - \frac{v_{\text{deg,{\bf C1}}} \;\text{\bf C1} }{k_{\text{deg,{\bf C}}} +\text{\bf C1} } - v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C1}  + v_{\text{d,{\bf CP}}} \;\text{\bf C1N} \\
         %
-      \frac{d\text{\bf C2}}{dt}   & =\text{\bf c2} - \frac{ v_{\text{deg,{\bf C2}}} \;\text{\bf C2} }{k_{\text{deg,{\bf C}}} +\text{\bf C2} } - v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C2}  + v_{\text{d,{\bf CP}}} \; \text{\bf C2N} \\
+    \frac{d\text{\bf C2}}{dt}   & =\text{\bf c2} - \frac{ v_{\text{deg,{\bf C2}}} \;\text{\bf C2} }{k_{\text{deg,{\bf C}}} +\text{\bf C2} } - v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C2}  + v_{\text{d,{\bf CP}}} \; \text{\bf C2N} \\
         %
-      \frac{d\text{\bf C1N}}{dt}  & = - \frac{ v_{\text{deg,{\bf CP}}} \;\text{\bf C1N} }{k_{\text{deg,{\bf CP}}} +\text{\bf C1N}  + \text{\bf C2N} } + v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C1} - v_{\text{d,{\bf CP}}} \;\text{\bf C1N} \\
+    \frac{d\text{\bf C1N}}{dt}  & = - \frac{ v_{\text{deg,{\bf CP}}} \;\text{\bf C1N} }{k_{\text{deg,{\bf CP}}} +\text{\bf C1N}  + \text{\bf C2N} } + v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C1} - v_{\text{d,{\bf CP}}} \;\text{\bf C1N} \\
         %
-      \label{eq:C2N}
-      \frac{d\text{\bf C2N }}{dt} & = - \frac{ \left(v_{\text{deg,{\bf CP}}} \; m_{\text{\bf C2N}}\right) \; \text{\bf C2N} }{k_{\text{deg,{\bf CP}}} + \text{\bf C2N}  +\text{\bf C1N} } + v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C2} - v_{\text{d,{\bf CP}}} \; \text{\bf C2N}
-    \end{align}
+    \label{eq:C2N}
+    \frac{d\text{\bf C2N }}{dt} & = - \frac{ \left(v_{\text{deg,{\bf CP}}} \; m_{\text{\bf C2N}}\right) \; \text{\bf C2N} }{k_{\text{deg,{\bf CP}}} + \text{\bf C2N}  +\text{\bf C1N} } + v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C2} - v_{\text{d,{\bf CP}}} \; \text{\bf C2N}
+  \end{align}
 \end{table}
 
 
 \begin{table}[p]
   \centering
-    \titlecaption{Changed Equations for the Activation-based Model}{The remainder of the model equations (not duplicated below) are found in table \ref{tab:modelfns}}\label{tab:actfns}
+  \titlecaption{Changed Equations for the Activation-based Model}{The remainder of the model equations (not duplicated below) are found in  \fref{tab:modelfns}}\label{tab:actfns}
 
-    \begin{align*}
-      \frac{d\text{\bf p}}{dt} &= \frac{v_{\text{txn,{\bf p}}}}{k_{\text{txn,{\bf p}}} + \left(m_{\text{\bf C2N}} \; \text{\bf C1N}  + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf p}}} \;\text{\bf p} }{k_{\text{deg,{\bf p}}} +\text{\bf p} } \tag{$\ref{eq:p}^{\star}$}\\
+  \begin{align*}
+    \frac{d\text{\bf p}}{dt} &= \frac{v_{\text{txn,{\bf p}}}}{k_{\text{txn,{\bf p}}} + \left(m_{\text{\bf C2N}} \; \text{\bf C1N}  + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf p}}} \;\text{\bf p} }{k_{\text{deg,{\bf p}}} +\text{\bf p} } \tag{$\ref{eq:p}^{\star}$}\\
         %
-      \frac{d\text{\bf c1}}{dt} &= \frac{v_{\text{txn,{\bf c1}}}}{k_{\text{txn,{\bf c}}} + \left(m_{\text{\bf C2N}} \; \text{\bf C1N}  + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf c1}}} \;\text{\bf c1} }{k_{\text{deg,{\bf c}}} +\text{\bf c1} } \tag{$\ref{eq:c1}^{\star}$}\\
+    \frac{d\text{\bf c1}}{dt} &= \frac{v_{\text{txn,{\bf c1}}}}{k_{\text{txn,{\bf c}}} + \left(m_{\text{\bf C2N}} \; \text{\bf C1N}  + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf c1}}} \;\text{\bf c1} }{k_{\text{deg,{\bf c}}} +\text{\bf c1} } \tag{$\ref{eq:c1}^{\star}$}\\
         %
-      \frac{d\text{\bf c2}}{dt} &= \frac{v_{\text{txn,{\bf c2}}}}{k_{\text{txn,{\bf c}}} + \left(m_{\text{\bf C2N}} \; \text{\bf C1N}  + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf c2}}} \;\text{\bf c2} }{k_{\text{deg,{\bf c}}} +\text{\bf c2} } \tag{$\ref{eq:c2}^{\star}$}\\
+    \frac{d\text{\bf c2}}{dt} &= \frac{v_{\text{txn,{\bf c2}}}}{k_{\text{txn,{\bf c}}} + \left(m_{\text{\bf C2N}} \; \text{\bf C1N}  + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf c2}}} \;\text{\bf c2} }{k_{\text{deg,{\bf c}}} +\text{\bf c2} } \tag{$\ref{eq:c2}^{\star}$}\\
         %
-      \frac{d\text{\bf C2N }}{dt} &= - \frac{ v_{\text{deg,{\bf CP}}} \; \text{\bf C2N} }{k_{\text{deg,{\bf CP}}} + \text{\bf C2N}  +\text{\bf C1N} } + v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C2} - v_{\text{d,{\bf CP}}} \; \text{\bf C2N}
-      \tag{$\ref{eq:C2N}^{\star}$}
-    \end{align*}
+    \frac{d\text{\bf C2N }}{dt} &= - \frac{ v_{\text{deg,{\bf CP}}} \; \text{\bf C2N} }{k_{\text{deg,{\bf CP}}} + \text{\bf C2N}  +\text{\bf C1N} } + v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C2} - v_{\text{d,{\bf CP}}} \; \text{\bf C2N}
+    \tag{$\ref{eq:C2N}^{\star}$}
+  \end{align*}
 \end{table}
 
 
 \begin{table}[p]
-  \titlecaption{Parameter Set}{Parameters for model described in table~\ref{tab:modelfns}.}
+  \titlecaption{Parameter Set}{Parameters for model described in \fref{tab:modelfns}.}
   \label{tab:parset}
   \vspace{2mm}
   \centering
   \begin{tabular}{cllrr} \toprule
-       & Parameter                 & Description                       & Degradation & Activation \\ \midrule
+    & Parameter                 & Description                       & Degradation & Activation \\ \midrule
     1  & $v_{\text{txn,{\bf p}}}$  & {\it Per} Transcription rate      & 0.195       & 0.276 \\
     2  & $v_{\text{txn,{\bf c1}}}$ & {\it Cry1} Transcription rate     & 0.131       & 0.062 \\
     3  & $v_{\text{txn,{\bf c2}}}$ & {\it Cry1} Transcription rate     & 0.114       & 0.053 \\
@@ -227,7 +211,7 @@ We invoke the standard pseudo steady-state assumption and set $\frac{d[\text{ES}
 \begin{equation} \label{eq:pss}
   k_1\text{[E]}\text{[S]} = k_{-1}\text{[ES1]} + k_{d,1}\text{[ES1]}
 \end{equation}
-Solving eq. \ref{eq:pss} for ES1 and substituting in eq. \ref{eq:totE}, we obtain
+Solving \fref{eq:pss} for ES1 and substituting in \fref{eq:totE}, we obtain
 \begin{equation*}
   \left(\frac{k_{-1}+k_{d,1}}{k_1}\right)\text{[ES1]} = \left([\text{E}_t] - \text{[ES1]} - \text{[ES2]}\right)\text{[S1]}
 \end{equation*}
@@ -241,14 +225,14 @@ we can further simplify
     %
   [\text{ES1}] &= \frac{([\text{E}_t] - [\text{ES2}])[\text{S1}]}{K_1 + [\text{S1}]} \label{eq:eqabove}
 \end{align}
-If we perform the same operations for [ES2] and plug them into equation~\ref{eq:eqabove}.
+If we perform the same operations for [ES2] and plug them into \fref{eq:eqabove}.
 \begin{align}
   [\text{ES1}] &= \frac{\left(\text{E}_t] - \frac{([\text{E}_t] - [\text{ES1}])[\text{S2}]}{K_2 + [\text{S2}]}\right)\text{S1}]}{K_1 + [\text{S1}]} \notag\\
   [\text{ES1}] &= \frac{\text{[E]}_t \text{[S1]}}{K_1 + \text{[S1]}} - \frac{\text{[E]}_t \text{[S1]} \text{[S2]}}{(K_1 + \text{[S1]}) (K_2 + \text{[S2]})} + \frac{\text{[ES1]} \text{[S1]} \text{[S2]}}{(K_1 + \text{[S1]}) (K_2 + \text{[S2]})} \notag\\
   \label{eq:twofracs}
   [\text{ES1}] &= \left(\frac{\text{[E]}_t \text{[S1]}}{K_1 + \text{[S1]}}\right) \left(\frac{1 - \frac{\text{[S2]}}{K_2 + \text{[S2]}}}{1 - \frac{\text{[S1]} \text{[S2]}}{(K_1 + \text{[S1]}) (K_2 + \text{[S2]})}}\right)
 \end{align}
-If we pull the second fraction from (\ref{eq:twofracs}) into the denominator of the first, we can simplify further.
+If we pull the second fraction from (\fref{eq:twofracs}) into the denominator of the first, we can simplify further.
 \begin{align}
   [\text{ES1}] &= \frac{\text{[E]}_t \text{[S1]}}{\left(\frac{K_1 + \text{[S1]} - \frac{\text{[S1]} \text{[S2]}}{K_2 + \text{[S2]}}}{1 - \frac{\text{[S2]}}{K_2 + \text{[S2]}}}\right)} \notag\\
   [\text{ES1}] &= \frac{\text{[E]}_t \text{[S1]}}{\left(\frac{K_2 + \text{[S2]}}{K_2}\right) \left(K_1 + \text{[S1]} - \frac{\text{[S1]} \text{[S2]}}{K_2 + \text{[S2]}}\right)} \notag\\
@@ -258,14 +242,14 @@ If we pull the second fraction from (\ref{eq:twofracs}) into the denominator of 
   & \text{Dividing top and bottom by K2:} \notag\\
   [\text{ES1}] &= \frac{\text{[E]}_t \text{[S1]}}{K_1 + \text{[S1]} + \frac{K_1}{K_2}\text{[S2]}}\label{eq:es1}
 \end{align}
-Substituting (\ref{eq:es1}) into (\ref{eq:r1}) and setting $K_1 = K_2$, $k_{d,1} \neq k_{d,2}$, we obtain the final shared rate laws (with an equivalent analysis for [ES2])
+Substituting (\fref{eq:es1}) into (\fref{eq:r1}) and setting $K_1 = K_2$, $k_{d,1} \neq k_{d,2}$, we obtain the final shared rate laws (with an equivalent analysis for [ES2])
 \begin{align*}
   r_{d,1} &= \frac{V_\text{max,1} \text{[S1]}}{K_M + \text{[S1]} + \text{[S2]}} \\ \\
   r_{d,2} &= \frac{V_\text{max,2} \text{[S2]}}{K_M + \text{[S1]} + \text{[S2]}}
 \end{align*}
 
 \subsubsection{Derivation of Hill-type repression formulas}
-To derive the equations for the Hill-type inhibition, allowing for different repressive activities (table~\ref{tab:actfns}), we start with the standard equation for Hill-type regulation:
+To derive the equations for the Hill-type inhibition, allowing for different repressive activities (\fref{tab:actfns}), we start with the standard equation for Hill-type regulation:
 \begin{equation} \label{eq:htr}
   \frac{v_{\text{max}}[A]^n}{K_m^n + [A]^n}
 \end{equation}
@@ -288,7 +272,7 @@ The first step in the cost function evaluation is the numerical solution of the 
 If a limit cycle was unable to be found, the cost function returns a maximum value. 
 Otherwise, the cost function returns a squared difference from the desired value. 
 A priority weight was also attached to each cost entry, such that more important costs would be prioritized. 
-A description of each entry in the cost function, along with the value for experimental and final model is shown in table~\ref{tab:cost} (degradation-based model, table~\ref{tab:modelfns}; activation-based model, table~\ref{tab:actfns}). 
+A description of each entry in the cost function, along with the value for experimental and final model is shown in \fref{tab:cost} (degradation-based model, \fref{tab:modelfns}; activation-based model, \fref{tab:actfns}). 
 To minimize the cost function, we employed a genetic algorithm method used previously for optimizing circadian parameters \cite{Mirsky2009}. 
 In the method, 5000 solutions are calculated at random parameter values within feasible bounds. 
 Those with the best cost function scores are kept and used to generate subsequent solutions. 
@@ -296,16 +280,16 @@ This procedure is iterated for up to 2000 generations, or until convergence crit
 
 \begin{longtable}{cp{6.0cm}crrr}
   \titlecaption{Summary of Cost Function Entries}{
-The weights for each entry were chosen based on the relative importance of the desired behavior. 
-Entries 1-9 and 12-16 were obtained from the data presented in \cite{Lee2001}. 
-SiRNA sensitivities were obtained were taken from \cite{Zhang2009}.}\\ \toprule \label{tab:cost} 
+    The weights for each entry were chosen based on the relative importance of the desired behavior. 
+    Entries 1-9 and 12-16 were obtained from the data presented in \cite{Lee2001}. 
+    SiRNA sensitivities were obtained were taken from \cite{Zhang2009}.}\\ \toprule \label{tab:cost} 
+    & Description & Weight & Desired & Degradation & Activation \\
+    \midrule
+  \endfirsthead
+
+  \toprule
   & Description & Weight & Desired & Degradation & Activation \\
   \midrule
-\endfirsthead
-
-\toprule
-& Description & Weight & Desired & Degradation & Activation \\
-\midrule
 \endhead
 
 \bottomrule
@@ -381,11 +365,11 @@ $$t_\text{max}(\text{mRNA}) - t_\text{max}(\text{protein})$$
 18 & Time delay between cytoplasmic protein and nuclear protein
 $$t_\text{max}(\text{protein}) - t_\text{max}(\text{nuclear protein})$$
 & 3 & $0 \%$ & $0.093$ & 0.057 \\
-  \end{longtable}
+\end{longtable}
 
 \subsection{Model validation and dynamics}
 The model was validated by comparing the simulated dynamics to experimental measurements. 
-First, the time course plots of the state variables display reasonable phases and amplitudes, and oscillate with a period of 23.7 hours (figure~\ref{fig:timecourse}. 
+First, the time course plots of the state variables display reasonable phases and amplitudes, and oscillate with a period of 23.7 hours (\fref{fig:timecourse}). 
 The knockout periods are 21.7 hr ($91.4\%$ of WT) for $\text{\it Cry1}^{-/-}$  and 31.5 hr ($133\%$ of WT) for $\text{\it Cry2}^{-/-}$, indicating that the two feedback loops are indeed redundant with different free-running periods.
 
 \begin{figure}[bt]
@@ -402,7 +386,7 @@ The knockout periods are 21.7 hr ($91.4\%$ of WT) for $\text{\it Cry1}^{-/-}$  
 \end{figure}
 
 \subsubsection{SiRNA knockdowns}
-SiRNA knockdowns were performed {\it in silico} by increasing the degradation rate for the corresponding mRNA; shown in figure~\ref{fig:experimentalvalidation}, as done previously in \cite{Relogio2011}. 
+SiRNA knockdowns were performed {\it in silico} by increasing the degradation rate for the corresponding mRNA; shown in \fref{fig:experimentalvalidation}, as done previously in \cite{Relogio2011}. 
 {\it Cry1} and {\it Cry2} knockdowns in wild type conditions show close agreement to experiment \cite{Zhang2009}, and demonstrate that altering the nuclear CRY1/CRY2 ratio is effective in changing the period of oscillation.
 
 \subsubsection{CRY2 cytosolic stabilization}
@@ -417,27 +401,28 @@ In this case, less {\it Cry} leads to less nuclear complex, which is cleared fas
 
 \begin{figure}[bt]
   \centering
-    \includegraphics[width=\textwidth]{chap2/figures/experimentalvalidation.pdf}
-    \titlecaption{Model Validation}{
-When comparing against existing experimental results, the model shows the correct response for {\it Cry1} siRNA, {\it Cry2} siRNA, and $\text{CRY}_c$ stabilization (left, middle), through an adjustment in the nuclear CRY1/CRY2 ratio. 
-The model also correctly captures the single/double knockout phenotype of \cite{VanderHorst1999}, (right)} \label{fig:experimentalvalidation}
+  \includegraphics[width=\textwidth]{chap2/figures/experimentalvalidation.pdf}
+  \titlecaption{Model Validation}{
+    When comparing against existing experimental results, the model shows the correct response for {\it Cry1} siRNA, {\it Cry2} siRNA, and $\text{CRY}_c$ stabilization (left, middle), through an adjustment in the nuclear CRY1/CRY2 ratio. 
+    The model also correctly captures the single/double knockout phenotype of \cite{VanderHorst1999}, (right)} \label{fig:experimentalvalidation}
 \end{figure}
 
 \subsection{Prediction of KL001 mechanism}
 Using the completed model, I investigated possible mechanisms by which KL001 might lengthen the circadian period. 
 Experimental evidence indicates that stabilization of CRY can either lengthen the period ({\it Fbxl3} knockdown) or shorten the period ({\it Dyrk1a} knockdown). 
 Assuming equal effect on both isoforms of {\it Cry}, the model confirms that cytoplasmic stabilization results in period shortening, since excess CRY expedites the nuclear import of the PER:CRY repressive complex. 
-However, stabilizing nuclear CRY (figure~\ref{fig:nucleartimecourse}, last column) yields the appropriate period lengthening observed experimentally. 
+However, stabilizing nuclear CRY (\fref{fig:nucleartimecourse}, last column) yields the appropriate period lengthening observed experimentally. 
 We therefore predicted that KL001 acts primarily in the nucleus, potentially through the FBXL3 degradation pathway. 
-Additionally, the model predicts that the compound’s effect on $\text{\it Cry1}^{-/-}$ and $\text{\it Cry2}^{-/-}$ systems would be similar to its effect on the wild type clock, causing dose-dependent period lengthening (figure~\ref{fig:40662prediction}, left and right).
+Additionally, the model predicts that the compound’s effect on $\text{\it Cry1}^{-/-}$ and $\text{\it Cry2}^{-/-}$ systems would be similar to its effect on the wild type clock, causing dose-dependent period lengthening (\fref{fig:40662prediction}, left and right).
+
 
 \begin{figure}[bt]
-  \centering
-  \includegraphics[width=0.7\textwidth]{chap2/figures/prediction.pdf}
-  \titlecaption{
-  Model Prediction of the KL001 Mechanism}{ {\it In silico} response to equal stabilization of both CRYs in the nucleus results in longer periods (middle column), matching observed results. 
-The model correctly predicts that stabilization of individual CRYs in the knockout environments also causes period lengthening.} \label{fig:40662prediction}
-  \end{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{chap2/figures/prediction.pdf}
+    \titlecaption{
+    Model Prediction of the KL001 Mechanism}{ {\it In silico} response to equal stabilization of both CRYs in the nucleus results in longer periods (middle column), matching observed results. 
+  The model correctly predicts that stabilization of individual CRYs in the knockout environments also causes period lengthening.} \label{fig:40662prediction}
+\end{figure}
 
 \subsubsection{Experimental confirmation}
 Experimental tests of the model's predictions were performed. 
@@ -449,28 +434,28 @@ Both {\it Cry1} and {\it Cry2} knockout SCN exhibited dose-dependent period leng
 Thus, in a single {\it Cry} knockout, stabilization of either nuclear CRY1 and CRY2 causes period lengthening, confirming model predictions.
 
 \begin{figure}[p]
-    \centering
-    \includegraphics[width=0.5\textwidth]{chap2/figures/crysimultaneousknockdown.pdf}
-    \titlecaption{
-Simultaneous Knockdown of {\it Cry1} and {\it Cry2}}{Period contours (\% change) resulting from simultaneous {\it in silico} siRNA knockdowns of {\it Cry1} (x-axis) and {\it Cry2} (y-axis). 
-The plot shows that the CRY1/CRY2 ratio determines the period, independent of total CRY, for perturbations up to twice the normal mRNA degradation rate.}  \label{fig:simultaneouskdown}
+  \centering
+  \includegraphics[width=0.5\textwidth]{chap2/figures/crysimultaneousknockdown.pdf}
+  \titlecaption{
+    Simultaneous Knockdown of {\it Cry1} and {\it Cry2}}{Period contours (\% change) resulting from simultaneous {\it in silico} siRNA knockdowns of {\it Cry1} (x-axis) and {\it Cry2} (y-axis). 
+  The plot shows that the CRY1/CRY2 ratio determines the period, independent of total CRY, for perturbations up to twice the normal mRNA degradation rate.}  \label{fig:simultaneouskdown}
 \end{figure}
 
 \begin{figure}[p]
-    \centering
-    \includegraphics[width=0.6\textwidth]{chap2/figures/firstordersens.pdf}
-    \titlecaption{
-First Order Relative Period Sensitivities}{
-Dimensionless period sensitivities with respect to the kinetic parameters in the degradation-based model. 
-Perturbations to most clock rates result in noticeable changes to the free-running period. 
-Many of the most sensitive parameters are transcriptional rates, which can be easily changed through mutation of DNA promoter regions.} \label{fig:firstordersens}
+  \centering
+  \includegraphics[width=0.6\textwidth]{chap2/figures/firstordersens.pdf}
+  \titlecaption{
+  First Order Relative Period Sensitivities}{
+    Dimensionless period sensitivities with respect to the kinetic parameters in the degradation-based model. 
+    Perturbations to most clock rates result in noticeable changes to the free-running period. 
+  Many of the most sensitive parameters are transcriptional rates, which can be easily changed through mutation of DNA promoter regions.} \label{fig:firstordersens}
 \end{figure}
 
 \section{Conclusion}
 \subsection{Insights into Circadian Network Design}
 Mathematical modeling has revealed how the balancing of two redundant feedback loops can provide fine control over the oscillatory period. 
-A contour plot of period vs CRY1 or CRY2 abundance is shown in figure~\ref{fig:simultaneouskdown}, which shows that the model's period is largely insensitive to the total amount of CRY ($45^\circ$ line), but highly dependent on the ratio of the two isoforms. 
-Sensitivity analysis of our mathematical model (figure~\ref{fig:firstordersens}) reveals that subtle changes in most of the involved rates can have an effect on the clock’s free running period, which could be caused by evolutionary noise. 
+A contour plot of period vs CRY1 or CRY2 abundance is shown in \fref{fig:simultaneouskdown}, which shows that the model's period is largely insensitive to the total amount of CRY ($45^\circ$ line), but highly dependent on the ratio of the two isoforms. 
+Sensitivity analysis of our mathematical model (\fref{fig:firstordersens}) reveals that subtle changes in most of the involved rates can have an effect on the clock's free running period, which could be caused by evolutionary noise. 
 Since many studies have linked entrainment to non-natural periods with long-term health problems, a mechanism to align the clock’s natural period to that of the environment would be advantageous. 
 It is therefore possible that the period control afforded by CRY1/CRY2 balancing is a deliberately conserved design principle of the circadian clock, which confers period robustness against random mutations of clock components. 
 Indeed, the presence of independent control of the cytosolic CRY2 levels suggests that the biological clock can control its period through simple post-translational modifications \cite{Kurabayashi2010}. 
@@ -480,4 +465,4 @@ Due to the high dimensionality of the model equations and sparsity of the experi
 While the fact that {\itshape any} parameter set for the given model equations reproduces experimental results is enough to confirm that our hypothesized mechanism is mathematically consistent, we must be careful in placing too much confidence in predictions based on the particular parameter set generated by the optimization algorithm. 
 While subsequent experimental results confirm many of our model predictions, a more rigorous exploration of parameter space would allow us to determine which predictions are constrained by the available experimental data. 
 However, incorporating error ranges via standard techniques such as bootstrap techniques are infeasible when using a genetic algorithm optimization strategy. 
-In the following chapter, I describe techniques to improve computational efficiency to allow a more systematic evaluation of predictive confidence.
+In \fref{chap:id}, I describe techniques to improve computational efficiency to allow a more systematic evaluation of predictive confidence.
