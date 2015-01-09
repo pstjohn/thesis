@@ -290,28 +290,29 @@ Thus, many of the identifiable values shown in figures \ref{fig:3_3}-\ref{fig:3_
 We next apply the method to literature time-course data for core clock components \cite{Lee2001}. 
 When modeling a genetic regulatory network, many candidate model equations are often considered. 
 We show that a bootstrap uncertainty analysis can also be useful in discriminating between potential model structures based on predictive confidence. 
-Here two variations of the same model are fit: The first model (\fref{tab:modelfns}) was originally optimized using a genetic algorithm approach, and thus contains a minimal number of parameters to reduce optimization complexity. 
-The second model (\fref{tab:modelfns2}) considered  contains independent parameters for each rate expression, increasing the number of parameters from 23 to 35. 
+Here two variations of the same model are fit: The first model (\fref{mod:hirota}) was originally optimized using a genetic algorithm approach, and thus contains a minimal number of parameters to reduce optimization complexity. 
+The second model (\fref{mod:hirota2}) considered  contains independent parameters for each rate expression, increasing the number of parameters from 23 to 35. 
 
-\begin{table}[h]
+\begin{model}[h]
   \centering
-    \titlecaption{Model Equations for the Expanded Model}{These equations have similar reaction stoichiometry to those in table \ref{tab:modelfns}, but with more parametric degrees of freedom. This model showed better time-series performance than the more constrained model when fit to time-series data. \label{tab:modelfns2}}
+  \titlecaption{Model Equations for the Expanded Model}{These equations have similar reaction stoichiometry to those in table \ref{mod:hirota}, but with more parametric degrees of freedom. This model showed better time-series performance than the more constrained model when fit to time-series data.}
 
-    \begin{align*}
-\frac{d\mathrm{\bf p}}{dt} &= \frac{\mathit{Vm}_{1}}{1 + \mathit{Vm}_{1} \; {\left(\frac{\mathrm{\bf C1N} + \mathrm{\bf C2N} \; \mathit{M}_{1}}{\mathit{Ki}_{1}}\right)}^{3}} - \frac{\mathit{k}_{1} \; \mathrm{\bf p}}{1 + \frac{\mathrm{\bf p}}{\mathit{Km}_{1}}} \\
-\frac{d\mathrm{\bf c1}}{dt} &= \frac{\mathit{Vm}_{2}}{1 + \mathit{Vm}_{2} \; {\left(\frac{\mathrm{\bf C1N} + \mathrm{\bf C2N} \; \mathit{M}_{2}}{\mathit{Ki}_{2}}\right)}^{3}} - \frac{\mathit{k}_{2} \; \mathrm{\bf c1}}{1 + \frac{\mathrm{\bf c1}}{\mathit{Km}_{2}}} \\
-\frac{d\mathrm{\bf c2}}{dt} &= \frac{\mathit{Vm}_{3}}{1 + \mathit{Vm}_{3} \; {\left(\frac{\mathrm{\bf C1N} + \mathrm{\bf C2N} \; \mathit{M}_{3}}{\mathit{Ki}_{3}}\right)}^{3}} - \frac{\mathit{k}_{3} \; \mathrm{\bf c2}}{1 + \frac{\mathrm{\bf c2}}{\mathit{Km}_{3}}} \\
-\frac{d\mathrm{\bf P}}{dt} &= \mathit{k}_{4} \; \mathrm{\bf p} + \mathit{k}_{12} \; \mathrm{\bf C1N} + \mathit{k}_{13} \; \mathrm{\bf C2N} - \frac{\mathit{k}_{7} \; \mathrm{\bf P}}{1 + \frac{\mathrm{\bf P}}{\mathit{Km}_{4}}} - \mathit{k}_{10} \; \mathrm{\bf P} \; \mathrm{\bf C1} - \mathit{k}_{11} \; \mathrm{\bf P} \; \mathrm{\bf C2} \\
-\frac{d\mathrm{\bf C1}}{dt} &= \mathit{k}_{5} \; \mathrm{\bf c1} + \mathit{k}_{12} \; \mathrm{\bf C1N} - \frac{\mathit{k}_{8} \; \mathrm{\bf C1}}{1 + \frac{\mathrm{\bf C1}}{\mathit{Km}_{5}}} - \mathit{k}_{10} \; \mathrm{\bf P} \; \mathrm{\bf C1} \\
-\frac{d\mathrm{\bf C2}}{dt} &= \mathit{k}_{6} \; \mathrm{\bf c2} + \mathit{k}_{13} \; \mathrm{\bf C2N} - \frac{\mathit{k}_{9} \; \mathrm{\bf C2}}{1 + \frac{\mathrm{\bf C2}}{\mathit{Km}_{6}}} - \mathit{k}_{11} \; \mathrm{\bf P} \; \mathrm{\bf C2} \\
-\frac{d\mathrm{\bf C1N}}{dt} &= \mathit{k}_{10} \; \mathrm{\bf P} \; \mathrm{\bf C1} - \mathit{k}_{12} \; \mathrm{\bf C1N} - \frac{\mathit{k}_{14} \; \mathrm{\bf C1N}}{1 + \frac{\mathrm{\bf C1N} + \mathrm{\bf C2N} \; \mathit{M}_{4}}{\mathit{Km}_{7}}} \\
-\frac{d\mathrm{\bf C2N}}{dt} &= \mathit{k}_{11} \; \mathrm{\bf P} \; \mathrm{\bf C2} - \mathit{k}_{13} \; \mathrm{\bf C2N} - \frac{\mathit{k}_{15} \; \mathrm{\bf C2N}}{1 + \frac{\mathrm{\bf C1N} + \mathrm{\bf C2N} \; \mathit{M}_{5}}{\mathit{Km}_{8}}} 
-    \end{align*}
-\end{table}
+  \begin{align*}
+    \frac{d\mathrm{\bf p}}{dt} &= \frac{\mathit{Vm}_{1}}{1 + \mathit{Vm}_{1} \; {\left(\frac{\mathrm{\bf C1N} + \mathrm{\bf C2N} \; \mathit{M}_{1}}{\mathit{Ki}_{1}}\right)}^{3}} - \frac{\mathit{k}_{1} \; \mathrm{\bf p}}{1 + \frac{\mathrm{\bf p}}{\mathit{Km}_{1}}} \\
+    \frac{d\mathrm{\bf c1}}{dt} &= \frac{\mathit{Vm}_{2}}{1 + \mathit{Vm}_{2} \; {\left(\frac{\mathrm{\bf C1N} + \mathrm{\bf C2N} \; \mathit{M}_{2}}{\mathit{Ki}_{2}}\right)}^{3}} - \frac{\mathit{k}_{2} \; \mathrm{\bf c1}}{1 + \frac{\mathrm{\bf c1}}{\mathit{Km}_{2}}} \\
+    \frac{d\mathrm{\bf c2}}{dt} &= \frac{\mathit{Vm}_{3}}{1 + \mathit{Vm}_{3} \; {\left(\frac{\mathrm{\bf C1N} + \mathrm{\bf C2N} \; \mathit{M}_{3}}{\mathit{Ki}_{3}}\right)}^{3}} - \frac{\mathit{k}_{3} \; \mathrm{\bf c2}}{1 + \frac{\mathrm{\bf c2}}{\mathit{Km}_{3}}} \\
+    \frac{d\mathrm{\bf P}}{dt} &= \mathit{k}_{4} \; \mathrm{\bf p} + \mathit{k}_{12} \; \mathrm{\bf C1N} + \mathit{k}_{13} \; \mathrm{\bf C2N} - \frac{\mathit{k}_{7} \; \mathrm{\bf P}}{1 + \frac{\mathrm{\bf P}}{\mathit{Km}_{4}}} - \mathit{k}_{10} \; \mathrm{\bf P} \; \mathrm{\bf C1} - \mathit{k}_{11} \; \mathrm{\bf P} \; \mathrm{\bf C2} \\
+    \frac{d\mathrm{\bf C1}}{dt} &= \mathit{k}_{5} \; \mathrm{\bf c1} + \mathit{k}_{12} \; \mathrm{\bf C1N} - \frac{\mathit{k}_{8} \; \mathrm{\bf C1}}{1 + \frac{\mathrm{\bf C1}}{\mathit{Km}_{5}}} - \mathit{k}_{10} \; \mathrm{\bf P} \; \mathrm{\bf C1} \\
+    \frac{d\mathrm{\bf C2}}{dt} &= \mathit{k}_{6} \; \mathrm{\bf c2} + \mathit{k}_{13} \; \mathrm{\bf C2N} - \frac{\mathit{k}_{9} \; \mathrm{\bf C2}}{1 + \frac{\mathrm{\bf C2}}{\mathit{Km}_{6}}} - \mathit{k}_{11} \; \mathrm{\bf P} \; \mathrm{\bf C2} \\
+    \frac{d\mathrm{\bf C1N}}{dt} &= \mathit{k}_{10} \; \mathrm{\bf P} \; \mathrm{\bf C1} - \mathit{k}_{12} \; \mathrm{\bf C1N} - \frac{\mathit{k}_{14} \; \mathrm{\bf C1N}}{1 + \frac{\mathrm{\bf C1N} + \mathrm{\bf C2N} \; \mathit{M}_{4}}{\mathit{Km}_{7}}} \\
+    \frac{d\mathrm{\bf C2N}}{dt} &= \mathit{k}_{11} \; \mathrm{\bf P} \; \mathrm{\bf C2} - \mathit{k}_{13} \; \mathrm{\bf C2N} - \frac{\mathit{k}_{15} \; \mathrm{\bf C2N}}{1 + \frac{\mathrm{\bf C1N} + \mathrm{\bf C2N} \; \mathit{M}_{5}}{\mathit{Km}_{8}}} 
+  \end{align*}
+  \label{mod:hirota2}
+\end{model}
 
 
 \begin{table}[p]
-  \titlecaption{Parameter Set for Expanded Model}{Parameters for model described in \fref{tab:modelfns2}, fit to time-series data via nonlinear programming.}
+  \titlecaption{Parameter Set for Expanded Model}{Parameters for model described in \fref{mod:hirota2}, fit to time-series data via nonlinear programming.}
   \label{tab:parsetopt}
   \vspace{2mm}
   \centering

@@ -91,7 +91,7 @@ The period of the clock is thus governed by the nuclear CRY1/CRY2 ratio, where h
 \end{figure}
 
 \subsubsection{Model equations}
-The model is formulated as set of 8 ordinary differential equations shown in tables \ref{tab:modelfns} and \ref{tab:actfns}. 
+The model is formulated as set of 8 ordinary differential equations shown in \fref{mod:hirota} and \fref{mod:actfns}. 
 Additional assumptions made while formulating the model equations are listed below:
 
 \begin{itemize}
@@ -107,9 +107,9 @@ Additional assumptions made while formulating the model equations are listed bel
   \item The degradation kinetics of the nuclear proteins are assumed to follow Michaelis-Menten kinetics. Because both $\text{CRY1}_n$ and $\text{CRY2}_n$ are thought to be degraded by the same pathway in the nucleus, kinetic equations using the {\it pseudo} steady-state hypothesis were derived for two substrates sharing the same enzyme. As a result, each {\it Cry} isoform acts as an inhibitor to the other's degradation.
 \end{itemize}
 
-\begin{table}[p]
+\begin{model}[p]
   \centering
-  \titlecaption{Model Equations for the Degradation Model}{Lower case letters (p: {\it Per}, c1: {\it Cry1}, c2: {\it Cry2}) are mRNA state variables. Uppercase letters (P: PER, C1: CRY1, C2: CRY2) are the free (cytosolic) proteins. C1N: CRY1 and C2N: CRY2 are the nuclear proteins. \label{tab:modelfns}}
+  \titlecaption{Equations for the Degradation Model}{Lower case letters (p: {\it Per}, c1: {\it Cry1}, c2: {\it Cry2}) are mRNA state variables. Uppercase letters (P: PER, C1: CRY1, C2: CRY2) are the free (cytosolic) proteins. C1N: CRY1 and C2N: CRY2 are the nuclear proteins.}
 
   \begin{align}
     \label{eq:p}
@@ -135,12 +135,13 @@ Additional assumptions made while formulating the model equations are listed bel
     \label{eq:C2N}
     \frac{d\text{\bf C2N }}{dt} & = - \frac{ \left(v_{\text{deg,{\bf CP}}} \; m_{\text{\bf C2N}}\right) \; \text{\bf C2N} }{k_{\text{deg,{\bf CP}}} + \text{\bf C2N}  +\text{\bf C1N} } + v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C2} - v_{\text{d,{\bf CP}}} \; \text{\bf C2N}
   \end{align}
-\end{table}
+  \label{mod:hirota}
+\end{model}
 
 
-\begin{table}[p]
+\begin{model}[p]
   \centering
-  \titlecaption{Changed Equations for the Activation-based Model}{The remainder of the model equations (not duplicated below) are found in  \fref{tab:modelfns}}\label{tab:actfns}
+  \titlecaption{Changed Equations for the Activation-based Model}{The remainder of the model equations (not duplicated below) are found in  \fref{mod:hirota}}
 
   \begin{align*}
     \frac{d\text{\bf p}}{dt} &= \frac{v_{\text{txn,{\bf p}}}}{k_{\text{txn,{\bf p}}} + \left(m_{\text{\bf C2N}} \; \text{\bf C1N}  + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf p}}} \;\text{\bf p} }{k_{\text{deg,{\bf p}}} +\text{\bf p} } \tag{$\ref{eq:p}^{\star}$}\\
@@ -152,11 +153,12 @@ Additional assumptions made while formulating the model equations are listed bel
     \frac{d\text{\bf C2N }}{dt} &= - \frac{ v_{\text{deg,{\bf CP}}} \; \text{\bf C2N} }{k_{\text{deg,{\bf CP}}} + \text{\bf C2N}  +\text{\bf C1N} } + v_{\text{a,{\bf CP}}} \;\text{\bf P}  \;\text{\bf C2} - v_{\text{d,{\bf CP}}} \; \text{\bf C2N}
     \tag{$\ref{eq:C2N}^{\star}$}
   \end{align*}
-\end{table}
+  \label{mod:actfns}
+\end{model}
 
 
 \begin{table}[p]
-  \titlecaption{Parameter Set}{Parameters for model described in \fref{tab:modelfns}.}
+  \titlecaption{Parameter Set}{Parameters for model described in \fref{mod:hirota}.}
   \label{tab:parset}
   \vspace{2mm}
   \centering
@@ -249,7 +251,7 @@ Substituting (\fref{eq:es1}) into (\fref{eq:r1}) and setting $K_1 = K_2$, $k_{d,
 \end{align*}
 
 \subsubsection{Derivation of Hill-type repression formulas}
-To derive the equations for the Hill-type inhibition, allowing for different repressive activities (\fref{tab:actfns}), we start with the standard equation for Hill-type regulation:
+To derive the equations for the Hill-type inhibition, allowing for different repressive activities (\fref{mod:actfns}), we start with the standard equation for Hill-type regulation:
 \begin{equation} \label{eq:htr}
   \frac{v_{\text{max}}[A]^n}{K_m^n + [A]^n}
 \end{equation}
@@ -272,7 +274,7 @@ The first step in the cost function evaluation is the numerical solution of the 
 If a limit cycle was unable to be found, the cost function returns a maximum value. 
 Otherwise, the cost function returns a squared difference from the desired value. 
 A priority weight was also attached to each cost entry, such that more important costs would be prioritized. 
-A description of each entry in the cost function, along with the value for experimental and final model is shown in \fref{tab:cost} (degradation-based model, \fref{tab:modelfns}; activation-based model, \fref{tab:actfns}). 
+A description of each entry in the cost function, along with the value for experimental and final model is shown in \fref{tab:cost} (degradation-based model, \fref{mod:hirota}; activation-based model, \fref{mod:actfns}). 
 To minimize the cost function, we employed a genetic algorithm method used previously for optimizing circadian parameters \cite{Mirsky2009}. 
 In the method, 5000 solutions are calculated at random parameter values within feasible bounds. 
 Those with the best cost function scores are kept and used to generate subsequent solutions. 
@@ -461,7 +463,7 @@ It is therefore possible that the period control afforded by CRY1/CRY2 balancing
 Indeed, the presence of independent control of the cytosolic CRY2 levels suggests that the biological clock can control its period through simple post-translational modifications \cite{Kurabayashi2010}. 
 
 \subsection{Identifiability of model parameters}
-Due to the high dimensionality of the model equations and sparsity of the experimental data, it is likely that more than one set of parameters would fit the cost function defined in table \ref{tab:cost}. 
+Due to the high dimensionality of the model equations and sparsity of the experimental data, it is likely that more than one set of parameters would fit the cost function defined in \fref{tab:cost}. 
 While the fact that {\itshape any} parameter set for the given model equations reproduces experimental results is enough to confirm that our hypothesized mechanism is mathematically consistent, we must be careful in placing too much confidence in predictions based on the particular parameter set generated by the optimization algorithm. 
 While subsequent experimental results confirm many of our model predictions, a more rigorous exploration of parameter space would allow us to determine which predictions are constrained by the available experimental data. 
 However, incorporating error ranges via standard techniques such as bootstrap techniques are infeasible when using a genetic algorithm optimization strategy. 
