@@ -63,7 +63,7 @@ These results can be used in {\itshape a priori} experimental design, finding th
 Additionally, we show using literature data how this method can be used to discriminate between candidate model structures, revealing which one yields the highest predictive confidence. 
 
 \section{Methods}\label{sec:idmethods}
-\subsection{Collocation Methods} \label{sec:coll}
+\subsection{Collocation methods} \label{sec:coll}
 
 The estimation of the unknown kinetic parameters is accomplished via nonlinear programming \cite{Biegler2010}. 
 In this method, we divide the limit cycle trajectory ${\bm x}(t, {\bm p})$ into $\cal N$ finite elements of length $h$, and approximate each with a $\cal K$ degree Lagrange interpolating polynomial, ${\bm x}_i^{\cal K}(t)$, using an internal time $\tau \in [0,1]$. 
@@ -124,7 +124,7 @@ The solution is subject to variable bounds:
 The numerical implementation is accomplished using IPOPT \cite{Wachter2005}, using the \texttt{MA57} \cite{HSL2011} linear solver. 
 The CasADi computer algebra package \cite{Andersson2013b} was used to provide an interface to the IPOPT numerical libraries and supply derivatives to the cost and equality function calls through automatic differentiation.
 
-\subsection{Generating Initial Values}
+\subsection{Generating initial values}
 
 Solution of the NLP described in \fref{sec:coll} requires a suitable initial guess for the optimal state profiles, $\zopt$, and kinetic parameters, $\popt$. 
 To find approximate values for these variables, a smoothed periodic B-spline, $\zspline$, is found using experimental data for each state variable using SciPy's interpolate module \cite{Jones}. 
@@ -146,7 +146,7 @@ approximate values for $\bm p$ can be obtained by solving the simpler unconstrai
 \end{equation}
 in which $t_{ij}$ is the same as in \ref{eq:approxz} and the bounds on $p$ are the same as in \fref{eq:bounds}.
 
-\subsection{First Order Sensitivity Analysis}
+\subsection{First order sensitivity analysis}
 
 After determining an optimal parameter set for the given experimental data, relevant first order sensitivity coefficients for oscillatory models are found using the procedure from \cite{Wilkins2009}, summarized here. 
 First, initial conditions and oscillatory period are verified by solving the boundary value problem (BVP):
@@ -196,11 +196,11 @@ The effect of increasing error and decreasing number sampling points were tested
 \end{alignat*}
 Since standard deviations in the data distributions were also used as optimization weights, a small amount of absolute error ($\eta = 0.001$) was added to ensure errors in small values did not dominate the cost function.
 
-\subsection{Calculation Times}
+\subsection{Calculation times}
 Each parameter estimation took approximately 4 seconds on a 2.53GHz processor, with the subsequent limit cycle solution integration and sensitivity calculation taking approximately 0.5 seconds. 
 Due to the parallel nature of the 2000 trials, computation times were alleviated by distributing the tasks onto a cluster of 160 compute nodes.
 
-\section{Results and discussion}
+\section{Results}
 Mechanistic models of biological processes are often posed as nonlinear, time-invariant systems of ordinary differential equations (ODEs)
 \cite{Leloup2003, Forger2003, Mirsky2009}, of the form:
 \begin{equation}
@@ -255,7 +255,7 @@ However, the overall shape of the oscillatory profiles remained relatively simil
 \begin{figure}[p]
   \centering
   \includegraphics{chap3/figures/fig2.pdf}
-  \titlecaption{Time-course Profiles of the State Trajectories for Per mRNA}{(A) Increasing relative error, $\xi$, with ${\cal M} = 20$. Possible state variable values are shown as shaded regions, obtained by filling between the 5$^\text{th}$ and 95$^\text{th}$ percentile for values at each time for 2000 independent parameter estimations. Increasing $\xi$ results in larger deviations from the original model trajectory, shown as a dashed black line.\\ (B) Decreasing number of measurement points, $\cal M$, each with $\xi = 0.15$.  Higher $\cal M$ results in trajectories closer to the true trajectory.}
+  \titlecaption{Time-course profiles of the state trajectories for {\itshape Per mRNA}}{({\bfseries A}) Increasing relative error, $\xi$, with ${\cal M} = 20$. Possible state variable values are shown as shaded regions, obtained by filling between the 5$^\text{th}$ and 95$^\text{th}$ percentile for values at each time for 2000 independent parameter estimations. Increasing $\xi$ results in larger deviations from the original model trajectory, shown as a dashed black line.\\ ({\bfseries B}) Decreasing number of measurement points, $\cal M$, each with $\xi = 0.15$.  Higher $\cal M$ results in trajectories closer to the true trajectory.}
   \label{fig:3_2}
 \end{figure}
 
@@ -269,14 +269,14 @@ These results reveal which model responses are constrained by the structure and 
 \begin{figure}[p]
   \centering
   \includegraphics{chap3/figures/fig3.pdf}
-  \titlecaption{Parameter and Sensitivity Identifiability for Increasing Error}{Increasing $\xi$ results in a corresponding decrease in the confidence of the parameter and sensitivity estimates. Violin plots of the parameter values (left) and relative period sensitivities (right) show the distribution of values from each parameter estimation. In the plots, a box plot is superimposed above a kernel density plot to convey the distribution of values. The whiskers used extend to the most extreme data point within 1.5x the inner quartile range. Sensitivities in which the 5$^\text{th}$ and 95$^\text{th}$ percentile values span the x-axis are deemed non-identifiable (red), as the model's response direction can not be accurately estimated.  Higher $\xi$ also results in wider parameter distributions.}
+  \titlecaption{Parameter and sensitivity identifiability for increasing error}{Increasing $\xi$ results in a corresponding decrease in the confidence of the parameter and sensitivity estimates. Violin plots of the parameter values (left) and relative period sensitivities (right) show the distribution of values from each parameter estimation. In the plots, a box plot is superimposed above a kernel density plot to convey the distribution of values. The whiskers used extend to the most extreme data point within 1.5x the inner quartile range. Sensitivities in which the 5$^\text{th}$ and 95$^\text{th}$ percentile values span the x-axis are deemed non-identifiable (red), as the model's response direction can not be accurately estimated.  Higher $\xi$ also results in wider parameter distributions.}
   \label{fig:3_3}
 \end{figure}
 
 \begin{figure}[p]
   \centering
   \includegraphics{chap3/figures/fig4.pdf}
-  \titlecaption{Effect of High-resolution Sampling on Identifiability}{ Lower values of $\cal M$ result in less constrained parameter and sensitivity values. Similar to \fref{fig:3_3}, violin plots of the parameters (left) and sensitivities (right) show the distribution from each parameter estimation for decreasing $\cal M$. These results highlight the importance of high-resolution time sampling in generating sensitivity information for oscillatory models.}
+  \titlecaption{Effect of high-resolution sampling on identifiability}{ Lower values of $\cal M$ result in less constrained parameter and sensitivity values. Similar to \fref{fig:3_3}, violin plots of the parameters (left) and sensitivities (right) show the distribution from each parameter estimation for decreasing $\cal M$. These results highlight the importance of high-resolution time sampling in generating sensitivity information for oscillatory models.}
   \label{fig:3_4}
 \end{figure}
 
@@ -295,7 +295,7 @@ The second model (\fref{mod:hirota2}) considered  contains independent parameter
 
 \begin{model}[h]
   \centering
-  \titlecaption{Model Equations for the Expanded Model}{These equations have similar reaction stoichiometry to those in table \ref{mod:hirota}, but with more parametric degrees of freedom. This model showed better time-series performance than the more constrained model when fit to time-series data.}
+  \titlecaption{An expanded parameterization of \fref{mod:hirota}}{These equations have similar reaction stoichiometry to those in table \ref{mod:hirota}, but with more parametric degrees of freedom. This model showed better time-series performance than the more constrained model when fit to time-series data.}
 
   \begin{align*}
     \frac{d\mathrm{\bf p}}{dt} &= \frac{\mathit{Vm}_{1}}{1 + \mathit{Vm}_{1} \; {\left(\frac{\mathrm{\bf C1N} + \mathrm{\bf C2N} \; \mathit{M}_{1}}{\mathit{Ki}_{1}}\right)}^{3}} - \frac{\mathit{k}_{1} \; \mathrm{\bf p}}{1 + \frac{\mathrm{\bf p}}{\mathit{Km}_{1}}} \\
@@ -312,7 +312,7 @@ The second model (\fref{mod:hirota2}) considered  contains independent parameter
 
 
 \begin{table}[p]
-  \titlecaption{Parameter Set for Expanded Model}{Parameters for model described in \fref{mod:hirota2}, fit to time-series data via nonlinear programming.}
+  \titlecaption{Parameter values for \fref{mod:hirota2}}{Parameters were fit to time-series data via nonlinear programming.}
   \label{tab:parsetopt}
   \vspace{2mm}
   \centering
@@ -359,7 +359,7 @@ The second model (\fref{mod:hirota2}) considered  contains independent parameter
 \begin{figure}[p]
   \centering
   \includegraphics{chap3/figures/fig5.pdf}
-  \titlecaption{Identifiability Comparison of Two Model Structures}{ (A) Bootstrap parameter estimations on two model structures using literature time-series data with estimated errors (box plots). Resulting regions of model trajectories are shaded between the 5$^\text{th}$ and 95$^\text{th}$ percentile.  {\itshape Per} species are shown in purple, {\itshape Cry1} in red, and {\itshape Cry2} in green. While both models were able to approximately reproduce the same dynamic response, the expanded model was better able to capture differences between the {\itshape Cry1} and {\itshape Cry2} profiles. (B) Parameter and sensitivity identifiability for the base and expanded models.  Violin plots show the parameter and sensitivity distributions, with unidentifiable sensitivities (90\% confidence level) highlighted in red.  Despite containing more parameters, the expanded model shows better parameter identifiability and higher confidence in its predicted sensitivities. The PER translation rate (1) and PER-CRY association rate (2) sensitivities are consistent across model equations and are highlighted.}
+  \titlecaption{Identifiability comparison of two model structures}{ ({\bfseries A}) Bootstrap parameter estimations on two model structures using literature time-series data with estimated errors (box plots). Resulting regions of model trajectories are shaded between the 5$^\text{th}$ and 95$^\text{th}$ percentile.  {\itshape Per} species are shown in purple, {\itshape Cry1} in red, and {\itshape Cry2} in green. While both models were able to approximately reproduce the same dynamic response, the expanded model was better able to capture differences between the {\itshape Cry1} and {\itshape Cry2} profiles. ({\bfseries B}) Parameter and sensitivity identifiability for the base and expanded models.  Violin plots show the parameter and sensitivity distributions, with unidentifiable sensitivities (90\% confidence level) highlighted in red.  Despite containing more parameters, the expanded model shows better parameter identifiability and higher confidence in its predicted sensitivities. The PER translation rate (1) and PER-CRY association rate (2) sensitivities are consistent across model equations and are highlighted.}
   \label{fig:3_5}
 \end{figure}
 
@@ -380,11 +380,11 @@ Since the original cost function was concerned mostly with optimizing stoichiome
 \begin{figure}[p]
   \centering
   \includegraphics{chap3/figures/fig6.pdf}
-  \titlecaption{Time-Series Dynamics of Fitted Models}{Model trajectories for each of the considered models. The original model (purple) shows the time series dynamics for the previously published parameter set, used in Figures 1-4. In these plots, the original model's period and amplitudes were rescaled to best match the experimental data, shown in black (without changing the dynamic profiles). The refitted model (red, dashed) was generated by optimizing the dynamic profile to time series data using the parameter estimation routine described in Supplemental Text 1. The expanded model (green, dashed) consists of a similar network structure, but with independent kinetic parameters for each rate expression (see Supplemental Text 2). These plots show that parameter optimization through nonlinear programming is able to more accurately fit gene and protein expression profiles.}
+  \titlecaption{Time-series dynamics of fitted models}{Model trajectories for each of the considered models. The original model (purple) shows the time series dynamics for the previously published parameter set, used in Figures 1-4. In these plots, the original model's period and amplitudes were rescaled to best match the experimental data, shown in black (without changing the dynamic profiles). The refitted model (red, dashed) was generated by optimizing the dynamic profile to time series data using the parameter estimation routine described in Supplemental Text 1. The expanded model (green, dashed) consists of a similar network structure, but with independent kinetic parameters for each rate expression (see Supplemental Text 2). These plots show that parameter optimization through nonlinear programming is able to more accurately fit gene and protein expression profiles.}
   \label{fig:3_6}
 \end{figure}
 
-\section{Conclusions}
+\section{Discussion}
 Increasingly, mathematical models are being used to study biological systems where traditional experiments would prove infeasible. 
  For example, in the search for drug targets, thousands of possible combinatorial perturbations can be quickly scanned for therapeutic effects using {\itshape in silico} modeling. 
 This is especially useful in oscillatory systems with long periods, such as circadian rhythms, where a perturbed {\itshape in vitro} or {\itshape in vivo} system must be measured for multiple days before changes can be reliably determined.

@@ -57,7 +57,7 @@ This suggests that the period of the clock is governed by the nuclear CRY1/CRY2 
 \begin{figure}[bt]
   \centering
   \includegraphics[width=0.8\textwidth]{chap2/figures/twoloops_noopacity.pdf}
-  \titlecaption{Model Connectivity}{
+  \titlecaption{Connectivity of \fref{mod:hirota}}{
     Schematic for the core negative feedback loop, consisting of the two redundant {\it Cry} mechanisms. 
   The wild-type period, consisting of both loops, is a balance between the short and long oscillations.} \label{fig:twoloops}
 \end{figure}
@@ -83,7 +83,7 @@ The period of the clock is thus governed by the nuclear CRY1/CRY2 ratio, where h
 \begin{figure}[bt]
   \centering
   \includegraphics[width=0.8\textwidth]{chap2/figures/nucleartimecourse.pdf}
-  \titlecaption{Degradation Profiles}{
+  \titlecaption{Repressor degradation profiles}{
     Time course plots of the simulated total nuclear repressor concentration for the degradation model under various clock conditions. 
     The relative contribution of CRY1 and CRY2 are shaded green and orange, respectively. 
   Longer periods occur when a higher percentage of the nuclear complex is CRY1, taking longer to degrade.}
@@ -109,7 +109,7 @@ Additional assumptions made while formulating the model equations are listed bel
 
 \begin{model}[p]
   \centering
-  \titlecaption{Equations for the Degradation Model}{Lower case letters (p: {\it Per}, c1: {\it Cry1}, c2: {\it Cry2}) are mRNA state variables. Uppercase letters (P: PER, C1: CRY1, C2: CRY2) are the free (cytosolic) proteins. C1N: CRY1 and C2N: CRY2 are the nuclear proteins.}
+  \titlecaption{A degradation-based model of the core feedback loop}{Lower case letters (p: {\it Per}, c1: {\it Cry1}, c2: {\it Cry2}) are mRNA state variables. Uppercase letters (P: PER, C1: CRY1, C2: CRY2) are the free (cytosolic) proteins. C1N: CRY1 and C2N: CRY2 are the nuclear proteins.}
 
   \begin{align}
     \label{eq:p}
@@ -141,7 +141,7 @@ Additional assumptions made while formulating the model equations are listed bel
 
 \begin{model}[p]
   \centering
-  \titlecaption{Changed Equations for the Activation-based Model}{The remainder of the model equations (not duplicated below) are found in  \fref{mod:hirota}}
+  \titlecaption{Changed equations for the activation-based model}{The remainder of the model equations (not duplicated below) are found in  \fref{mod:hirota}}
 
   \begin{align*}
     \frac{d\text{\bf p}}{dt} &= \frac{v_{\text{txn,{\bf p}}}}{k_{\text{txn,{\bf p}}} + \left(m_{\text{\bf C2N}} \; \text{\bf C1N}  + \text{\bf C2N} \right)^3} - \frac{v_{\text{deg,{\bf p}}} \;\text{\bf p} }{k_{\text{deg,{\bf p}}} +\text{\bf p} } \tag{$\ref{eq:p}^{\star}$}\\
@@ -158,7 +158,7 @@ Additional assumptions made while formulating the model equations are listed bel
 
 
 \begin{table}[p]
-  \titlecaption{Parameter Set}{Parameters for model described in \fref{mod:hirota}.}
+  \titlecaption{Parameter values for \fref{mod:hirota}}{Parameters for model described in \fref{mod:hirota}.}
   \label{tab:parset}
   \vspace{2mm}
   \centering
@@ -281,7 +281,7 @@ Those with the best cost function scores are kept and used to generate subsequen
 This procedure is iterated for up to 2000 generations, or until convergence criteria are met.
 
 \begin{longtable}{cp{6.0cm}crrr}
-  \titlecaption{Summary of Cost Function Entries}{
+  \titlecaption{Summary of cost function entries}{
     The weights for each entry were chosen based on the relative importance of the desired behavior. 
     Entries 1-9 and 12-16 were obtained from the data presented in \cite{Lee2001}. 
     SiRNA sensitivities were obtained were taken from \cite{Zhang2009}.}\\ \toprule \label{tab:cost} 
@@ -377,7 +377,7 @@ The knockout periods are 21.7 hr ($91.4\%$ of WT) for $\text{\it Cry1}^{-/-}$  
 \begin{figure}[bt]
   \centering
   \includegraphics[width=0.8\textwidth]{chap2/figures/timecourse.pdf}
-  \titlecaption{Time Course Plots}{
+  \titlecaption{Time course concentration profiles of \fref{mod:hirota}}{
     The three polar plots show the time-varying levels of each clock component for optimal parameter set. 
     In these plots, the amplitude of each variable (always positive) is plotted against its phase, $0 \rightarrow 2\pi$. 
     Since the limit cycle is periodic, this results in a closed curve. 
@@ -404,7 +404,7 @@ In this case, less {\it Cry} leads to less nuclear complex, which is cleared fas
 \begin{figure}[bt]
   \centering
   \includegraphics[width=\textwidth]{chap2/figures/experimentalvalidation.pdf}
-  \titlecaption{Model Validation}{
+  \titlecaption{Model validation against experimental results}{
     When comparing against existing experimental results, the model shows the correct response for {\it Cry1} siRNA, {\it Cry2} siRNA, and $\text{CRY}_c$ stabilization (left, middle), through an adjustment in the nuclear CRY1/CRY2 ratio. 
     The model also correctly captures the single/double knockout phenotype of \cite{VanderHorst1999}, (right)} \label{fig:experimentalvalidation}
 \end{figure}
@@ -421,9 +421,8 @@ Additionally, the model predicts that the compound’s effect on $\text{\it Cry1
 \begin{figure}[bt]
     \centering
     \includegraphics[width=0.7\textwidth]{chap2/figures/prediction.pdf}
-    \titlecaption{
-    Model Prediction of the KL001 Mechanism}{ {\it In silico} response to equal stabilization of both CRYs in the nucleus results in longer periods (middle column), matching observed results. 
-  The model correctly predicts that stabilization of individual CRYs in the knockout environments also causes period lengthening.} \label{fig:40662prediction}
+    \titlecaption{Prediction of the KL001 mechanism}{ {\it In silico} response to equal stabilization of both CRYs in the nucleus results in longer periods (middle column), matching observed results. The model correctly predicts that stabilization of individual CRYs in the knockout environments also causes period lengthening.}
+    \label{fig:40662prediction}
 \end{figure}
 
 \subsubsection{Experimental confirmation}
@@ -438,23 +437,19 @@ Thus, in a single {\it Cry} knockout, stabilization of either nuclear CRY1 and C
 \begin{figure}[p]
   \centering
   \includegraphics[width=0.5\textwidth]{chap2/figures/crysimultaneousknockdown.pdf}
-  \titlecaption{
-    Simultaneous Knockdown of {\it Cry1} and {\it Cry2}}{Period contours (\% change) resulting from simultaneous {\it in silico} siRNA knockdowns of {\it Cry1} (x-axis) and {\it Cry2} (y-axis). 
-  The plot shows that the CRY1/CRY2 ratio determines the period, independent of total CRY, for perturbations up to twice the normal mRNA degradation rate.}  \label{fig:simultaneouskdown}
+  \titlecaption{Simultaneous knockdown of {\it Cry1} and {\it Cry2}}{Period contours (\% change) resulting from simultaneous {\it in silico} siRNA knockdowns of {\it Cry1} (x-axis) and {\it Cry2} (y-axis). The plot shows that the CRY1/CRY2 ratio determines the period, independent of total CRY, for perturbations up to twice the normal mRNA degradation rate.}
+  \label{fig:simultaneouskdown}
 \end{figure}
 
 \begin{figure}[p]
   \centering
   \includegraphics[width=0.6\textwidth]{chap2/figures/firstordersens.pdf}
-  \titlecaption{
-  First Order Relative Period Sensitivities}{
-    Dimensionless period sensitivities with respect to the kinetic parameters in the degradation-based model. 
-    Perturbations to most clock rates result in noticeable changes to the free-running period. 
-  Many of the most sensitive parameters are transcriptional rates, which can be easily changed through mutation of DNA promoter regions.} \label{fig:firstordersens}
+  \titlecaption{First order relative period sensitivities}{ Dimensionless period sensitivities with respect to the kinetic parameters in the degradation-based model. Perturbations to most clock rates result in noticeable changes to the free-running period. Many of the most sensitive parameters are transcriptional rates, which can be easily changed through mutation of DNA promoter regions.}
+  \label{fig:firstordersens}
 \end{figure}
 
-\section{Conclusion}
-\subsection{Insights into Circadian Network Design}
+\section{Discussion}
+\subsection{Insights into circadian network design}
 Mathematical modeling has revealed how the balancing of two redundant feedback loops can provide fine control over the oscillatory period. 
 A contour plot of period vs CRY1 or CRY2 abundance is shown in \fref{fig:simultaneouskdown}, which shows that the model's period is largely insensitive to the total amount of CRY ($45^\circ$ line), but highly dependent on the ratio of the two isoforms. 
 Sensitivity analysis of our mathematical model (\fref{fig:firstordersens}) reveals that subtle changes in most of the involved rates can have an effect on the clock's free running period, which could be caused by evolutionary noise. 

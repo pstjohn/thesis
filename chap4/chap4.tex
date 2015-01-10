@@ -49,7 +49,7 @@ In this chapter, we used human cells harboring clock gene reporters together wit
 Consequently, we provide a new mechanism by which CKI-dependent PER phosphorylation controls the circadian period separately from the FBXL3-CRY pathway. 
 The resulting detailed understanding of PER and CRY regulation in the core feedback loop provides a framework on which to interpret metabolic and pharmacological control of circadian rhythms.
 
-\section{Materials and Methods}
+\section{Methods}
 \subsection{Analysis of luminescence profiles}
 Raw luminescence data was first separated into a moving baseline and oscillatory component using a Hodrick-Prescott filter with a smoothing parameter of 1600. 
 Example trajectory decompositions are shown in \fref{fig:4s1}. 
@@ -75,7 +75,7 @@ Full model equations for the model from Hirota {\itshape et al.}, 2012 are shown
 
 \begin{model}[p]
   \centering
-  \titlecaption{Model equations for the model from Rel\'{o}gio {\itshape et al.} 2011 \cite{Relogio2011}}{}
+  \titlecaption{Model from Rel\'{o}gio {\itshape et al.} 2011 \cite{Relogio2011}}{}
   \label{mod:relogioeqs}
   \fontsize{9}{11}
 
@@ -116,7 +116,7 @@ Full model equations for the model from Hirota {\itshape et al.}, 2012 are shown
 
 \begin{model}[p]
   \centering
-  \titlecaption{Model equations for the model from Leloup \& Goldbeter, 2003 \cite{Leloup2003}}{}
+  \titlecaption{Model from Leloup \& Goldbeter, 2003 \cite{Leloup2003}}{}
   \label{mod:leloupeqs}
   \footnotesize
 
@@ -160,7 +160,7 @@ Therefore, the forward reaction rates of each of these steps were included.
 Numerical parameter inhibitions were performed by recalculating the limit cycle trajectory for each new parameter set to a tolerance of $10^{-8}$, using computational methods described previously \cite{Wilkins2009}.
 
 
-\section{Results and Discussion}
+\section{Results}
 \subsection{Opposite amplitude effects of longdaysin and KL001}
 To gain a more detailed understanding of the roles of CKI-PER and FBXL3-CRY pathways, we applied small molecule compounds longdaysin and KL001, which cause stabilization of PER and CRY, respectively \cite{Hirota2010, Hirota2012} (\fref{fig:4-1a}). 
 We used {\it Bmal1}- and {\it Per2-dLuc} as circadian reporters, which represent different loops of the core clock mechanism and show circadian luminescence rhythms with mutually opposite phase. 
@@ -344,7 +344,7 @@ This independence was reproduced {\it in silico} by the simultaneous reduction o
   \label{fig:46}
 \end{figure}
 
-\subsection{Conclusion}
+\section{Discussion}
 An understanding of the interactions between posttranslational regulators is crucial for the further development of circadian pharmacological reagents, as efficient modulation of clock function will assuredly come from simultaneous perturbations to many connected species. 
 In this study, we used circadian reporter cells together with mathematical modeling to provide mechanistic insight into the differences of CKI- and FBXL3- mediated posttranslational regulation of PER and CRY. 
 As a result, we clarified a process by which CKI exerts control over the circadian period, demonstrated through both the hyperphosphorylating CKI$\epsilon^\mathrm{tau}$ mutant and small molecule CKI inhibitors, such as longdaysin. 
@@ -352,7 +352,7 @@ In developing our predictions, we have used multiple models and parameterization
 These results reinforce the notion that computational modeling is essential in interpreting results in systems with complicated oscillatory feedback. 
 Additionally, {\it in silico} analyses reveal hidden design principles of biological networks, as this work highlights the importance of the CKI family of kinases in conferring robustness to the circadian cycle. 
  
-\subsubsection{Phase-dependent activity of small molecule modulators}
+\subsection{Phase-dependent activity of small molecule modulators}
 In this chapter, it was shown that the posttranslational CKI and FBXL3 control separate time regimes of the core clock oscillation. 
 While in the cultured cell experiments the small molecule modulators were continuously present, in pharmacological applications there would likely be dosed at specific times of day. 
 Since their targets play key roles during specific circadian phases, it is likely that there would be a significant difference in small molecule effect depending on the time at which they are given. 
