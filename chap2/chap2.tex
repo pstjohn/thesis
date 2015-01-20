@@ -104,8 +104,15 @@ Additional assumptions made while formulating the model equations are listed bel
 
   \item The degradation of the mRNA species and cytoplasmic proteins is assumed to follow standard Michaelis-Menten kinetics.
 
-  \item The degradation kinetics of the nuclear proteins are assumed to follow Michaelis-Menten kinetics. Because both $\text{CRY1}_n$ and $\text{CRY2}_n$ are thought to be degraded by the same pathway in the nucleus, kinetic equations using the {\it pseudo} steady-state hypothesis were derived for two substrates sharing the same enzyme. As a result, each {\it Cry} isoform acts as an inhibitor to the other's degradation.
+  \item The degradation kinetics of the nuclear proteins are assumed to follow Michaelis-Menten kinetics. Because both $\text{CRY1}_n$ and $\text{CRY2}_n$ are thought to be degraded by the same pathway in the nucleus, kinetic equations using the {\it pseudo} steady-state hypothesis were derived for two substrates sharing the same enzyme. As a result, each {\it Cry} isoform acts as an inhibitor to the other's degradation. This mechanism is summarized in \fref{fig:shareddeg}.
 \end{itemize}
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics{chap2/figures/cryseperatedegradation.pdf}
+  \titlecaption{Degradation of both CRY isoforms is regulated by the same enzyme}{In developing the model equations for \fref{mod:hirota}, a key assumption was that both isoforms of Cryptochrome were degraded by the same enzyme. Without such a scheme, the shortest periods were obtained by maximizing degradation through equal nuclear entry of both isoforms.}
+  \label{fig:shareddeg}
+\end{figure}
 
 \begin{model}[p]
   \centering
@@ -433,6 +440,15 @@ Similarly, the compound caused period lengthening in both CRY1 and CRY2 knockdow
 We further investigated the effect of KL001 in SCN explants, which show robust rhythms even in the absence of {\it Cry1}, due to intercellular coupling \cite{Liu2007}. 
 Both {\it Cry1} and {\it Cry2} knockout SCN exhibited dose-dependent period lengthening by the compound treatment. 
 Thus, in a single {\it Cry} knockout, stabilization of either nuclear CRY1 and CRY2 causes period lengthening, confirming model predictions.
+Furthermore, the period-lengthening response of KL001 was abolished in cells treated with FBXL3 siRNA, further confirming that the period effect of KL001 is mediated by inhibiting FBXL3-CRY interactions (\fref{fig:fbxl3data}).
+This prediction was further verified in subsequent structural biology work \cite{Nangle2013}.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics{chap2/figures/fbxl3kl001data.pdf}
+  \titlecaption{FBXL3 knockdown interferes with period-lengthening effect of KL001}{The dose-dependent period increase of KL001 (right, black line) is abolished in cells treated with FBXL3 siRNA, indicating the mechanism of KL001 acts through FBXL3 and confirming model predictions}
+  \label{fig:fbxl3data}
+\end{figure}
 
 \begin{figure}[p]
   \centering

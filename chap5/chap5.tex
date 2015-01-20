@@ -206,7 +206,16 @@ The codes used to generate the figures are included as a supplemental file.
 A signal to a population of limit cycle oscillators can affect amplitude in two ways.
 First, individual cells are perturbed from their limit cycles, and exhibit transient dynamics before settling back to steady state amplitudes.
 Secondly, the phases of the population are changed, resulting in a permanent change in population synchrony.
+Differences between these two types of amplitude change are summarized in \fref{fig:arcdiff}.
 Therefore, in order to derive continuous approximations to the dynamics of a large population of non-interacting oscillators, we first demonstrate how ARCs can be found at both the single-cell and population level.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.45\textwidth]{chap5/figures/arc_singlecell.pdf}
+  \includegraphics[width=0.45\textwidth]{chap5/figures/arc_population.pdf}
+  \titlecaption{Differences between population and single-cell mediated amplitude change}{Amplitude change at the single-cell level (left) is temporary, mediated by the dynamics of the limit cycle system. At the population-level (right), many limit cycle oscillators are averaged together to find the total expression level. The amplitude is therefore changed by the degree of synchrony of the population, which is often changed by perturbations.}
+  \label{fig:arcdiff}
+\end{figure}
 
 \subsection{Definition of an amplitude metric at the single-cell level}
 
@@ -315,8 +324,17 @@ Convergence between the methods in equations~(\ref{eq:siARC}-\ref{eq:piARC}) and
 \subsection{Population-level response curves}
 
 We next briefly describe how to calculate the PRC and ARC for a phase-density model.
-These approaches are commonly used in understanding phase models \cite{Kuramoto1984, Ukai2007}, and are presented here to match previous definitions for single cells.
+These approaches are commonly used in understanding phase models \cite{Kuramoto1984, Ukai2007}, and are presented here to match previous definitions for single cells. 
 A phase transition curve, $g(\theta) = \theta + \Delta\theta$, maps the phase of an oscillator before perturbation to its phase after the perturbation.
+We denote the phase probability density function following a perturbation as $\hat{p}(\theta, \tilde{t})$, as shown in \fref{fig:phatdef}.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=.5\textwidth]{chap5/figures/phat.pdf}
+  \titlecaption{Perturbations change population-level phase synchrony}{A perturbation giving rise to a phase transition curve $g(\theta)$ results in a changed phase probability density function, denoted as $\hat{p}(\theta, \tilde{t})$}
+  \label{fig:phatdef}
+\end{figure}
+
 Since individual oscillators are neither created nor destroyed during the perturbation, it is possible - yet numerically difficult - to directly calculate the phase probability distribution following perturbation using the standard change of variables relation:
 \begin{equation}
   \hat{p}(\theta, \tilde{t})\; dg(\theta) = p(\theta, \tilde{t})\; d\theta.
