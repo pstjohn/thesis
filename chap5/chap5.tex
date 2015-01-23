@@ -68,29 +68,6 @@ Characterizing the mechanisms and consequences of both types of amplitude regula
 
 \section{Methods}
 
-% Move most of these to the introduction?
-\subsection{Basic definitions}
-
-Ordinary differential equation (ODE) models take the general form
-\begin{equation}
-  \frac{dx}{dt} = f(x(t), p),
-  \label{eq:odefn}
-\end{equation}
-in which $x(t)$ represents the concentrations of the state variables, such as mRNA and protein concentrations, $f$ contains information on the production, degradation, and reactivity of the states, and $p$ are the kinetic parameters which govern reaction kinetics.
-Limit cycle models are ODE models in which the solution approaches a steady state oscillatory trajectory, satisfying the equation:
-\begin{equation}
-  \lim_{t \to \infty} \left[ x(t + T) - x(t) \right] = 0.
-  \label{eq:limit5}
-\end{equation}
-The period is the smallest $T > 0$ for which \fref{eq:limit5} holds.
-The points on the stable limit cycle are denoted by $x^\gamma(\theta)$ with each point assigned to a value of a phase variable $\theta \in [0, 2\pi)$.
-For convenience, time in \fref{eq:odefn} can be rescaled such that the period is $2\pi$:
-\begin{equation}
-  \tilde{t} = \frac{2\pi}{T}t; \quad \tilde{f} = \frac{T}{2\pi}\;f; \quad \frac{dx}{d\tilde{t}} = \tilde{f}(x(\tilde{t}), p).
-  \label{eq:that}
-\end{equation}
-The phase variable $\theta$ is therefore defined on the limit cycle as $\theta = \tilde{t}\mod 2\pi$, with $\theta = 0$ assigned to a unique and identifiable point.
-
 \subsection{Perturbations to limit cycle systems}
 
 In this chapter we restrict our analysis to temporary perturbations capable of entraining an oscillatory system, excluding permanent parameter changes arising, for instance, from genetic knockout experiments.
@@ -127,19 +104,6 @@ A schematic depicting an example perturbed and reference trajectory is shown in 
   \titlecaption{Schematic showing trajectories used in the calculation of single-cell phase and amplitude change}{A perturbation $x(\tilde{t},p)$, blue, from the limit cycle solution $x^\gamma(\tilde{t},p)$, red, ultimately returns to the limit cycle with a phase shift $x^\gamma(\tilde{t} + \Delta\theta,p)$, green.}
   \label{fig:51schem}
 \end{figure}
-
-The response of the system to very small perturbations is more efficiently calculated using ODE sensitivity analysis \cite{Rabitz1983}.
-The sensitivity matrix,
-\begin{equation}
-  S(t) = \frac{dx(t)}{dx(0)} = \lim_{\Delta x(0) \to 0}\frac{\Delta x(t)}{\Delta x(0)},
-  \label{eq:senslimit}
-\end{equation}
-can be calculated directly by integrating
-\begin{equation}
-  \frac{d}{dt} S(t)  = \frac{df(x(t),p)}{dx}\; S(t)
-  \label{eq:odesens}
-\end{equation}
-with $S(0) = I$.
 
 \subsection{Phase response curves}
 Quantifying phase changes following a perturbation has been well studied and is particularly relevant for models of circadian rhythms \cite{Kramer1984, Taylor2008a}.

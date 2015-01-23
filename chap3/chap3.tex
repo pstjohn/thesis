@@ -146,7 +146,7 @@ approximate values for $\bm p$ can be obtained by solving the simpler unconstrai
 \end{equation}
 in which $t_{ij}$ is the same as in \ref{eq:approxz} and the bounds on $p$ are the same as in \fref{eq:bounds}.
 
-\subsection{First order sensitivity analysis}
+\subsection{Numerical calculation of sensitivity coefficients}
 
 After determining an optimal parameter set for the given experimental data, relevant first order sensitivity coefficients for oscillatory models are found using the procedure from \cite{Wilkins2009}, summarized here. 
 First, initial conditions and oscillatory period are verified by solving the boundary value problem (BVP):
@@ -157,31 +157,7 @@ First, initial conditions and oscillatory period are verified by solving the bou
 where $\dot{{\bm x}}_0(0)$ denotes the time-derivative of the first state variable, evaluated at $t=0$. 
 This BVP is solved using Newton's method, employing the SUNDIALS packages CVODES for ODE integration and KINSOL for the Newton iterations \cite{Hindmarsh2005}.
  
-Time-dependent parametric sensitivities,
-\begin{equation}
-  \mathbf{S}(t) \equiv \frac{\partial {\bm x}(t)}{\partial {\bm p}},
-\end{equation}
-are obtained by using the staggered-direct method from the CVODES integrator \cite{Serban2005}. 
-Sensitivities of the period, $\frac{\partial T}{\partial {\bm p}}$, can be obtained directly from sensitivities integrated for one pass of the limit cycle (see \cite{Wilkins2009} or \cite{Kramer1984} for further details) through a linear solve:
-\begin{equation}
-  \left[\begin{array}{cc}
-      \mathbf{M} - \mathbf{I} & \dot{{\bm x}}(T) \\
-      \frac{\partial {\bm f}_0}{\partial {\bm x}}({\bm x}(0)) & 0
-  \end{array}\right]
-  \left[\begin{array}{c}
-      \vdots \\ \frac{\partial T}{\partial {\bm p}}
-  \end{array}\right] =
-  \left[\begin{array}{c}
-      -\mathbf{S}(T) \\ -\frac{\partial {\bm f}}{\partial {\bm p}}({\bm x}(0))
-  \end{array}\right]
-\end{equation}
-in which $\mathbf{M}$ is the Monodromy matrix, $\mathbf{I}$ is the identity matrix, and the unknown vector contains the relevant period sensitivities.
-
-Since parameter values often span several orders of magnitude, an often more useful measure is the relative period sensitivity, which is independent of the magnitude of the period or parameter value.
-\begin{equation}
-  \frac{\partial \ln T}{\partial \ln {\bm p}} = \frac{{\bm p}}{T}\frac{\partial T}{\partial {\bm p}} = \frac{\partial T}{T} \left/ \frac{\partial {\bm p}}{{\bm p}} \right.
-\end{equation}
-Thus, a relative period sensitivity of 1 indicates that a 1\% increase in the parameter value will result in a 1\% increase in the period.
+Time-dependent parametric sensitivities (\fref{eq:senslimit}), are obtained by using the staggered-direct method from the CVODES integrator \cite{Serban2005}. 
 
 \subsection{Generation of data for bootstrap methods}
 For each run, two thousand simulated measurements, $\hat{x}_i(t_j)$, were generated from the true data, $\tilde{x}_i(t_j)$, using a normal distribution with $\mu = \tilde{x}_i(t_j)$ and $\sigma_{ij} = \xi\;\tilde{x}_i(t_j) + \eta\;\max_j{\tilde{x}_i(t_j)}$, in which $\xi$ is the relative and $\eta$ is the absolute error. 
