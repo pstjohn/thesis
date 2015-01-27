@@ -1,7 +1,7 @@
 \chapter{Introduction}
 Since life's first beginnings, nature has been seeking optimal solutions to surviving in a constantly changing environment.
 One key adaptation towards this goal, as evidenced by the ubiquity with which it is found throughout the tree of life, is the ability of an organism to anticipate daily changes to its environment.
-Such rhythms are known as {\itshape circadian}, and are classified by a number of defining characteristics:
+Such rhythms are known as {\itshape circadian}, and are classified by a number of defining characteristics \cite{Dunlap2009}:
 
 \begin{itemize}
   \item They are {\em endogenous}, meaning they continue to oscillate even when the organism is isolated from its environment
@@ -10,7 +10,7 @@ Such rhythms are known as {\itshape circadian}, and are classified by a number o
 
   \item They are {\em entrainable}, meaning they can adjust their phase and period in response to a changing in environmental signal
 
-  \item They oscillate with a roughly 24 hour period \cite{Dunlap2009}.
+  \item They oscillate with a roughly 24 hour period.
 \end{itemize}
 
 In this thesis, I apply techniques from systems biology in order to gain a more thorough understanding of how circadian rhythms control mammalian physiology, and how these rhythms might be altered through pharmacological therapies. % Really for abstract
@@ -205,32 +205,70 @@ The differential equation for the sensitivity system is shown in equation~\ref{e
 Since the jacobian matrix $\frac{\partial f}{\partial y}$ is the same as that of the original ODE system, efficient implementations of the following ODEs have been developed \cite{Feehery1997}.
 
 \subsubsection{Period sensitivity}
-An equivalent sensitivity analysis for a limit-cycle model raises additional complications. 
-First, finding the derivative of the period with respect to parameter values requires a clever decomposition of the sensitivity matrices \cite{Kramer1984}. 
-Period sensitivities, $\frac{\partial T}{\partial {\bm p}}$, can be obtained directly from sensitivities integrated for one pass of the limit cycle (derived in \cite{Wilkins2009}) through a linear solve:
+
+An extension of sensitivity analysis for limit-cycle specific models raises additional complications. 
+For instance, finding the derivative of the period with respect to parameter values requires a clever decomposition of the sensitivity matrices \cite{Kramer1984}. 
+Period sensitivities, $\frac{\partial T}{\partial p}$, can be obtained directly from sensitivities integrated for one pass of the limit cycle (derived in \cite{Wilkins2009}) through a linear solve:
 \begin{equation}
   \left[\begin{array}{cc}
-      \mathbf{M} - \mathbf{I} & \dot{{\bm x}}(T) \\
-      \frac{\partial {\bm f}_0}{\partial {\bm x}}({\bm x}(0)) & 0
+      \mathbf{M} - \mathbf{I} & \dot{x}(T) \\
+      \frac{\partial f_0}{\partial x}(x(0)) & 0
   \end{array}\right]
   \left[\begin{array}{c}
-      \vdots \\ \frac{\partial T}{\partial {\bm p}}
+      \vdots \\ \frac{\partial T}{\partial p}
   \end{array}\right] =
   \left[\begin{array}{c}
-      -\mathbf{S}(T) \\ -\frac{\partial {\bm f}}{\partial {\bm p}}({\bm x}(0))
+      -\mathbf{S}(T) \\ -\frac{\partial {\bm f}}{\partial p}(x(0))
   \end{array}\right]
 \end{equation}
 in which $\mathbf{M}$ is the Monodromy matrix, $\mathbf{I}$ is the identity matrix, and the unknown vector contains the relevant period sensitivities.
 
 Since parameter values often span several orders of magnitude, an often more useful measure is the relative period sensitivity, which is independent of the magnitude of the period or parameter value.
 \begin{equation}
-  \frac{\partial \ln T}{\partial \ln {\bm p}} = \frac{{\bm p}}{T}\frac{\partial T}{\partial {\bm p}} = \frac{\partial T}{T} \left/ \frac{\partial {\bm p}}{{\bm p}} \right.
+  \frac{\partial \ln T}{\partial \ln p} = \frac{p}{T}\frac{\partial T}{\partial p} = \frac{\partial T}{T} \left/ \frac{\partial p}{p} \right.
 \end{equation}
 Thus, a relative period sensitivity of 1 indicates that a 1\% increase in the parameter value will result in a 1\% increase in the period.
 
-\subsection{Phase sensitivity}
-Additionally, perturbations to state variables on the limit cycle results in a change of phase, which can be quantified into phase sensitivities. 
+\subsubsection{Phase sensitivity}
+
+Additionally, perturbations to state variables away from a limit cycle ultimately return, but with in a change of phase.
+The definition of phase can be extended to points outside the limit cycle, $x_0 \not\in x^\gamma(\theta)$, by defining the phase of any point, $\Theta(x_0)$, as the initial phase of a point on the limit cycle to which $x_0$ will ultimately converge:
+\begin{equation}
+  \Theta(x_0) = \arg\min_\theta \lim_{t \to \infty} \lVert x(t)
+  - x^\gamma(\theta + t)\rVert
+  \label{eq:extendedphase2}
+\end{equation}
+A phase response curve (PRC), which maps the change in phase resulting from the same
+perturbation applied at every phase, can therefore be found by calculating $
+\Delta\theta \coloneqq \Theta(x^\gamma(\theta_0) + \Delta x(0)) - \theta_0$ for each
+$\theta_0$. Infinitesimal PRCs, the derivative of the phase
+change with respect to the perturbation, are defined for state and
+parameter-impulse perturbations as \cite{Taylor2008a}:
+\begin{align}
+  \frac{d\theta}{dx} &\coloneqq \lim_{\Delta x(0) \to 0} \frac{\Delta\theta}{\Delta
+  x(0)} \label{eq:sPRC}\\
+  \frac{d}{d\hat{t}}\frac{d\theta}{dp} &\coloneqq \lim_{d,\; \Delta p \to 0}
+  \frac{\Delta\theta}{d \; \Delta p}
+  \label{eq:PRC}
+\end{align}
+Methods for efficiently calculating these quantities using ODE sensitivity
+analysis have been developed \cite{Taylor2008a}, with the important result
+that, in the limit as $d, \Delta p \to 0$, 
+\begin{equation}
+  \frac{d}{d\hat{t}}\frac{d\theta}{dp} = \frac{d\theta}{dx}\frac{d\hat{f}}{dp} 
+  \label{eq:pPRCequiv}
+\end{equation}
 
 \subsection{Stochastic methods}\label{sec:stoch}
+
+In modeling a system of chemical reactions using ODE methods, the assumption is made that the concentration of reacting species can take any continuous value. 
+While this assumption is often appropriate for reactions in large, well-mixed vessels, it is often not the case in reactions that take place in the cell.
+In mammalian cells, the median number of mRNA transcripts per cell is $17$, while the median number of protein copies is $50,000$ \cite{Schwanhausser2011}.
+As a result, low concentrations of state variables are often best represented by discrete steps, in which the probabilistic nature of reaction events plays a large role in determining the system dynamics.
+
+Stochastic systems are specified by a state vector of discrete populations $x = \{x_1, \ldots, x_N\}$ and reaction vector $R = \{R_1, \ldots, R_M\}$. 
+For each of $M$ reactions, a stoichiometric vector $v_i$ describes the states which are produced and consumed by each reaction, and a reaction propensity function $a_i$ describes the likelihood of the reaction in for time step \cite{Gillespie1977}.
+Together, these equations form the chemical master equation, a Markov (memoryless) process which can be efficiently simulated using a variety of algorithms \cite{Sanft2011}.
+
 
 

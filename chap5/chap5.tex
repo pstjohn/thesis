@@ -105,16 +105,16 @@ A schematic depicting an example perturbed and reference trajectory is shown in 
   \label{fig:51schem}
 \end{figure}
 
-\subsection{Phase response curves}
-Quantifying phase changes following a perturbation has been well studied and is particularly relevant for models of circadian rhythms \cite{Kramer1984, Taylor2008a}.
-A phase response curve (PRC) maps the change in phase resulting from the same perturbation applied at each initial phase.
-Infinitesimal PRCs, the derivative of the phase change with respect to the perturbation, can be defined for state and parameter-impulse perturbations \cite{Taylor2008a}.
-Methods for efficiently calculating these quantities using ODE sensitivity analysis have been developed \cite{Taylor2008a}, with the important result that the parameter- and state-impulse PRCs can be related by the Jacobian matrix:
-\begin{equation}
-  \frac{d}{d\tilde{t}}\frac{d\theta}{dp} = \frac{d\theta}{dx}\frac{d\tilde{f}}{dp}.
-  \label{eq:pPRCequiv}
-\end{equation}
-This result follows from the fact that in the limit of an infinitely short and small parameter pulse, $\Delta x(0) \to \nicefrac{d\tilde{f}}{dp}\,\tilde{d}\, \Delta p$.
+% \subsection{Phase response curves}
+% Quantifying phase changes following a perturbation has been well studied and is particularly relevant for models of circadian rhythms \cite{Kramer1984, Taylor2008a}.
+% A phase response curve (PRC) maps the change in phase resulting from the same perturbation applied at different initial phases.
+% Infinitesimal PRCs, the derivative of the phase change with respect to the perturbation, can be defined for state and parameter-impulse perturbations \cite{Taylor2008a}.
+% Methods for efficiently calculating these quantities using ODE sensitivity analysis have been developed \cite{Taylor2008a}, with the important result that the parameter- and state-impulse PRCs can be related by the Jacobian matrix:
+% \begin{equation}
+%   \frac{d}{d\tilde{t}}\frac{d\theta}{dp} = \frac{d\theta}{dx}\frac{d\tilde{f}}{dp}.
+%   \label{eq:pPRCequiv}
+% \end{equation}
+% This result follows from the fact that in the limit of an infinitely short and small parameter pulse, $\Delta x(0) \to \nicefrac{d\tilde{f}}{dp}\,\tilde{d}\, \Delta p$.
 
 \subsection{Phase-diffusion model}
 Large populations of oscillators are typically described using phase-only models \cite{Rougemont2006}, in which the state of each oscillator is represented only by its phase, $\theta$.
