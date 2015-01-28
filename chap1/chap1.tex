@@ -57,7 +57,7 @@ In the SCN, approximately $20,000$ cells communicate via intercellular coupling 
 \begin{figure}[tbp]
   \centering
   \includegraphics[width=\textwidth]{chap1/figures/timescale_separation.pdf}
-  \titlecaption{A biological feed forward controller}{Circadian rhythms are organized in a heirarchical fashion, in which inputs from the environment are processed by different tissue-level clocks. At the single-cell level, rhythms are generated via a time-delayed transcription-translation negative feedback loop. Environmental inputs are used to predict upcoming environmental conditions by speeding or slowing the oscillatory cycle, matching the body's internal phase with the external environment.}
+  \titlecaption{A biological feed forward controller}{Circadian rhythms are organized in a hierarchical fashion, in which inputs from the environment are processed by different tissue-level clocks. At the single-cell level, rhythms are generated via a time-delayed transcription-translation negative feedback loop. Environmental inputs are used to predict upcoming environmental conditions by speeding or slowing the oscillatory cycle, matching the body's internal phase with the external environment.}
   \label{fig:feedforward}
 \end{figure}
 
@@ -259,6 +259,78 @@ that, in the limit as $d, \Delta p \to 0$,
   \label{eq:pPRCequiv}
 \end{equation}
 
+\subsection{Common kinetic assumptions}
+
+In constructing an ODE model of a genetic regulatory network, several common kinetic motifs are employed to capture various types of activation, repression, degradation, and complex formation.
+In this section, I provide an overview of the kinetic assumptions used for model construction in subsequent chapters.
+
+\subsubsection{Mass action law}
+
+First developed approximately 150 years ago \cite{Voit2015}, the law of mass action is used for all types of chemical systems and forms the basis for subsequent kinetic constructions. 
+In mass action kinetics, the reaction rate is proportional to the product of the activities (i.e. concentration) of each reactant.
+For example, in the reversible reaction
+\[
+  A + B \xrightleftharpoons[k_{-1}]{k_{+1}} C,
+\]
+the reaction rates for the forward and reverse reactions ($r_{+1}$ and $r_{-1}$, respectively) would be
+\begin{align*}
+  r_{+1} &= k_{+1}[A][B]\\
+  r_{-1} &= k_{-1}[C].
+\end{align*}
+As one molecule of $A$ and $B$ are consumed for each molecule of $C$ produced (and vice-versa for the reverse reaction), the ODE system describing this reaction would be:
+\begin{align*}
+  \frac{d[A]}{dt} &= k_{-1}[C] - k_{+1}[A][B]\\
+  \frac{d[B]}{dt} &= k_{-1}[C] - k_{+1}[A][B]\\
+  \frac{d[C]}{dt} &= k_{+1}[A][B] - k_{-1}[C],
+\end{align*}
+which reaches a fixed point (equilibrium) when $\nicefrac{d[\cdot]}{dt} = 0$, yielding the familiar expression for an equilibrium constant:
+\[
+  K_{eq} = \frac{k_{+1}}{k_{-1}} = \frac{[C]}{[A][B]}.
+\]
+
+\subsubsection{Michaelis-Menten Kinetics}\label{sec:mmenten}
+
+The Michaelis-Menten rate law, first published in 1913 \cite{Johnson2011}, is a commonly used assumption to simplify the kinetics of an enzyme-mediated process.
+The full system considered by the Michaelis-Menten model involves the reversible binding of an enzyme to a substrate, and the subsequent irreversible reaction of the enzyme-substrate complex, forming the product:
+\begin{equation}
+  E + S \xrightleftharpoons[k_r]{k_f} ES \xrightarrow{k_{cat}} E + P.
+  \label{eq:mmreactions}
+\end{equation}
+The full ODE system for \fref{eq:mmreactions} is therefore
+\begin{align}
+  \frac{d[S]}{dt} &=  -k_f[E][S] \label{eq:S}\\
+  \frac{d[E]}{dt} &= k_{cat}[ES] + k_r[ES] - k_f[E][S] \label{eq:E}\\
+  \frac{d[ES]}{dt} &= k_f[E][S] - k_r[ES] - k_{cat}[ES] \label{eq:ES}\\
+  \frac{d[P]}{dt} &= k_{cat}[ES]. \label{eq:P}
+\end{align}
+Since the concentration of enzyme-substrate complex, $[ES]$ is often difficult to measure experimentally, the above system of equations is typically not applied to real data.
+Instead, a pseudo-steady state assumption (PSSA) is made, in which the equilibrium $E + S \xrightleftharpoons[k_r]{k_f} ES$ is assumed to equilibrate much faster than the product formation, $ES \xrightarrow{k_{cat}} E + P$.
+This assumption results in $\nicefrac{d[ES]}{dt} \approx 0$, which can be used to simplify the above set of equations. We also assume a conservation of enzyme mass, $[E_T] = [E] + [ES]$. By solving the now-algebraic equations \ref{eq:E}-\ref{eq:ES} for $[E]$ and $[ES]$ and subsisting the resulting expression into the remaining equations, we obtain:
+\[
+  [ES] = \frac{[E_T][S]}{\nicefrac{k_r}{k_f} + [S]}
+\]
+from which the production rate of the product is determined:
+\begin{align*}
+  \frac{d[P]}{dt} = \frac{V_{max}[S]}{K_M + [S]}, & & V_{max} = k_{cat}E_T, & \quad K_M = \frac{k_r}{k_f}.
+\end{align*}
+While the Michaelis-Menten model is widely used for enzyme-catalyzed reactions in biology, some articles have argued that the assumptions are likely not valid for protein-protein interactions, in which the substrate and enzyme are present in comparable concentrations \cite{Tzafriri2004}.
+
+\paragraph{Enzyme inhibition}
+The Michaelis-Menten kinetic assumption can be extended to model the effects of enzyme inhibitors.
+Different types of enzyme inhibition are possible, in which an inhibitor $I$ binds to the free enzyme $E$ and/or the enzyme-substrate complex.
+In competitive inhibition, the inhibitor binds only to the free enzyme complex, blocking the binding of the substrate.
+\begin{equation}
+  E + I \xrightleftharpoons[k_{-i}]{k_{i}} EI
+  \label{eq:compinh}
+\end{equation}
+Adding \fref{eq:compinh} to \fref{eq:mmreactions} and invoking the PSSA once more, we find the final rate for the conversion of substrate to product:
+\begin{align*}
+  \frac{d[P]}{dt} = \frac{V_{max}[S]}{K_M\left(1 + \frac{[I]}{K_I}\right) + [S]}; & & K_I = \frac{k_{-i}}{k_i}.
+\end{align*}
+
+\subsubsection{Hill-type kinetics}
+
+
 \subsection{Stochastic methods}\label{sec:stoch}
 
 In modeling a system of chemical reactions using ODE methods, the assumption is made that the concentration of reacting species can take any continuous value. 
@@ -269,6 +341,7 @@ As a result, low concentrations of state variables are often best represented by
 Stochastic systems are specified by a state vector of discrete populations $x = \{x_1, \ldots, x_N\}$ and reaction vector $R = \{R_1, \ldots, R_M\}$. 
 For each of $M$ reactions, a stoichiometric vector $v_i$ describes the states which are produced and consumed by each reaction, and a reaction propensity function $a_i$ describes the likelihood of the reaction in for time step \cite{Gillespie1977}.
 Together, these equations form the chemical master equation, a Markov (memoryless) process which can be efficiently simulated using a variety of algorithms \cite{Sanft2011}.
+
 
 
 
