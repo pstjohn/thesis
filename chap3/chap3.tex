@@ -156,7 +156,6 @@ First, initial conditions and oscillatory period are verified by solving the bou
 \end{equation}
 where $\dot{{\bm x}}_0(0)$ denotes the time-derivative of the first state variable, evaluated at $t=0$. 
 This BVP is solved using Newton's method, employing the SUNDIALS packages CVODES for ODE integration and KINSOL for the Newton iterations \cite{Hindmarsh2005}.
- 
 Time-dependent parametric sensitivities (\fref{eq:senslimit}), are obtained by using the staggered-direct method from the CVODES integrator \cite{Serban2005}. 
 
 \subsection{Generation of data for bootstrap methods}
@@ -177,20 +176,20 @@ Each parameter estimation took approximately 4 seconds on a 2.53GHz processor, w
 Due to the parallel nature of the 2000 trials, computation times were alleviated by distributing the tasks onto a cluster of 160 compute nodes.
 
 \section{Results}
-Mechanistic models of biological processes are often posed as nonlinear, time-invariant systems of ordinary differential equations (ODEs)
-\cite{Leloup2003, Forger2003, Mirsky2009}, of the form:
-\begin{equation}
-  \frac{d{\bm x}}{dt} = {\bm f}({\bm x}(t), {\bm p})
-\end{equation}
-in which the vector of state variables ${\bm x}(t)$ describe the time-dependent activity of important species (i.e., mRNA, proteins, or metabolites), the parameters $\bm p$ are the kinetic rate constants, and the vector function ${\bm f}({\bm x}(t), {\bm p})$ contains the transcription, translation, transport, and degradation rate laws of the gene regulatory network. 
-In modeling rhythmic phenomena, we typically seek models and parameter values that display {\itshape limit cycle} oscillations - where for the solution approaches a non-trivial periodic trajectory:
-\begin{equation} \label{eq:limit}
-  \lim_{t \rightarrow \infty} {\bm x}(t) = {\bm x}(t + T).
-\end{equation}
-Here the period of oscillation is the smallest $T > 0$ in which \fref{eq:limit} holds. 
-Limit cycle oscillations are independent of the system's initial values ${\bm x}(0)$, and are instead determined completely by the parameters $\bm p$. 
+% Mechanistic models of biological processes are often posed as nonlinear, time-invariant systems of ordinary differential equations (ODEs)
+% \cite{Leloup2003, Forger2003, Mirsky2009}, of the form:
+% \begin{equation}
+%   \frac{d{\bm x}}{dt} = {\bm f}({\bm x}(t), {\bm p})
+% \end{equation}
+% in which the vector of state variables ${\bm x}(t)$ describe the time-dependent activity of important species (i.e., mRNA, proteins, or metabolites), the parameters $\bm p$ are the kinetic rate constants, and the vector function ${\bm f}({\bm x}(t), {\bm p})$ contains the transcription, translation, transport, and degradation rate laws of the gene regulatory network. 
+% In modeling rhythmic phenomena, we typically seek models and parameter values that display {\itshape limit cycle} oscillations - where for the solution approaches a non-trivial periodic trajectory:
+% \begin{equation} \label{eq:limit}
+%   \lim_{t \rightarrow \infty} {\bm x}(t) = {\bm x}(t + T).
+% \end{equation}
+% Here the period of oscillation is the smallest $T > 0$ in which \fref{eq:limit} holds. 
+% Limit cycle oscillations are independent of the system's initial values ${\bm x}(0)$, and are instead determined completely by the parameters $\bm p$. 
 
-Experimental values for $\bm p$ are rarely available. 
+Experimental values for the kinetic parameters of a limit cycle system, $\bm p$, are rarely available. 
 Given time-series experimental measurements $\hat{x}_i(t_j)$ for each state variable in a limit cycle system, we find optimal parameters $\popt$ such that the error between the experimental measurements and the simulated limit cycle is minimized \cite{Bock2007}:,
 \begin{equation} \label{eq:cost1}
   \popt := \arg\min_{\bm p} \sum_i^{states} \sum_j^{data} \frac{\left(\hat{x}_i(t_j) - x_i(t_j,{\bm p})\right)^2}{ {\sigma}_{ij}^2}.
@@ -198,15 +197,11 @@ Given time-series experimental measurements $\hat{x}_i(t_j)$ for each state vari
 Here ${\sigma}_{ij}$ is the standard deviation associated with the measured mean of state $i$ at time $j$. 
 Using the data points $\hat{x}_i(t_j)$ to generate a suitable initial guess, parameter estimation may proceed via a nonlinear programming approach as described in \ref{sec:idmethods}. 
 In this chapter, we assume that all states are measured to demonstrate how initial guesses can be generated directly from the input data. 
-However, for systems with unmeasured states, initial guesses for the trajectory and parameter values can be provided by another approach, such as a global optimization routine. 
+However, for systems with unmeasured states, initial guesses for the trajectory and parameter values can be provided by another approach, such as a global optimization routine, as described in \fref{sec:gas}. 
 A bootstrap method was implemented by repeatedly sampling input data distributions to calculate a population of optimal parameter fits.
 
 After finding optimal parameter fits, we used the models to predict how perturbations change systems dynamics by performing a first order sensitivity analysis. 
-Since adjustments to periodic systems in response to inputs are often manifested through temporary changes in oscillatory period, relative period sensitivities,
-\begin{equation}
-  \frac{\partial \ln T}{\partial \ln {\bm p}}
-\end{equation}
-were calculated due to their independence of parameter magnitude \cite{Bure1974, Kramer1984, Wilkins2009}. 
+Since adjustments to periodic systems in response to inputs are often manifested through temporary changes in oscillatory period, relative period sensitivities, \fref{eq:relperiodsens}, were calculated due to their independence of parameter magnitude \cite{Bure1974, Kramer1984, Wilkins2009}. 
 Relative period sensitivities were integrated into the bootstrap method by calculating appropriate sensitivities for each estimated parameter set.
 
 Of particular importance in determining the reliability of a model prediction is whether an output response maintains a consistent direction despite noise in measurement data. 
@@ -224,7 +219,7 @@ An overview of the method is shown in \fref{fig:3_1}.
 \subsection{Effect of data quality on predictive confidence}
 
 We first analyze the degree to which uncertainty in input data is propagated to uncertainty in output predictions. 
-To achieve this, we generate {\itshape in silico} data from a previously published model of circadian rhythms, using relative error $\xi$ to generate normally distributed data ($\sigma_{ij} = \xi \; \hat{x}_{i}(t_j)$) at each of $\cal M$ sampling points. 
+To achieve this, we generate {\itshape in silico} data from a previously published model of circadian rhythms (\fref{mod:hirota}), using relative error $\xi$ to generate normally distributed data ($\sigma_{ij} = \xi \; \hat{x}_{i}(t_j)$) at each of $\cal M$ sampling points. 
 As expected, solution trajectories drifted further from the nominal limit cycle for higher values of error, $\xi$, or lower sampling density, $\cal M$, (\fref{fig:3_2}). 
 However, the overall shape of the oscillatory profiles remained relatively similar, even for rather high $\xi$ or low $\cal M$.
 

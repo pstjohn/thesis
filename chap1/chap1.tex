@@ -227,7 +227,7 @@ in which $\mathbf{M}$ is the Monodromy matrix, $\mathbf{I}$ is the identity matr
 
 Since parameter values often span several orders of magnitude, an often more useful measure is the relative period sensitivity, which is independent of the magnitude of the period or parameter value.
 \begin{equation}
-  \frac{\partial \ln T}{\partial \ln p} = \frac{p}{T}\frac{\partial T}{\partial p} = \frac{\partial T}{T} \left/ \frac{\partial p}{p} \right.
+  \frac{\partial \ln T}{\partial \ln p} = \frac{p}{T}\frac{\partial T}{\partial p} = \frac{\partial T}{T} \left/ \frac{\partial p}{p} \right.\label{eq:relperiodsens}
 \end{equation}
 Thus, a relative period sensitivity of 1 indicates that a 1\% increase in the parameter value will result in a 1\% increase in the period.
 
@@ -390,7 +390,7 @@ An overview of the computational approach typically employed for such systems is
   \label{fig:comploop}
 \end{figure}
 
-\subsubsection{Global optimization}
+\subsubsection{Global optimization}\label{sec:gas}
 In this thesis, global optimization of model parameters is typically achieved via an evolutionary algorithm approach \cite{Whitley2001}. 
 An evolutionary algorithm iteratively improves a parameter guess in an easily-parallelized fashion by mimicking natural evolution.
 The steps involved are as follows, shown schematically in \fref{fig:gaoverview}.
