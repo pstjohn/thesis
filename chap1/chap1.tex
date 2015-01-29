@@ -259,7 +259,7 @@ that, in the limit as $d, \Delta p \to 0$,
   \label{eq:pPRCequiv}
 \end{equation}
 
-\subsection{Common kinetic assumptions}
+\subsection{Common kinetic assumptions}\label{sec:kinetic}
 
 In constructing an ODE model of a genetic regulatory network, several common kinetic motifs are employed to capture various types of activation, repression, degradation, and complex formation.
 In this section, I provide an overview of the kinetic assumptions used for model construction in subsequent chapters.
@@ -324,11 +324,29 @@ In competitive inhibition, the inhibitor binds only to the free enzyme complex, 
   \label{eq:compinh}
 \end{equation}
 Adding \fref{eq:compinh} to \fref{eq:mmreactions} and invoking the PSSA once more, we find the final rate for the conversion of substrate to product:
-\begin{align*}
-  \frac{d[P]}{dt} = \frac{V_{max}[S]}{K_M\left(1 + \frac{[I]}{K_I}\right) + [S]}; & & K_I = \frac{k_{-i}}{k_i}.
-\end{align*}
+\begin{align}
+  \frac{d[P]}{dt} = \frac{V_{max}[S]}{K_M\left(1 + \frac{[I]}{K_I}\right) + [S]}; & & K_I = \frac{k_{-i}}{k_i}.\label{eq:inheq}
+\end{align}
 
 \subsubsection{Hill-type kinetics}
+
+In biochemical systems, cooperative binding between species is often required to initiate a reaction. 
+The kinetics of such systems follow a sigmoidal profile, in which a critical amount of reactant species is required before significant product formation is seen, but which quickly saturates to a maximum value. 
+The equation describing cooperative binding behavior was developed in 1910 \cite{Hill1910}. Assuming the conversion of reactant $S$ to product $P$, the rate of production of $P$ would follow
+\begin{equation}
+  \frac{d[P]}{dt} = \frac{V_{max} [S]^n}{K_A^n + [S]^n}
+  \label{eq:hill}
+\end{equation}
+Depending on the degree of cooperativity $n$, the sigmoidal profile can vary between a standard Michaelis-Menten profile (no cooperativity) to an almost digital switch, as shown in \fref{fig:hillshapes}.
+Hill-type kinetics can also include enzyme inhibition, in which the $K_A$ parameter would be scaled by inhibitor concentration in a manner similar to \fref{eq:inheq}.
+
+\begin{figure}[tbp]
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{chap1/figures/hilleq.pdf}
+  \end{center}
+  \titlecaption{Example profiles of the hill equation for various degrees of cooperativity}{The hill equation describes the kinetics of a cooperative reaction process, as shown in \fref{eq:hill}. Here $K_A = 0.5$, $V_{max} = 1$.}
+  \label{fig:hillshapes}
+\end{figure}
 
 
 \subsection{Stochastic methods}\label{sec:stoch}
@@ -343,5 +361,69 @@ For each of $M$ reactions, a stoichiometric vector $v_i$ describes the states wh
 Together, these equations form the chemical master equation, a Markov (memoryless) process which can be efficiently simulated using a variety of algorithms \cite{Sanft2011}.
 
 
+\subsection{Parameter estimation}
 
+Models are typically used to validate that our assumed mechanisms are mathematically feasible and to systematically explore consequences of our kinetic assumptions.
+When these models differ from experimental results, we must re-analyze which of our assumptions might be incorrect and design new experiments to test these assumptions.
+While biological insight is typically sufficient to construct candidate models $f(x, p)$ using standard assumptions outlined in \fref{sec:kinetic}, values for the kinetic parameters are typically derived by fitting experimental data.
+In this section, I describe optimization techniques which have proven successful in finding descriptive parameter sets for models of circadian rhythms.
+
+\subsubsection{Cost function}
+The first step in finding a suitable parameter set is defining a cost function, $C(p)$, which ascribes a value to how well a particular parameter set fits the data.
+By convention, the optimum parameter set is that which minimizes $C(p)$.
+While for many biological systems a suitable cost function is the squared error of the model, a cost function can also include information on model derivatives, oscillatory period, and timing of various events (i.e., peak gene expression).
+Cost functions of limit cycle models pose a particularly difficult optimization challenge, as a limit cycle does not always exist for any given parameter set.
+Thus, the fitness landscape for most parameter space is very flat where limit cycle solutions do not exist, with isolated regions of  where limit cycle oscillations are possible.
+Additionally, solving for the limit cycle solution given a parameter set is a nested optimization problem, resulting in long computation times.
+For these reasons, stochastic global optimization procedures are often employed which efficiently search high dimensional parameter space without the need for derivative information of $C(p)$.
+An overview of the computational approach typically employed for such systems is given in \fref{fig:comploop}.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.65\textwidth]{chap1/figures/comp_loop.pdf}
+  \titlecaption{An overview of the nested optimization of fitting limit cycle models}{Given a model and parameter set guess, a limit cycle is calculated via a single-shooting approach. A cost function then scores the timing of peak mRNA and protein species against known experimental values. Given the fitness score of many parameter guesses, a global optimization algorithm iteratively improves the parameter guess to minimize the cost function.}
+  \label{fig:comploop}
+\end{figure}
+
+\subsubsection{Global optimization}
+In this thesis, global optimization of model parameters is typically achieved via an evolutionary algorithm approach \cite{Whitley2001}. 
+An evolutionary algorithm iteratively improves a parameter guess in an easily-parallelized fashion by mimicking natural evolution.
+The steps involved are as follows, shown schematically in \fref{fig:gaoverview}.
+\begin{enumerate}
+  \item {\bfseries Initialization} An initial population of parameter guesses are generated from all parameter values, typically by a random number generation.
+  \item {\bfseries Selection} The fitnesses (inverse of the cost) of the current population are evaluated, and a subsample of the original population is selected. A selection algorithm must randomly select from the current population, with some degree bias given towards individuals with the highest fitness.
+  \item {\bfseries Crossover} Each member of the subsequent generation of solutions is generated by combining features from two (or more) of the selected individuals in the previous generation. For a problem consisting of many individual parameters, a common choice is to randomly select each parameter from one parent or the other.
+  \item {\bfseries Mutation} The final step involves adding a small chance to change a parameter in the child parameter set. For continuous parameter values, this is often implemented as a small chance to add normally-distrusted error to one or more of the parameter values.
+\end{enumerate}
+
+\begin{figure}[tbp]
+  \centering
+  \begin{tabular}{cccc}
+    \bf Initialization & \bf Selection & \bf Crossover & \bf Mutation \\
+    \includegraphics[width=0.2\textwidth]{chap1/figures/ga_initialization.pdf} &
+    \includegraphics[width=0.2\textwidth]{chap1/figures/ga_selection.pdf} &
+    \includegraphics[width=0.2\textwidth]{chap1/figures/ga_crossover.pdf} &
+    \includegraphics[width=0.2\textwidth]{chap1/figures/ga_mutation.pdf}\\
+  \end{tabular}
+  \titlecaption{An overview of global optimization via evolutionary strategy}{A schematic of a two-dimensional parameter space is shown. Solutions are initially distributed randomly across the parameter landscape, but solutions with a high fitness are preferentially kept. By combining and slightly altering parameter values from existing solutions, each generation iteratively approaches the highest fitness.}
+  \label{fig:gaoverview}
+\end{figure}
+
+\subsection{Previous models of circadian rhythms}
+% Taken from candidacy report - edit this
+There are many existing models of circadian rhythms of varying degrees of complexity. 
+Early examples include Goodwin's 1965 model of enzymatic oscillations, demonstrating that nonlinear oscillations could capture many of the features of biological rhythms \cite{Goodwin1965}. 
+Later models sought to describe specific proteins in the circadian cycle. 
+Goldbeter's 1995 model described one gene in the circadian clock of {\it Drosophila}, and demonstrated that a negative feedback loop with sufficient nonlinearity and time delay was required for circadian oscillations \cite{Goldbeter1995}.
+
+More recent models have attempted to generate a more complete representation of the circadian network. 
+Leloup and Goldbeter's 2003 model of the mammalian circadian clock considers both the positive and negative regulatory loops \cite{Leloup2003}, demonstrating the anti-phase oscillations of the positive and negative elements. 
+Forger and Peskin's 73-ODE model, and its analogous discrete stochastic version, provides an example of the complexity of the known post-translational regulation of core clock components \cite{Forger2003,Forger2005}.
+
+Even more recently, models from our own lab were developed that provide an explanation between phenotypes observed at different levels of circadian organization. 
+Interestingly, intercellular coupling has been shown experimentally to confer robustness against gene knockout \cite{Liu2007}. 
+To (2007) linked together many instances of Leloup and Goldbeter's 2003 model to demonstrate entrainment as an ensemble of oscillators \cite{To2007}, while Mirsky (2009) developed a model of the cell-autonomous circadian clock that correctly predicts knockout phenotypes at the cellular level \cite{Mirsky2009}.
+
+As our knowledge of the mammalian circadian network continues to grow, it is becoming clear that no single model will be able to completely resolve the entire network. 
+However, fitting models that include all known mechanisms of circadian feedback is likely unnecessary. 
 
