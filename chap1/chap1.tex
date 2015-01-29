@@ -4,11 +4,11 @@ One key adaptation towards this goal, as evidenced by the ubiquity with which it
 Such rhythms are known as {\itshape circadian}, and are classified by a number of defining characteristics \cite{Dunlap2009}:
 
 \begin{itemize}
-  \item They are {\em endogenous}, meaning they continue to oscillate even when the organism is isolated from its environment
+  \item They are {\em endogenous}, meaning they continue to oscillate even when the organism is isolated from its environment.
 
-  \item They are temperature compensated, maintaining a consistent period for moderate changes in average temperature
+  \item They are temperature compensated, maintaining a consistent period for moderate changes in average temperature.
 
-  \item They are {\em entrainable}, meaning they can adjust their phase and period in response to a changing in environmental signal
+  \item They are {\em entrainable}, meaning they can adjust their phase and period in response to a changing in environmental signal.
 
   \item They oscillate with a roughly 24 hour period.
 \end{itemize}
@@ -71,7 +71,7 @@ Additionally, feeding cycles have been shown to have a profound impact on  circa
 Circadian rhythms are generated at the single-cell level through genetic regulatory networks with inherent time-delayed negative feedback. 
 Transcription factors CLOCK and BMAL1, peaking in the early night, activate expression of EBOX genes period ({\itshape Per1} and {\itshape Per2}) and cryptochrome ({\itshape Cry1} and {\itshape Cry2}). 
 {\itshape Per} and {\itshape Cry} protein products, PER and CRY, peaking during the early day, form a heterodimeric complex to cross the nuclear membrane \cite{Ko2006}. 
-However, since PER is present in the cytoplasm much lower quantities than CRY, it is stochiometrically-limiting for nuclear entry \cite{Lee2001}. 
+However, since PER is present in the cytoplasm in much lower quantities than CRY, it is stochiometrically-limiting for nuclear entry \cite{Lee2001}. 
 Once inside the nucleus, the PER-CRY complex dissociates, and CRY represses CLOCK-BMAL1 mediated activation of EBOX genes, leading to rhythmic gene expression.
 Several time delays contribute to the 24 hour oscillatory period, highlighted in \fref{fig:maindelays}.
 
@@ -369,6 +369,7 @@ While biological insight is typically sufficient to construct candidate models $
 In this section, I describe optimization techniques which have proven successful in finding descriptive parameter sets for models of circadian rhythms.
 
 \subsubsection{Cost function}
+
 The first step in finding a suitable parameter set is defining a cost function, $C(p)$, which ascribes a value to how well a particular parameter set fits the data.
 By convention, the optimum parameter set is that which minimizes $C(p)$.
 While for many biological systems a suitable cost function is the squared error of the model, a cost function can also include information on model derivatives, oscillatory period, and timing of various events (i.e., peak gene expression).
@@ -410,20 +411,20 @@ The steps involved are as follows, shown schematically in \fref{fig:gaoverview}.
 \end{figure}
 
 \subsection{Previous models of circadian rhythms}
-% Taken from candidacy report - edit this
-There are many existing models of circadian rhythms of varying degrees of complexity. 
+
+Since mathematical methods have been used to study circadian rhythms for some time, many existing models of circadian gene regulation exist.
 Early examples include Goodwin's 1965 model of enzymatic oscillations, demonstrating that nonlinear oscillations could capture many of the features of biological rhythms \cite{Goodwin1965}. 
 Later models sought to describe specific proteins in the circadian cycle. 
 Goldbeter's 1995 model described one gene in the circadian clock of {\it Drosophila}, and demonstrated that a negative feedback loop with sufficient nonlinearity and time delay was required for circadian oscillations \cite{Goldbeter1995}.
 
-More recent models have attempted to generate a more complete representation of the circadian network. 
+Subsequent models have attempted to generate a more complete representation of the circadian network. 
 Leloup and Goldbeter's 2003 model of the mammalian circadian clock considers both the positive and negative regulatory loops \cite{Leloup2003}, demonstrating the anti-phase oscillations of the positive and negative elements. 
-Forger and Peskin's 73-ODE model, and its analogous discrete stochastic version, provides an example of the complexity of the known post-translational regulation of core clock components \cite{Forger2003,Forger2005}.
+Forger and Peskin's 73-state model, and its analogous stochastic version, provides an example of the complexity of the known post-translational regulation of core clock components \cite{Forger2003,Forger2005}.
 
-Even more recently, models from our own lab were developed that provide an explanation between phenotypes observed at different levels of circadian organization. 
-Interestingly, intercellular coupling has been shown experimentally to confer robustness against gene knockout \cite{Liu2007}. 
-To (2007) linked together many instances of Leloup and Goldbeter's 2003 model to demonstrate entrainment as an ensemble of oscillators \cite{To2007}, while Mirsky (2009) developed a model of the cell-autonomous circadian clock that correctly predicts knockout phenotypes at the cellular level \cite{Mirsky2009}.
+More recently, models have focused on explaining new theories on how circadian rhythms are organized, rather than attempting to providing a complete {\itshape in silico} representation of current knowledge.
+A model by To {\itshape et al.,} 2007 coupled together cells modeled by Leloup \& Goldbeter's 2003 model to demonstrate how heterogeneous populations of oscillators could synchronize in an SCN environment using the neurotransmitter vasoactive intestinal polypeptide (VIP) \cite{To2007}.
+Following the differentiation between the properties of single-cell oscillators and populations, Mirsky {\itshape et al.,}, 2009 developed a model to show how single-cell knockout phenotypes could be differentiated from those at the population-level \cite{Mirsky2009}.
+Rel{\'o}gio {\itshape et al.,} 2011 demonstrated that positive feedback through ROR/REV-ERB had a stabilizing effect on the clock \cite{Relogio2011}, while a model from Kim \& Forger, 2012 demonstrated the importance of stoichiometry between positive and negative components \cite{Kim2012}.
 
-As our knowledge of the mammalian circadian network continues to grow, it is becoming clear that no single model will be able to completely resolve the entire network. 
-However, fitting models that include all known mechanisms of circadian feedback is likely unnecessary. 
+Despite the wide availability of mathematical models for circadian rhythms, demonstrating that new theories are mathematically rigorous often requires the creation of a new model. In the following chapter, I describe the process of model creation in more detail following new experimental insight into core clock dynamics.
 
