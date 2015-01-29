@@ -102,7 +102,7 @@ For instance, the period-determining effect of CRY1 and CRY2 were found by analy
 \begin{figure}[tbp]
   \centering
   \includegraphics[width=0.7\textwidth]{chap1/figures/vanderhorst.png}
-  \titlecaption{Period effects of CRY knockouts}{Actograms plot the intensity of mouse wheel-running activity on a 24 hr scale. After the mice are transferred to constant darkness, the free-running period can be inferred by fitting a line to the offset in activity onset each day. Figure taken from \cite{VanderHorst1999}.}
+  \titlecaption{Period effects of CRY knockouts}{Actograms plot the intensity of mouse wheel-running activity. The x-axis plots time of day (data is double-plotted), while the y-axis shows each subsequent day. Black bars for each day indicate the intensity of wheel-running activity. After the mice are transferred to constant darkness, the free-running period can be inferred by fitting a line to the offset in activity onset each day. Figure taken from \cite{VanderHorst1999}.}
   \label{fig:vanderhorst}
 \end{figure}
 
@@ -121,14 +121,14 @@ Such systems have allowed the development of high-throughput methods for studyin
 
 \section{Mathematical modeling}
 
-Circadian rhythms, due to their dynamic nature, have long been a subject of mathematical inquiry \cite{Winfree2001}. In this section, I review some of the methods previously applied to understanding circadian rhythms.
+Circadian rhythms, due to their dynamic nature, have long been the subject of mathematical inquiry \cite{Winfree2001}. In this section, I review some of the methods previously applied to understanding circadian rhythms.
 
 \subsection{Introduction to modeling gene regulation}
 
 Gene regulatory networks are typically modeled as dynamic systems, in which rates of production and degradation of each species is explicitly considered.
 In \fref{fig:sysbiointro}, an example gene regulatory network is shown, in which a transcription factor activates the production of Gene 1. 
 The genes mRNA is then translated to produce a protein product, which may or may not undergo posttranslational modifications or subcellular transport. 
-The completed protein then modulates the production of a second mRNA, for Gene 2.
+The completed protein then modulates the production of a second mRNA for Gene 2.
 In this example, the production and degradation rates of the mRNA and each protein state would be explicitly modeled.
 
 \begin{figure}[tbp]
@@ -138,7 +138,7 @@ In this example, the production and degradation rates of the mRNA and each prote
   \label{fig:sysbiointro}
 \end{figure}
 
-If the values of the kinetic parameters (i.e., transcription rate) were known, the model could subsequently be simulated by casting the equations as either a system of ordinary differential equations (as in \fref{sec:odes}), or by using a chemical master equations (as in \fref{sec:stoch}). Resulting trajectories would resemble those shown in \fref{fig:extrajs}.
+If the values of the kinetic parameters (i.e., transcription rate) were known, the model could subsequently be simulated by casting the equations as either a system of ordinary differential equations (as in \fref{sec:odes}), or by using a chemical master equation (as in \fref{sec:stoch}). Resulting trajectories would resemble those shown in \fref{fig:extrajs}.
 
 \begin{figure}[tbp]
   \centering
@@ -231,7 +231,7 @@ Thus, a relative period sensitivity of 1 indicates that a 1\% increase in the pa
 
 \subsubsection{Phase sensitivity}
 
-Additionally, perturbations to state variables away from a limit cycle ultimately return, but with in a change of phase.
+Perturbations to state variables away from a limit cycle ultimately return, but with in a change of phase.
 The definition of phase can be extended to points outside the limit cycle, $x_0 \not\in x^\gamma(\theta)$, by defining the phase of any point, $\Theta(x_0)$, as the initial phase of a point on the limit cycle to which $x_0$ will ultimately converge:
 \begin{equation}
   \Theta(x_0) = \arg\min_\theta \lim_{t \to \infty} \lVert x(t)
@@ -305,7 +305,9 @@ The full ODE system for \fref{eq:mmreactions} is therefore
 \end{align}
 Since the concentration of enzyme-substrate complex, $[ES]$ is often difficult to measure experimentally, the above system of equations is typically not applied to real data.
 Instead, a pseudo-steady state assumption (PSSA) is made, in which the equilibrium $E + S \xrightleftharpoons[k_r]{k_f} ES$ is assumed to equilibrate much faster than the product formation, $ES \xrightarrow{k_{cat}} E + P$.
-This assumption results in $\nicefrac{d[ES]}{dt} \approx 0$, which can be used to simplify the above set of equations. We also assume a conservation of enzyme mass, $[E_T] = [E] + [ES]$. By solving the now-algebraic equations \ref{eq:E}-\ref{eq:ES} for $[E]$ and $[ES]$ and subsisting the resulting expression into the remaining equations, we obtain:
+This assumption results in $\nicefrac{d[ES]}{dt} \approx 0$, which can be used to simplify the above set of equations. 
+We also assume a conservation of enzyme mass, $[E_T] = [E] + [ES]$. 
+By solving the now-algebraic equations \ref{eq:E}-\ref{eq:ES} for $[E]$ and $[ES]$ and substituting the resulting expression into the remaining equations, we obtain:
 \[
   [ES] = \frac{[E_T][S]}{\nicefrac{k_r}{k_f} + [S]}
 \]
@@ -315,7 +317,7 @@ from which the production rate of the product is determined:
 \end{align*}
 While the Michaelis-Menten model is widely used for enzyme-catalyzed reactions in biology, some articles have argued that the assumptions are likely not valid for protein-protein interactions, in which the substrate and enzyme are present in comparable concentrations \cite{Tzafriri2004}.
 
-\paragraph{Enzyme inhibition}
+\subsubsection{Enzyme inhibition}
 The Michaelis-Menten kinetic assumption can be extended to model the effects of enzyme inhibitors.
 Different types of enzyme inhibition are possible, in which an inhibitor $I$ binds to the free enzyme $E$ and/or the enzyme-substrate complex.
 In competitive inhibition, the inhibitor binds only to the free enzyme complex, blocking the binding of the substrate.
@@ -363,7 +365,7 @@ Together, these equations form the chemical master equation, a Markov (memoryles
 
 \subsection{Parameter estimation}
 
-Models are typically used to validate that our assumed mechanisms are mathematically feasible and to systematically explore consequences of our kinetic assumptions.
+Models are typically used to validate that our assumed mechanisms are mathematically feasible, and to systematically explore consequences of our kinetic assumptions.
 When these models differ from experimental results, we must re-analyze which of our assumptions might be incorrect and design new experiments to test these assumptions.
 While biological insight is typically sufficient to construct candidate models $f(x, p)$ using standard assumptions outlined in \fref{sec:kinetic}, values for the kinetic parameters are typically derived by fitting experimental data.
 In this section, I describe optimization techniques which have proven successful in finding descriptive parameter sets for models of circadian rhythms.
