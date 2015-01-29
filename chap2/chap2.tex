@@ -14,16 +14,16 @@ The search for small molecule modulators of circadian rhythms therefore yields t
 In this chapter, I describe a collaborative project in which experimental results inspired the creation of a new model of the core mammalian feedback network.
 A new small molecule modulator of cryptochrome, KL001, was identified through forward chemical genetic screening \cite{Hirota2012}.
 The compound was found to simultaneously increase the half-life of CRY and cause period lengthening.
-In order to explain these new experimental results while maintaining consistency with published evidence, I constructed a simple mathematical model of the Per/Cry negative feedback loop.
+In order to explain these new experimental results while maintaining consistency with published evidence, I constructed a simple mathematical model of the PER/CRY negative feedback loop.
 
 The functional roles of the cryptochrome isoforms ({\it Cry1} and {\it Cry2}) in circadian rhythms have long eluded biologists, as although they share a similar structure, perturbations to these genes typically result in opposite trends \cite{McCarthy2009}.
 Existing genetic evidence and siRNA knockdown studies agree that while suppressing {\it Cry1} leads to shorter periods, suppressing {\it Cry2} leads to longer periods \cite{VanderHorst1999, Zhang2009}.
 However, some evidence shows the similarity between the two {\it Crys}.
-The knockouts $\text{\it Cry1}^{+/-}\ll$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/-}$ both show shorter wheel-running activity their respective WT/double knockouts $\text{\it Cry1}^{+/+}$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/+}$ \cite{VanderHorst1999}.
+The knockouts\footnote{Wild type mammals, denoted with the ``$+/+$'' superscript, receive two copies of every gene from each parent. Homozygous knockouts, denoted ``$-/-$'', have no functional copies of the gene. Heterozygous knockouts, denoted ``$+/-$'', receive only one functional copy and therefore express the gene at lower levels.} $\text{\it Cry1}^{+/-}$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/-}$ both show shorter wheel-running activity their respective WT/double knockouts $\text{\it Cry1}^{+/+}$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/+}$ \cite{VanderHorst1999}.
 Using new data from the application of KL001 together with existing experimental results, I developed a hypothesized mechanism to reconcile these seemingly contradictory results:
 
 \subsubsection{Network structure}
-In the core feedback loop, Per and Cry transcription is activated by the CLOCK-BMAL1 complex.
+In the core feedback loop, {\itshape Per} and {\itshape Cry} transcription is activated by the CLOCK-BMAL1 complex.
 The protein products of these genes are transported to the nucleus after a time delay and bind to CLOCK-BMAL1, repressing their own transcription.
 Evidence indicates that an interaction of PER and CRY proteins is required for the timely nuclear entry of both proteins \cite{Miyazaki2001,Ko2006,Kume1999}.
 I therefore assume that PER and CRY bind and enter the nucleus in a 1:1 stoichiometric ratio, similar to more complicated models of mammalian circadian rhythms \cite{Leloup2003,Mirsky2009,Forger2003}.
@@ -32,8 +32,8 @@ I therefore assume that PER and CRY bind and enter the nucleus in a 1:1 stoichio
 Quantitative protein assays have revealed that the PER proteins are present at levels nearly ten times less than the CRYs, and are completely consumed at their trough.
 The CRYs, on the other hand, only fall to about one quarter of their peak value  \cite{Lee2001}.
 These results indicate that PER is the rate-limiting component for nuclear entry.
-This configuration explains why, since {/it Cry} is in excess, a knockout of either {\it Cry} does not lead to loss of function at the tissue level.
-Additionally {\it Cry1}, the more dominant repressor, is consistently found at higher levels than {\it Cry2}.
+This configuration explains why, since {\itshape Cry} is in excess, a knockout of either {\it Cry} alone does not lead to loss of function at the tissue level.
+Additionally CRY1, the more dominant repressor, is consistently found at higher levels than CRY2.
 However, since the ratio of nuclear to total protein is nearly equivalent for CRY1 and CRY2, PER must import each with equal affinity \cite{Lee2001,Lee2011b}.
 
 \subsubsection{Importance of degradation}
@@ -66,7 +66,7 @@ This suggests that the period of the clock is governed by the nuclear CRY1/CRY2 
 {\it In silico} modeling was used to test the feasibility of the above hypothesis, and to investigate possible mechanisms by which the CRY1/CRY2 ratio might control the period of oscillations. 
 The model uses eight state variables for the three mRNA species ({\it Per}, {\it Cry1}, and {\it Cry2}), three cytosolic proteins, and two nuclear proteins. 
 The differential equations for each state were formulated using standard Hill-type repression, Michaelis-Menten, and mass action kinetics. 
-The 21 unknown kinetic parameters were found by fitting the stoichiometric data from \cite{Lee2001}, requiring correct periods for the $\text{\it Cry1}^{-/-}$  and $\text{\it Cry2}^{-/-}$  knockouts.
+The 21 unknown kinetic parameters were found by fitting the stoichiometric data from \cite{Lee2001} using a genetic algorithm approach, requiring correct periods for the $\text{\it Cry1}^{-/-}$  and $\text{\it Cry2}^{-/-}$  knockouts.
 
 I investigated two possible mechanisms to explain the long/short period phenotype of the CRY1/CRY2 loops. 
 First, following experimental evidence, I allowed CRY1 and CRY2 to have different inhibitory efficiency \cite{GriffinJr.1999}. 
@@ -91,7 +91,7 @@ The period of the clock is thus governed by the nuclear CRY1/CRY2 ratio, where h
 \end{figure}
 
 \subsubsection{Model equations}
-The model is formulated as set of 8 ordinary differential equations shown in \fref{mod:hirota} and \fref{mod:actfns}. 
+The model is formulated as set of 8 ordinary differential equations shown in \fref{mod:hirota} (for the degradation-based model) and \fref{mod:actfns} (for the activation-based model). 
 Additional assumptions made while formulating the model equations are listed below:
 
 \begin{itemize}
@@ -100,11 +100,11 @@ Additional assumptions made while formulating the model equations are listed bel
 
   \item EBOX activators {\it Clock} and {\it Bmal1} are considered constitutively expressed and are represented by the $v_{\text{txn}}$ parameters. 
 
-  \item Repression of CLOCK-BMAL1 activity is attained through Hill-type inhibition. The Hill coefficient is fixed at 3, which was found to provide sufficient nonlinearity for oscillations. See below for the derivation of the repressor input function used in tables S2A and S2B.
+  \item Repression of CLOCK-BMAL1 activity is attained through Hill-type inhibition. The Hill coefficient is fixed at 3, which was found to provide sufficient nonlinearity for oscillations. See below for the derivation of the repressor input function used in \fref{mod:hirota} and \fref{mod:actfns}.
 
   \item The degradation of the mRNA species and cytoplasmic proteins is assumed to follow standard Michaelis-Menten kinetics.
 
-  \item The degradation kinetics of the nuclear proteins are assumed to follow Michaelis-Menten kinetics. Because both $\text{CRY1}_n$ and $\text{CRY2}_n$ are thought to be degraded by the same pathway in the nucleus, kinetic equations using the {\it pseudo} steady-state hypothesis were derived for two substrates sharing the same enzyme. As a result, each {\it Cry} isoform acts as an inhibitor to the other's degradation. This mechanism is summarized in \fref{fig:shareddeg}.
+  \item The degradation kinetics of the nuclear proteins are assumed to follow Michaelis-Menten kinetics. Because both $\bm{C1N}$ and $\bm{C2N}$ are thought to be degraded by the same pathway in the nucleus, kinetic equations using the {\it pseudo} steady-state hypothesis were derived for two substrates sharing the same enzyme. As a result, each CRY isoform acts as an inhibitor to the other's degradation. This mechanism is summarized in \fref{fig:shareddeg}.
 \end{itemize}
 
 \begin{figure}[tbp]
@@ -216,7 +216,7 @@ The end goal is the degradation rates of the two enzyme complexes:
     r_{d,2} &= k_{d,2} \ \text{[ES2]}
   \end{split}
 \end{align}
-As was done in \fref{sec:mmenten}, we invoke the standard pseudo steady-state assumption and set $\frac{d[\text{ES}]}{dt}=0$, and obtain the following production = consumption equalities for [ES1]:
+As was done in \fref{sec:mmenten}, we invoke the standard pseudo steady-state assumption and set $\nicefrac{d[\text{ES}]}{dt}=0$, and obtain the following production = consumption equalities for [ES1]:
 \begin{equation} \label{eq:pss}
   k_1\text{[E]}\text{[S]} = k_{-1}\text{[ES1]} + k_{d,1}\text{[ES1]}
 \end{equation}
@@ -241,17 +241,19 @@ If we perform the same operations for [ES2] and plug them into \fref{eq:eqabove}
   \label{eq:twofracs}
   [\text{ES1}] &= \left(\frac{\text{[E]}_t \text{[S1]}}{K_1 + \text{[S1]}}\right) \left(\frac{1 - \frac{\text{[S2]}}{K_2 + \text{[S2]}}}{1 - \frac{\text{[S1]} \text{[S2]}}{(K_1 + \text{[S1]}) (K_2 + \text{[S2]})}}\right)
 \end{align}
-If we pull the second fraction from (\fref{eq:twofracs}) into the denominator of the first, we can simplify further.
-\begin{align}
-  [\text{ES1}] &= \frac{\text{[E]}_t \text{[S1]}}{\left(\frac{K_1 + \text{[S1]} - \frac{\text{[S1]} \text{[S2]}}{K_2 + \text{[S2]}}}{1 - \frac{\text{[S2]}}{K_2 + \text{[S2]}}}\right)} \notag\\
-  [\text{ES1}] &= \frac{\text{[E]}_t \text{[S1]}}{\left(\frac{K_2 + \text{[S2]}}{K_2}\right) \left(K_1 + \text{[S1]} - \frac{\text{[S1]} \text{[S2]}}{K_2 + \text{[S2]}}\right)} \notag\\
-  [\text{ES1}] &= \frac{K_2 \text{[E]}_t \text{[S1]}}{(K_1 + \text{[S1]})(K_2 + \text{[S2]}) - \text{[S1]}\text{[S2]}} \notag\\
-  [\text{ES1}] &= \frac{K_2 \text{[E]}_t \text{[S1]}}{K_1 K_2 + K_2\text{[S1]} + K_1\text{[S2]}} \notag\\
-  [\text{ES1}] &= \frac{K_2 \text{[E]}_t \text{[S1]}}{K_1 K_2 + K_2\text{[S1]} + K_1\text{[S2]}} \notag\\ \notag\\
-  & \text{Dividing top and bottom by K2:} \notag\\
-  [\text{ES1}] &= \frac{\text{[E]}_t \text{[S1]}}{K_1 + \text{[S1]} + \frac{K_1}{K_2}\text{[S2]}}\label{eq:es1}
-\end{align}
-Substituting (\fref{eq:es1}) into (\fref{eq:r1}) and setting $K_1 = K_2$, $k_{d,1} \neq k_{d,2}$, we obtain the final shared rate laws (with an equivalent analysis for [ES2])
+If we pull the second fraction from \fref{eq:twofracs} into the denominator of the first, we can simplify further.
+\begin{align*}
+  [\text{ES1}] &= \frac{\text{[E]}_t \text{[S1]}}{\left(\frac{K_1 + \text{[S1]} - \frac{\text{[S1]} \text{[S2]}}{K_2 + \text{[S2]}}}{1 - \frac{\text{[S2]}}{K_2 + \text{[S2]}}}\right)} \\
+  [\text{ES1}] &= \frac{\text{[E]}_t \text{[S1]}}{\left(\frac{K_2 + \text{[S2]}}{K_2}\right) \left(K_1 + \text{[S1]} - \frac{\text{[S1]} \text{[S2]}}{K_2 + \text{[S2]}}\right)} \\
+  [\text{ES1}] &= \frac{K_2 \text{[E]}_t \text{[S1]}}{(K_1 + \text{[S1]})(K_2 + \text{[S2]}) - \text{[S1]}\text{[S2]}} \\
+  [\text{ES1}] &= \frac{K_2 \text{[E]}_t \text{[S1]}}{K_1 K_2 + K_2\text{[S1]} + K_1\text{[S2]}} \\
+  [\text{ES1}] &= \frac{K_2 \text{[E]}_t \text{[S1]}}{K_1 K_2 + K_2\text{[S1]} + K_1\text{[S2]}}
+\end{align*}
+Dividing top and bottom by K2:
+\begin{equation}
+[\text{ES1}] = \frac{\text{[E]}_t \text{[S1]}}{K_1 + \text{[S1]} + \frac{K_1}{K_2}\text{[S2]}}\label{eq:es1}
+\end{equation}
+Substituting \fref{eq:es1} into \fref{eq:r1} and setting $K_1 = K_2$, $k_{d,1} \neq k_{d,2}$, we obtain the final shared rate laws (with an equivalent analysis for [ES2])
 \begin{align*}
   r_{d,1} &= \frac{V_\text{max,1} \text{[S1]}}{K_M + \text{[S1]} + \text{[S2]}} \\ \\
   r_{d,2} &= \frac{V_\text{max,2} \text{[S2]}}{K_M + \text{[S1]} + \text{[S2]}}
@@ -395,7 +397,7 @@ The knockout periods are 21.7 hr ($91.4\%$ of WT) for $\text{\it Cry1}^{-/-}$  
 \end{figure}
 
 \subsubsection{SiRNA knockdowns}
-SiRNA knockdowns were performed {\it in silico} by increasing the degradation rate for the corresponding mRNA; shown in \fref{fig:experimentalvalidation}, as done previously in \cite{Relogio2011}. 
+SiRNA knockdowns were performed {\it in silico} by increasing the degradation rate for the corresponding mRNA (\fref{fig:experimentalvalidation}), as done previously in \cite{Relogio2011}. 
 {\it Cry1} and {\it Cry2} knockdowns in wild type conditions show close agreement to experiment \cite{Zhang2009}, and demonstrate that altering the nuclear CRY1/CRY2 ratio is effective in changing the period of oscillation.
 
 \subsubsection{CRY2 cytosolic stabilization}
@@ -404,7 +406,7 @@ To demonstrate the effect in silico, the degradation rate of cytosolic CRY2 was 
 Matching experimental evidence, the cytosolic CRY2 levels rose, with a corresponding change in the nuclear CRY ratio and decrease in period.
 
 \subsubsection{Single cry perturbations}
-The $\text{\it Cry1}^{+/-}$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/-}$ single/double knockout perturbations (\cite{VanderHorst1999}) were approximated with an appropriate knockout and siRNA knockdown, and show the correct period shortening. 
+The $\text{\it Cry1}^{+/-}$ $\text{\it Cry2}^{-/-}$ and $\text{\it Cry1}^{-/-}$ $\text{\it Cry2}^{+/-}$ single/double knockout perturbations from \cite{VanderHorst1999} were approximated with an appropriate knockout and siRNA knockdown, and show the correct period shortening. 
 With one {\it Cry} knocked out, the levels of cytoplasmic PER are no longer stoichiometrically limiting. 
 In this case, less {\it Cry} leads to less nuclear complex, which is cleared faster.
 
@@ -419,7 +421,7 @@ In this case, less {\it Cry} leads to less nuclear complex, which is cleared fas
 \subsection{Prediction of KL001 mechanism}
 Using the completed model, I investigated possible mechanisms by which KL001 might lengthen the circadian period. 
 Experimental evidence indicates that stabilization of CRY can either lengthen the period ({\it Fbxl3} knockdown) or shorten the period ({\it Dyrk1a} knockdown). 
-Assuming equal effect on both isoforms of {\it Cry}, the model confirms that cytoplasmic stabilization results in period shortening, since excess CRY expedites the nuclear import of the PER:CRY repressive complex. 
+Assuming equal effect on both isoforms of CRY, the model confirms that cytoplasmic stabilization results in period shortening, since excess CRY expedites the nuclear import of the PER:CRY repressive complex. 
 However, stabilizing nuclear CRY (\fref{fig:nucleartimecourse}, last column) yields the appropriate period lengthening observed experimentally. 
 We therefore predicted that KL001 acts primarily in the nucleus, potentially through the FBXL3 degradation pathway. 
 Additionally, the model predicts that the compound’s effect on $\text{\it Cry1}^{-/-}$ and $\text{\it Cry2}^{-/-}$ systems would be similar to its effect on the wild type clock, causing dose-dependent period lengthening (\fref{fig:40662prediction}, left and right).
