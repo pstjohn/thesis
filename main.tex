@@ -17,6 +17,7 @@
 }
 
 \usepackage[font=rm, labelfont={rm,bf}, margin=1cm]{caption}
+\usepackage{subcaption}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage{lmodern}
@@ -94,6 +95,8 @@
 
 \title{Mathematical Approaches to Understanding Mammalian Circadian Rhythms}
 
+% \includeonly{chap7/chap7}
+
 \begin{document}
 \doublespace
 \frontmatter
@@ -115,14 +118,14 @@
 \include{chap3/chap3}
 \include{chap4/chap4}
 \include{chap5/chap5}
-% \include{chap6/chap6}
-% \include{chap7/chap7}
+\include{chap6/chap6}
+\include{chap7/chap7}
 
 \backmatter
 {\singlespace
 \bibliographystyle{ieeetr}
-% \bibliography{library.bib}
-\bibliography{condensed_library.bib}
+\bibliography{library.bib}
+% \bibliography{condensed_library.bib}
 }
 
 

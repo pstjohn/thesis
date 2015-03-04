@@ -1,17 +1,4 @@
-\chapter[Amplitude metrics for cellular bioluminescence reporters]{Amplitude metrics for cellular bioluminescence reporters\footnote{Portions of this chapter are published in P. C. St. John, S. R. Taylor, J. H. Abel, and F. J. Doyle, ``Amplitude Metrics for Cellular Circadian Bioluminescence Reporters,'' {\itshape Biophys. J.}, vol. 107, pp. 2712– 2722, Dec. 2014.}}
-% \section{Motivation, link to previous chapter}\blindtext
-% \subsection{Different enzymes control circadian rhythms at different phases}\blindtext
-% \subsection{Perturbations likely have a time-dependent effect on amplitude}\blindtext
-% \subsection{Comparison of Ukai vs Pulivarthy 2007}\blindtext
-% \section{Single cell amplitude metrics}\blindtext
-% \subsection{Definition of amplitude metric}\blindtext
-% \subsection{Finite difference ARC}\blindtext
-% \subsection{Derivation of sensitivity-based method}\blindtext
-% \section{Population-level models}\blindtext
-% \subsection{Definitions and diffusion-convection equation}\blindtext
-% \subsection{Circular statistics}\blindtext
-% \subsection{Inverting $p(\theta, \hat{t})$}\blindtext
-% \subsection{Calculating $\bar{x}(\hat{t})$ and $\hat{x}(\hat{t})$}\blindtext
+\chapter[Amplitude metrics for cellular bioluminescence reporters]{Amplitude metrics for cellular bioluminescence reporters\footnote{Portions of this chapter are published in P. C. St. John, S. R. Taylor, J. H. Abel, and F. J. Doyle, ``Amplitude Metrics for Cellular Circadian Bioluminescence Reporters,'' {\itshape Biophys. J.}, vol. 107, pp. 2712– 2722, Dec. 2014.}}\label{chap:arc}
 
 \section{Background}
 
@@ -316,9 +303,8 @@ Complex variables for the population before and after perturbation can be calcul
 In \fref{eq:zhat}, we avoid calculating the perturbed population explicitly by instead integrating over the new phases at the prior population density function.
 Population-level amplitude and phase responses can therefore be calculated by
 \begin{align}
-  \Delta \bar{\theta} &= \angle z - \angle \hat{z} \\
-  \Delta \rho &= |z| - |\hat{z}|.
-  \label{eq:popampchange}
+  \Delta \bar{\theta} &= \angle z - \angle \hat{z} \label{eq:popphasechange}\\
+  \Delta \rho &= |z| - |\hat{z}|. \label{eq:popampchange}
 \end{align}
 Population-level PRCs and ARCs can be tabulated by solving equations~(\ref{eq:zbar}-\ref{eq:popampchange}) for populations $p(\theta, \tilde{t})$ with different mean phases.
 It is important to note that the ARC at the population level strongly depends on the slope of the PRC, as has been shown previously \cite{Ukai2007}.
