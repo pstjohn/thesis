@@ -1,6 +1,41 @@
 \chapter*{Abstract}
 \markboth{Abstract}{Abstract}
 
-\Blindtext
+Nearly all life on earth exists in a periodic environment, in which important factors like sunlight and temperature change predictably with a twenty-four hour cycle.
+% There is therefore an evolutionary advantage for organisms to partition behavior into certain times of day.
+As a process which only reacts to the current state of a periodic signal will constantly suffer a phase lag, organisms have developed a natural feedforward controller to predict upcoming environmental changes.
+Such a system allows an organism to align their behavior to the correct phase of the day/night cycle and ease transitions between times of energy abundance and energy scarcity.
+These daily changes in physiology are known as circadian rhythms and are coordinated by intricate genetic regulatory networks.
+% In mammals, circadian rhythms have a hierarchical structure, in which interactions at the organism, tissue, and cellular level all play important roles.
 
-% Daily changes in mammalian physiology, known as circadian rhythms, are coordinated by intricate genetic regulatory networks that process information from the environment to prepare the body for upcoming demands. This natural feed-forward controller is essential to maintaining metabolic homeostasis, and compromised circadian rhythms have been linked to the onset of metabolic disease. Since circadian rhythms can be damped by factors such as jet lag, shift work, and high fat diets, numerous studies have focused on elucidating mechanisms which govern circadian amplitude. My work uses techniques from dynamic systems to model circadian oscillations at different scales. By capturing changes in gene expression using ordinary differential equation models, I am able to investigate how pharmacological changes affect gene expression at the single-cell level. However, physiologically relevant changes gene expression are determined by the collective output of many cells at the tissue-level.  I therefore develop computationally efficient techniques of simulating the average response from a population of oscillating cells. These techniques use a probability density function to describe the synchrony of the population, and a convection-diffusion equation to capture the evolution of the population in time. My work provides new tools to help understand the effects of pharmacological perturbations in experimental conditions, which will ultimately allow the development of therapies to treat common health issues associated with the demands of a 24-hr society.
+Over evolutionary timescales, nearly all aspects of gene expression have been coupled to the day/night cycle.
+As a result, circadian rhythms are essential to maintaining metabolic homeostasis, DNA repair, cell cycling, and other important cellular processes.
+Since modern societies have deviated from their evolutionary prescribed sleep and feeding schedules, disturbances to circadian gene expression have grown more common.
+Beyond acute effects on performance and fatigue, compromised circadian rhythms have been linked to chronic issues such as the onset of metabolic disease or increased cancer risk.
+Since circadian rhythms can be damped by factors such as jet lag, shift work, and high fat diets, there has been recent interest in developing pharmacological or behavioral therapies which might restore normal circadian rhythms.
+
+This thesis uses techniques from dynamic systems to model circadian oscillations at different scales. 
+First, a mathematical model of the core circadian feedback loop is developed in order to explain a novel small molecule modulator, KL001.
+Through this mathematical model, we gain new insight into how the two isoforms of cryptochrome (CRY1 and CRY2) interact to control the period.
+The identifiability of parameters and parametric sensitivities in oscillatory models is investigated next, and a dynamic optimization technique using collocation methods and nonlinear programming is shown to be able to efficiently bootstrap confidence intervals in such parameters.
+This technique is then applied to a set of three circadian models in order to identify mechanisms which are able to differentiate between the effect of two small molecule regulators, even across differences in parameter values and kinetic assumptions.
+Next, the effect of finite-duration perturbations on clock amplitude and synchrony is explored.
+New techniques and sensitivity analyses are developed which allow the effect of transient perturbations on the clock to be efficiently calculated without the need for computationally intensive stochastic simulations.
+Finally, the effect of clock perturbations on stochastic noise is investigated by fitting the damping rate of cultured cellular reporters.
+Using genome-wide siRNA knockdown screens, we are able to gain fundamental insight into design principles of circadian oscillations.
+
+
+
+
+%% This was the first attempt, seemed too general
+% By capturing changes in gene expression using ordinary differential equation models, we investigate how pharmacological changes affect gene expression.
+% Additionally, the development of novel small-molecule modulators of circadian rhythms permits new routes for investigation into the functional roles of core clock proteins.
+% By combining the biochemistry and observed effects of small molecule treatments with mathematical modeling, we demonstrate new systems-level insight into the properties circadian oscillations.
+% Along the way, new methodology is developed in order to quantify biologically relevant quantities and confidence intervals more efficiently.
+
+ 
+%% This was copied/pasted from an airproducts abstract
+% However, physiologically relevant changes gene expression are determined by the collective output of many cells at the tissue-level. 
+%  I therefore develop computationally efficient techniques of simulating the average response from a population of oscillating cells. 
+% These techniques use a probability density function to describe the synchrony of the population, and a convection-diffusion equation to capture the evolution of the population in time. 
+% My work provides new tools to help understand the effects of pharmacological perturbations in experimental conditions, which will ultimately allow the development of therapies to treat common health issues associated with the demands of a 24-hr society.

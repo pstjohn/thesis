@@ -68,7 +68,7 @@
 
 % For model float
 \usepackage{float}
-\newfloat{model}{thp}{lop}[chapter]
+\newfloat{model}{thp}{lop} % Frank doesn't want models labeled by chapter
 \floatname{model}{Model}
 \floatstyle{plaintop}
 \restylefloat{model}
@@ -95,6 +95,7 @@
 
 \title{Mathematical Approaches to Understanding Mammalian Circadian Rhythms}
 
+% This command is great to only print out a certain chapter, keeping references etc from other chapters.
 % \includeonly{chap7/chap7}
 
 \begin{document}
@@ -104,9 +105,9 @@
 \include{preamble/titlepage}
 \include{preamble/signature}
 \include{preamble/copyright}
-% \include{preamble/acknowledgement}
+\include{preamble/acknowledgement}
 \include{preamble/resume}
-% \include{preamble/abstract}
+\include{preamble/abstract}
 \tableofcontents
 \listoffigures
 \listof{model}{List of Models}

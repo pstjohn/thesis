@@ -13,13 +13,13 @@ A cell's behavior is governed by the dynamic and selective expression of its gen
 These rates, which change with environmental conditions and are often impossible to measure accurately {\itshape in vivo} or {\itshape in vitro}, determine the function of a regulatory pathway. 
 While studying the roles of individual proteins can often provide some insight on how a particular function is achieved, this approach is limited in explaining complicated cellular phenomena at the scale of dozens to hundreds of interacting genes. 
 With the aid of mathematical models, it is increasingly possible to create {\itshape in silico} realizations of genetic regulatory networks to examine their dynamic properties.
-For example, in the previous chapter, I presented a mathematical model of gene regulation for circadian rhythms, using new data from small molecule modulators to gain further insight into clock dynamics.
+For example, in the previous chapter, we presented a mathematical model of gene regulation for circadian rhythms, using new data from small molecule modulators to gain further insight into clock dynamics.
 
 Essential to understanding how genetic circuits operate is connecting how inputs (i.e., environmental changes, extracellular signals) are processed to give the appropriate outputs (protein expression, cellular response). 
 % In some cases these quantities may be changes to oscillatory profiles: for example, seasonal changes in day length leading to flowering or hibernation. 
 Models of genetic regulatory networks, often sets of ordinary differential equations (ODEs), contain many unknown parameters that must be estimated from experimental data \cite{Gutenkunst2007}. 
 Derivatives of the model output with respect to changes in input, known as local sensitivities, are frequently validated experimentally or used to predict potential targets for pharmaceuticals \cite{Kell2006}. 
-In \fref{chap:model}, I used local sensitivities within the cost function to ensure the model matched previously known experimental results.
+In \fref{chap:model}, we used local sensitivities within the cost function to ensure the model matched previously known experimental results.
 However, since sensitivities can change drastically with respect to the particular parameter values chosen, the confidence associated with parameter and sensitivity values is an important consideration in model analysis and design.
 
 \subsection{Identifiability analysis}
@@ -370,5 +370,5 @@ In many biological systems, such data is only available for the activity levels 
 However, the continued development of high-throughput genomic and proteomic techniques promise to deliver time-series data for a much larger network of components. 
 With expanding datasets, these methods will likely prove useful for the quantitative evaluation of uncertainty in larger biological models.
 
-In the following chapter, I apply this method to several existing circadian models in order find conserved predictions across different model kinetics and parameterizations. 
+In the following chapter, we apply this method to several existing circadian models in order find conserved predictions across different model kinetics and parameterizations. 
 Such an approach allows us to further differentiate between the actions of two seemingly similar small molecule perturbations. 

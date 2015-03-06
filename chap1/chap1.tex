@@ -13,10 +13,10 @@ Such rhythms are known as {\itshape circadian}, and are classified by a number o
   \item They oscillate with a roughly 24 hour period.
 \end{itemize}
 
-In this thesis, I apply techniques from systems biology in order to gain a more thorough understanding of how circadian rhythms control mammalian physiology, and how these rhythms might be altered through pharmacological therapies. % Really for abstract
+In this thesis, we apply techniques from systems biology in order to gain a more thorough understanding of how circadian rhythms control mammalian physiology, and how these rhythms might be altered through pharmacological therapies. % Really for abstract
 Systems biology is a multidisciplinary field, drawing from biology, mathematics, and computer science. 
-In this chapter, I first provide a background on the biology of circadian rhythms, followed by an introduction to the mathematical techniques which have been used to study them. 
-I also discuss some computational considerations in the estimation of model parameters.
+In this chapter, we first provide a background on the biology of circadian rhythms, followed by an introduction to the mathematical techniques which have been used to study them. 
+We discuss some computational considerations in the estimation of model parameters.
 
 \section{Biological background}
 
@@ -71,7 +71,7 @@ Additionally, feeding cycles have been shown to have a profound impact on  circa
 
 \subsubsection{Circadian oscillations at the single-cell level}
 Circadian rhythms are generated at the single-cell level through genetic regulatory networks with inherent time-delayed negative feedback. 
-Transcription factors CLOCK and BMAL1, peaking in the early night, activate expression of EBOX genes period ({\itshape Per1} and {\itshape Per2}) and cryptochrome ({\itshape Cry1} and {\itshape Cry2})\footnote{In this thesis, I denote mRNA species using italics, and protein products using all capital letters.}.
+Transcription factors CLOCK and BMAL1, peaking in the early night, activate expression of EBOX genes period ({\itshape Per1} and {\itshape Per2}) and cryptochrome ({\itshape Cry1} and {\itshape Cry2})\footnote{In this thesis, we denote mRNA species using italics, and protein products using all capital letters.}.
 {\itshape Per} and {\itshape Cry} protein products, PER and CRY, peaking during the early day, form a heterodimeric complex to cross the nuclear membrane \cite{Ko2006}. 
 However, since PER is present in the cytoplasm in much lower quantities than CRY, it is stochiometrically-limiting for nuclear entry \cite{Lee2001}. 
 Once inside the nucleus, the PER-CRY complex dissociates, and CRY represses CLOCK-BMAL1 mediated activation of EBOX genes, leading to rhythmic gene expression.
@@ -97,7 +97,7 @@ A schematic of the core feedback in mammalian circadian rhythms is shown in \fre
 
 \subsection{Experimental techniques}
 
-While the focus of this thesis is primarily computational, I present a brief overview of the relevant experimental methods for studying circadian rhythms.
+While the focus of this thesis is primarily computational, we present a brief overview of the relevant experimental methods for studying circadian rhythms.
 Most classical experiments determined the roles and importance of circadian genes using activity data of mouse knockouts \cite{Vitaterna1994}.
 For instance, the period-determining effect of CRY1 and CRY2 were found by analyzing wheel-running behavior of mice in plots known as actograms \cite{VanderHorst1999}, as shown in \fref{fig:vanderhorst}.
 
@@ -123,7 +123,7 @@ Such systems have allowed the development of high-throughput methods for studyin
 
 \section{Mathematical modeling}
 
-Circadian rhythms, due to their dynamic nature, have long been the subject of mathematical inquiry \cite{Winfree2001}. In this section, I review some of the methods previously applied to understanding circadian rhythms.
+Circadian rhythms, due to their dynamic nature, have long been the subject of mathematical inquiry \cite{Winfree2001}. In this section, we review some of the methods previously applied to understanding circadian rhythms.
 
 \subsection{Introduction to modeling gene regulation}
 
@@ -264,7 +264,7 @@ that, in the limit as $d, \Delta p \to 0$,
 \subsection{Common kinetic assumptions}\label{sec:kinetic}
 
 In constructing an ODE model of a genetic regulatory network, several common kinetic motifs are employed to capture various types of activation, repression, degradation, and complex formation.
-In this section, I provide an overview of the kinetic assumptions used for model construction in subsequent chapters.
+In this section, we provide an overview of the kinetic assumptions used for model construction in subsequent chapters.
 
 \subsubsection{Mass action law}
 
@@ -370,7 +370,7 @@ Together, these equations form the chemical master equation, a Markov (memoryles
 Models are typically used to validate that our assumed mechanisms are mathematically feasible, and to systematically explore consequences of our kinetic assumptions.
 When these models differ from experimental results, we must re-analyze which of our assumptions might be incorrect and design new experiments to test these assumptions.
 While biological insight is typically sufficient to construct candidate models $f(x, p)$ using standard assumptions outlined in \fref{sec:kinetic}, values for the kinetic parameters are typically derived by fitting experimental data.
-In this section, I describe optimization techniques which have proven successful in finding descriptive parameter sets for models of circadian rhythms.
+In this section, we describe optimization techniques which have proven successful in finding descriptive parameter sets for models of circadian rhythms.
 
 \subsubsection{Cost function}
 
@@ -430,5 +430,5 @@ A model by To {\itshape et al.,} 2007 coupled together cells modeled by Leloup \
 Following the differentiation between the properties of single-cell oscillators and populations, Mirsky {\itshape et al.,}, 2009 developed a model to show how single-cell knockout phenotypes could be differentiated from those at the population-level \cite{Mirsky2009}.
 Rel{\'o}gio {\itshape et al.,} 2011 demonstrated that positive feedback through ROR/REV-ERB had a stabilizing effect on the clock \cite{Relogio2011}, while a model from Kim \& Forger, 2012 demonstrated the importance of stoichiometry between positive and negative components \cite{Kim2012}.
 
-Despite the wide availability of mathematical models for circadian rhythms, demonstrating that new theories are mathematically rigorous often requires the creation of a new model. In the following chapter, I describe the process of model creation in more detail following new experimental insight into core clock dynamics.
+Despite the wide availability of mathematical models for circadian rhythms, demonstrating that new theories are mathematically rigorous often requires the creation of a new model. In the following chapter, we describe the process of model creation in more detail following new experimental insight into core clock dynamics.
 

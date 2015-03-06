@@ -2,11 +2,11 @@
 
 \section{Background}
 
-In the previous chapter, I described used mathematical modeling to explain the systems-level effects of two pharmacological agents. 
+In the previous chapter, we describe used mathematical modeling to explain the systems-level effects of two pharmacological agents. 
 In doing so, it was shown that each compound controlled reactions which primarily occur during specific times of day. 
 Since clinical applications of circadian therapies will likely have a time at which they are administered, it is important to understand the effects of temporary perturbations on circadian amplitude. 
 The effects of temporary perturbations are more complicated, however, since they may effect both the single-cell oscillator as well as the synchrony of cell populations as a whole.
-In this chapter, I develop the mathematical background required to understand and efficiently predict the response of a population of oscillators to a temporary change.
+In this chapter, we develop the mathematical background required to understand and efficiently predict the response of a population of oscillators to a temporary change.
 
 \subsection{Importance of circadian amplitude}
 % In mammals, circadian rhythms are endogenous oscillations in gene transcription responsible for coordinating daily changes in physiology.
@@ -43,7 +43,7 @@ Likewise, phase-only models correctly capture the change in synchrony of a popul
 Explicit stochastic simulations of populations of cells are capable of realistically capturing both single-cell and population-level effects, and have been successfully used to understand the response of coupled oscillators to external VIP perturbation \cite{An2013}.
 However, these methods are computationally expensive, and cannot be used for an analytical understanding of amplitude response.
 
-In this chapter, I describe approaches to quantify amplitude change in a population of non-interacting oscillators.
+In this chapter, we describe approaches to quantify amplitude change in a population of non-interacting oscillators.
 By exploiting the independence of each oscillator, we derive computationally efficient methods to approximate the mean dynamics of full stochastic simulations.
 Additionally, our method allows the calculation of ARCs at both the single-cell and population level, allowing the behavior of the system to be quickly profiled.
 Specifically, we use ODE models to describe the transient amplitude response at the single-cell level, coupled with a phase probability density function to describe population-level dynamics.
@@ -561,5 +561,5 @@ For such instances, we hope that the mathematical theory presented here will per
 
 One result from this chapter, which has previously been discussed in the circadian literature \cite{Rougemont2007}, is that in noninteracting populations, stochastic noise at the single-cell level affects the damping rate of a population of oscillators. 
 Stochastic noise is often a relevant circadian parameter, as it describes the precision of the underlying oscillators. 
-In the following chapter, I show how population-level recordings, even those from high-throughput circadian screens, can be used to gain estimates of stochastic noise at the single-cell level. 
+In the following chapter, we show how population-level recordings, even those from high-throughput circadian screens, can be used to gain estimates of stochastic noise at the single-cell level. 
 Using such an approach, it is possible to gain genome-wide insight into how noise is regulated in the cell-autonomous feedback loop. 

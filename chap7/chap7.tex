@@ -1,16 +1,16 @@
 \chapter{Conclusions and future work}
 
-In the preceding chapters, I have described several research threads that I have been able to tie up into more or less complete stories during my PhD thesis.
+In the preceding chapters, we discuss several research threads that I have been able to tie up into more or less complete stories during my PhD thesis.
 I have been fortunate that the model I created early in my PhD thesis, described in \fref{chap:model}, has remained current and predictive for the past few years.
 The model was used in some capacity in each of my publications, whether as simply an example oscillator (in \fref{chap:id} or \fref{chap:arc}), or for its biological insight (in \fref{chap:longdaysin} or \fref{chap:decay}).
-Another theme throughout my thesis has been the development and subsequent implementation of various computational methods or approaches.
+Another theme throughout this thesis has been the development and subsequent implementation of various computational methods or approaches.
 Specifically, the identifiability scheme discussed in \fref{chap:id} was used to make the predictions described in \fref{chap:longdaysin}, and many of the ideas described in \fref{chap:arc} were used as the motivations behind the more data-driven analysis in \fref{chap:decay}.
 
 I am grateful to have been able to meander relatively freely from project to project, thanks in part to my Mitsubishi Chemical fellowship, and as a result each chapter largely follows from the previous work.
 Despite this, there have been several research lines that, for one reason or another, I was unable to follow through with during my PhD work.
 In this chapter, I describe some of those unexplored branches in the hope that a future researcher might carry on where I left off.
 
-\section{Experimental validation of the amplitude response to metabolic stimulation}
+\section{Experimental validation of the amplitude response to metabolic stimulation}\label{sec:chida}
 
 One of the key motivations for the development of the amplitude response curve metrics was applying the methods to metabolic perturbations.
 Several studies have highlighted the importance of rhythmic food intake in maintaining high amplitude rhythms in peripheral tissues \cite{Vollmers2009, Hatori2012}.
@@ -96,11 +96,11 @@ Until such time, however, the amplitude response theory will likely be primarily
 % \subsection{Optimal control strategies to maximize peripheral clock amplitude}
 % \subsection{Fewest treatments, combinatorial perturbations, etc.}
 
-\section{Further extensions to the population phase response theory}
+\section{Further extensions to the population phase response theory}\label{sec:prd}
 
-In \fref{chap:arc}, I pull together definitions from a variety of different sub-fields to create a model of a population of noisy oscillators, each following their own limit cycle dynamics. 
-In several cases, there were further analytical treatments which I wished I could have spent more time solving, and perhaps solutions exist in literature on phase oscillators which I am not familiar with.
-Regardless, in this section, I present some unfinished derivations and thoughts on phase populations undergoing perturbations.
+In \fref{chap:arc}, we pull together definitions from a variety of different sub-fields to create a model of a population of noisy oscillators, each following their own limit cycle dynamics. 
+In several cases, there were further analytical treatments which could have solved in greater detail, and perhaps solutions exist in the voluminous literature on phase oscillators.
+Regardless, in this section, we present some unfinished derivations and thoughts on phase populations undergoing perturbations.
 
 \subsection{Infinitesimal population PRCs and ARCs for limiting cases}
 In \fref{chap:arc}, amplitude response curves at the population-level are calculated numerically by performing a change of variables of the initial probability density function $p(\theta)$ to the probability after perturbation, $\hat{p}(\theta)$.
@@ -164,7 +164,7 @@ Finding the absolute values and arguments of the series solution would then pose
 \subsection{Phase Response distributions}
 
 Stochastic noise at the single-cell level plays an important role in how cells respond to temporary perturbations.
-In the analytical derivations of \fref{chap:arc} and in the previous section, I assume that cells respond deterministically to perturbations which induce a phase response curve.
+In the analytical derivations of \fref{chap:arc} and in the previous section, we assume that cells respond deterministically to perturbations which induce a phase response curve.
 While this approximation may be valid for small perturbations, in reality stochastic noise will ensure that no two cells, even if they start from identical initial conditions, will experience the same phase change from a perturbation.
 A possible extension to the population-level phase response curve would be incorporating the notion of a phase response {\itshape distribution} (PRD), initially postulated by An {\itshape et al.,} 2013 \cite{An2013}.
 Single-cell phase response curves have also been tabulated by Pulivarthy {\itshape et al.,} 2007, showing variance in the expected phase following perturbation.
@@ -179,7 +179,7 @@ Single-cell phase response curves have also been tabulated by Pulivarthy {\itsha
 A theoretical treatment of the phase response distribution might start with by the phase transition curve as mapping each initial phase to a distribution of perturbed phases $g(\theta_i) = {\cal WN}(\mu(\theta_i), \sigma^2(\theta_i); \theta_f)$.
 A schematic of this is shown in \fref{fig:prd-def}.
 The phase-transition function $g$ can therefore be imagined as a two-dimensional probability density function, in which $g(x, y)$ represents the probability of an oscillator with initial phase $x$ being transformed to a final phase $y$.
-I will call this a phase transition surface, which is useful in calculating the oscillator probabilities following perturbation.
+We will call this a phase transition surface, which is useful in calculating the oscillator probabilities following perturbation.
 
 \begin{figure}[h!]
   \centering
@@ -270,8 +270,8 @@ Errors in measuring $\theta_i$ and $\theta_f$ could be estimated from the combin
 
 \section{Improving identifiability of circadian models by minimizing energy usage}
 
-In \fref{chap:id}, I describe a means of fitting optimal model parameters repeatedly to bootstrapped experimental data.
-Using such a method, I realized that there were often structural identifiability issues in many circadian models, specifically with regard to protein turnover rate.
+In \fref{chap:id}, we describe a means of fitting optimal model parameters repeatedly to bootstrapped experimental data.
+In using such a method, it became apparent that there were often structural identifiability issues in many circadian models, specifically with regard to protein turnover rate.
 For example, it was often possible to capture a similar sinusoidal profile both with low degradation and low production rates, as well as high production and high degradation rates.
 In techniques such as metabolic flux analysis, a large number of unknowns are optimized by assuming an organism has evolved towards some metabolic goal: for instance optimal growth or minimum energy consumption.
 Such an approach might also be useful in optimizing circadian models, since actual genetic circuits would likely not use unrealistically high protein turnover rates.
@@ -280,6 +280,13 @@ A parameter to determine the relative weight of each term would be required, whi
 
 \section{Conclusion}
 
+While many of the research ideas expressed in this chapter seem like promising areas of research, there was sadly not enough time during my PhD to address all open ends.
+Some projects, such as those described in \fref{sec:chida} and \fref{sec:prd}, were not pursued due to a lack of experimental tractability.
+There is no reason to suspect that these limitations will always be the case, however, and therefore they may prove more fruitful in the future.
+
+In general, circadian rhythms serve as an worthwhile example of the strides that can be taken between experimental and computational investigators.
+Because the overlap in shared skills is often very little, it can be difficult for computational researchers to judge the quality of experimental work; just as it can be difficult for experimentalists to judge the methodology and reliability of mathematical models.
+Collaborations are therefore essential not only in generating new data, but also in mutually understanding results in each sub-field.
 
 
 
