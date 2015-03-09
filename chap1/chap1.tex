@@ -44,7 +44,7 @@ Over time, these pathways coupled to transcription-translation feedback loops in
 \begin{figure}[tbp]
   \centering
 \includegraphics[width=0.8\textwidth]{chap1/figures/edgar_ros.pdf}
-\titlecaption{Reactive oxygen species are conserved markers of circadian rhythms}{A timeline of the appearance of the main circadian feedback loops demonstrates that the rhythmic protection against light-mediated oxidation is a conserved rhythm across many evolutionary trees. Figure taken from \cite{Edgar2012}.}
+\titlecaption{Reactive oxygen species are conserved markers of circadian rhythms}{A timeline of the appearance of the main circadian feedback loops demonstrates that the rhythmic protection against light-mediated oxidation is a conserved rhythm across many evolutionary trees. Figure reprinted from \cite{Edgar2012}.}
   \label{fig:edgarros}
 \end{figure}
 
@@ -98,32 +98,44 @@ A schematic of the core feedback in mammalian circadian rhythms is shown in \fre
 \subsection{Experimental techniques}
 
 While the focus of this thesis is primarily computational, we present a brief overview of the relevant experimental methods for studying circadian rhythms.
-Most classical experiments determined the roles and importance of circadian genes using activity data of mouse knockouts \cite{Vitaterna1994}.
+Much of the work presented in this thesis has been performed in collaboration with experimental groups, including Steve Kay's group at the University of Southern California (previously UC San Diego) and Andrew Liu's group at the University of Memphis.
+
+Circadian rhythms are studied in many different types of model organisms, and each organism requires different techniques for studying their behavior.
+Some of the earliest work that determined the underlying transcriptional oscillator was performed in {\itshape Drosophila}, where it was shown that mutant fly strains had altered reproduction schedules in constant dark conditions \cite{Panda2002}.
+Since many analogs of the genes and proteins responsible for generating circadian rhythms in flies were also present in mammals, including {\itshape Clock, Period,} and {\itshape Cryptochrome}, much of the knowledge gained from studying fly clocks were useful in understanding oscillations in mice \cite{Panda2002}.
+
+Early  experiments determined the roles and importance of mammalian circadian genes using activity data of mouse knockouts in constant darkness \cite{Vitaterna1994}.
 For instance, the period-determining effect of CRY1 and CRY2 were found by analyzing wheel-running behavior of mice in plots known as actograms \cite{VanderHorst1999}, as shown in \fref{fig:vanderhorst}.
 
 \begin{figure}[tbp]
   \centering
   \includegraphics[width=0.7\textwidth]{chap1/figures/vanderhorst.png}
-  \titlecaption{Period effects of CRY knockouts}{Actograms plot the intensity of mouse wheel-running activity. The x-axis plots time of day (data is double-plotted), while the y-axis shows each subsequent day. Black bars for each day indicate the intensity of wheel-running activity. After the mice are transferred to constant darkness, the free-running period can be inferred by fitting a line to the offset in activity onset each day. Figure taken from \cite{VanderHorst1999}.}
+  \titlecaption{Period effects of CRY knockouts}{Actograms plot the intensity of mouse wheel-running activity. The x-axis plots time of day (data is double-plotted), while the y-axis shows each subsequent day. Black bars for each day indicate the intensity of wheel-running activity. After the mice are transferred to constant darkness, the free-running period can be inferred by fitting a line to the offset in activity onset each day. Figure reprinted from \cite{VanderHorst1999}.}
   \label{fig:vanderhorst}
 \end{figure}
 
 While activity-level knockout data is still used to characterize the effects of circadian perturbations, such methods are costly to implement and not amenable to high-throughput experimentation.
 The development of luciferase reporter cell lines has rapidly changed the way circadian genes are screened \cite{Yoo2004}.
-In reporter cells, the coupling of a luciferase protein to a core-clock gene allows the phase of rhythms to be determined by measuring the luminescence output from cultured cells, as shown in \fref{fig:chidalumin}.
+In reporter cells, the coupling of a luciferase protein to a core-clock gene allows the phase of rhythms to be determined by measuring the luminescence output from cultured cells.
 Such systems have allowed the development of high-throughput methods for studying how siRNA \cite{Zhang2009} and small molecules \cite{Hirota2008} affect circadian parameters.
 
-\begin{figure}[tbp]
-  \centering
-  \includegraphics[width=0.45\textwidth]{chap1/figures/cells.png}
-  \includegraphics[width=0.45\textwidth]{chap1/figures/data.png}
-  \titlecaption{Monitoring circadian parameters with bioluminescence reporter cell lines}{Cultured reporter cells allow parameters such as amplitude, period, and decay rate to be easily quantified. Image stills from \cite{Ramanathan2012}.}
-  \label{fig:chidalumin}
-\end{figure}
+As bioluminescence experiments measure the combined output of thousands of individual cells, the synchrony of the population determines in large part the amplitude of the observed rhythms.
+While cells in the SCN communicate using intercellular signals to maintain synchrony in rhythms, cultured cells are suspected to lack a mechanism to spontaneously synchronize \cite{Noguchi2013}.
+As a result, experiments will determine the rhythmicity of cultured cells by synchronizing the cells at the start of recording and recording the damped oscillations as the cells dephase \cite{Welsh2004}.
+While small molecule perturbations are sometimes used, the rhythms of cultured cells are acutely sensitive to their environment, and therefore simply changing the medium is often enough to induce temporary synchrony in oscillations \cite{Izumo2006}.
+
+% \begin{figure}[tbp]
+%   \centering
+%   \includegraphics[width=0.45\textwidth]{chap1/figures/cells.png}
+%   \includegraphics[width=0.45\textwidth]{chap1/figures/data.png}
+%   \titlecaption{Monitoring circadian parameters with bioluminescence reporter cell lines}{Cultured reporter cells allow parameters such as amplitude, period, and decay rate to be easily quantified. Image stills from \cite{Ramanathan2012}.}
+%   \label{fig:chidalumin}
+% \end{figure}
 
 \section{Mathematical modeling}
 
 Circadian rhythms, due to their dynamic nature, have long been the subject of mathematical inquiry \cite{Winfree2001}. In this section, we review some of the methods previously applied to understanding circadian rhythms.
+While a wide range of mathematical approaches have been used to model circadian rhythms {\itshape in silico}, here we focus on techniques from ordinary differential equations (ODEs) and stochastic biochemical systems.
 
 \subsection{Introduction to modeling gene regulation}
 
@@ -417,9 +429,26 @@ The steps involved are as follows, shown schematically in \fref{fig:gaoverview}.
 \subsection{Previous models of circadian rhythms}
 
 Since mathematical methods have been used to study circadian rhythms for some time, many existing models of circadian gene regulation exist.
+A summary of the models discussed in this section is presented in \fref{tab:models}.
 Early examples include Goodwin's 1965 model of enzymatic oscillations, demonstrating that nonlinear oscillations could capture many of the features of biological rhythms \cite{Goodwin1965}. 
 Later models sought to describe specific proteins in the circadian cycle. 
 Goldbeter's 1995 model described one gene in the circadian clock of {\it Drosophila}, and demonstrated that a negative feedback loop with sufficient nonlinearity and time delay was required for circadian oscillations \cite{Goldbeter1995}.
+
+\begin{table}[tbp]
+  \centering
+\begin{tabular}{rrrrc}\toprule
+First Author & Year & States & Parameters & Citation             \\\midrule
+Goodwin      & 1965 & 2      & 5          & \cite{Goodwin1965}   \\
+Goldbeter    & 1995 & 5      & 15         & \cite{Goldbeter1995} \\
+Leloup       & 2003 & 16     & 52         & \cite{Leloup2003}    \\
+Forger       & 2003 & 73     & 38         & \cite{Forger2003}    \\
+Mirsky       & 2009 & 21     & 132        & \cite{Mirsky2009}    \\
+Kim          & 2012 & 180    & 70         & \cite{Kim2012}       \\\bottomrule
+\end{tabular}
+\titlecaption{Summary of ODE models for the circadian network}{While Goodwin's model considers an arbitrary oscillatory biochemical system, it has been frequently invoked to model circadian oscillations in a simple framework.}
+\label{tab:models}
+\end{table}
+
 
 Subsequent models have attempted to generate a more complete representation of the circadian network. 
 Leloup and Goldbeter's 2003 model of the mammalian circadian clock considers both the positive and negative regulatory loops \cite{Leloup2003}, demonstrating the anti-phase oscillations of the positive and negative elements. 
@@ -429,6 +458,19 @@ More recently, models have focused on explaining new theories on how circadian r
 A model by To {\itshape et al.,} 2007 coupled together cells modeled by Leloup \& Goldbeter's 2003 model to demonstrate how heterogeneous populations of oscillators could synchronize in an SCN environment using the neurotransmitter vasoactive intestinal polypeptide (VIP) \cite{To2007}.
 Following the differentiation between the properties of single-cell oscillators and populations, Mirsky {\itshape et al.,}, 2009 developed a model to show how single-cell knockout phenotypes could be differentiated from those at the population-level \cite{Mirsky2009}.
 Rel{\'o}gio {\itshape et al.,} 2011 demonstrated that positive feedback through ROR/REV-ERB had a stabilizing effect on the clock \cite{Relogio2011}, while a model from Kim \& Forger, 2012 demonstrated the importance of stoichiometry between positive and negative components \cite{Kim2012}.
+However, despite the wide availability of mathematical models for circadian rhythms, demonstrating that new theories are mathematically rigorous often requires the creation of a new model.
 
-Despite the wide availability of mathematical models for circadian rhythms, demonstrating that new theories are mathematically rigorous often requires the creation of a new model. In the following chapter, we describe the process of model creation in more detail following new experimental insight into core clock dynamics.
+\section*{Thesis Overview}
+In \fref{chap:model}, a new model of the core circadian feedback loop is developed in order to explain experimental observations on the effect of a new small molecule modulator.
+This new model enables new insights into the functional roles of the two isoforms of mammalian Cryptochrome, CRY1 and CRY2.
+In \fref{chap:id}, a method of fitting oscillatory models is presented which uses nonlinear programming rather than the more computationally intensive global optimization strategies typically employed with circadian models.
+Using such a method, a bootstrap approach is possible which allows the quantification of confidence intervals in the predicted responses generated from the models.
+This method is then applied to a set of three circadian models in \fref{chap:longdaysin} to explain the separate amplitude effects of two small molecule regulators by finding predictions which are consistent across slight differences in kinetic assumptions and parameter value.
+In \fref{chap:arc}, we derive a new type of sensitivity analysis for oscillatory models that we denote the amplitude response curve (ARC).
+The ARC allows the effect from a temporary pulse, coming perhaps from a small molecule therapeutic, on amplitude to be calculated.
+This method allows the systematic investigation of factors which change clock amplitude to proceed efficiently, without the need for more expensive stochastic simulations of a population of oscillators.
+Finally, in \fref{chap:decay}, it is shown that damping rate of cultured circadian reporter cells can be a reliable indicator of single-cell noise.
+Using this insight, we analyze data from high-throughput siRNA screens to determine the effects of genome-wide gene knockdowns on the stochastic noise.
+From this analysis we conclude that the unperturbed clock is highly optimized for robustness, as it lies near the pareto front of high amplitude and low stochastic noise.
+
 
