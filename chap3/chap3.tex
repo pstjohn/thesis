@@ -5,7 +5,7 @@
 % length from the original manuscript has been re-added, as well as the
 % direct inclusion of the supplemental methods.
 
-\chapter[Identifiability analysis for models of circadian rhythms]{ Identifiability analysis for models of circadian rhythms\footnote{ Portions of this chapter are published in P. C. St. John and F. J. Doyle, ``Estimating confidence intervals in predicted responses for oscillatory biological models.,'' {\itshape BMC Syst. Biol.}, vol. 7, p. 71, July 2013.}}\label{chap:id}
+\chapter[Identifiability analysis for models of circadian rhythms]{ Identifiability analysis for models of circadian rhythms\footnote{ Portions of this chapter are published in P. C. St. John and F. J. Doyle III, ``Estimating confidence intervals in predicted responses for oscillatory biological models.,'' {\itshape BMC Syst. Biol.}, vol. 7, p. 71, July 2013.}}\label{chap:id}
 
 \section{Background}
 
@@ -212,7 +212,7 @@ An overview of the method is shown in \fref{fig:3_1}.
 \begin{figure}[h]
   \centering
   \includegraphics{chap3/figures/fig1.pdf}
-  \titlecaption{Parameter estimation and bootstrap methods flowchart}{The demonstrated method calculates confidence intervals in the sensitivity of limit cycle models. An oscillatory model and experimental (or simulated) data are inputs to the bootstrap method. Unique data sets are then used to calculate optimum limit cycle trajectories. The resulting distribution in sensitivities highlight whether a particular response is identifiable (i.e., consistent across the majority of bootstrap trials.)}
+  \titlecaption{Parameter estimation and bootstrap methods flowchart}{The demonstrated method calculates confidence intervals in the sensitivity of limit cycle models. An oscillatory model and experimental (or simulated) data are inputs to the bootstrap method. Unique data sets are then used to calculate optimum limit cycle trajectories. The resulting distribution in sensitivities highlight whether a particular response is identifiable (i.e., consistent across the majority of bootstrap trials). Figure reprinted from \cite{St.John2013}.}
   \label{fig:3_1}
 \end{figure}
 
@@ -226,7 +226,7 @@ However, the overall shape of the oscillatory profiles remained relatively simil
 \begin{figure}[p]
   \centering
   \includegraphics{chap3/figures/fig2.pdf}
-  \titlecaption{Time-course profiles of the state trajectories for {\itshape Per mRNA}}{({\bfseries A}) Increasing relative error, $\xi$, with ${\cal M} = 20$. Possible state variable values are shown as shaded regions, obtained by filling between the 5$^\text{th}$ and 95$^\text{th}$ percentile for values at each time for 2000 independent parameter estimations. Increasing $\xi$ results in larger deviations from the original model trajectory, shown as a dashed black line.\\ ({\bfseries B}) Decreasing number of measurement points, $\cal M$, each with $\xi = 0.15$.  Higher $\cal M$ results in trajectories closer to the true trajectory.}
+  \titlecaption{Time-course profiles of the state trajectories for {\itshape Per mRNA}}{({\bfseries A}) Increasing relative error, $\xi$, with ${\cal M} = 20$. Possible state variable values are shown as shaded regions, obtained by filling between the 5$^\text{th}$ and 95$^\text{th}$ percentile for values at each time for 2000 independent parameter estimations. Increasing $\xi$ results in larger deviations from the original model trajectory, shown as a dashed black line.\\ ({\bfseries B}) Decreasing number of measurement points, $\cal M$, each with $\xi = 0.15$.  Higher $\cal M$ results in trajectories closer to the true trajectory. Figure reprinted from \cite{St.John2013}.}
   \label{fig:3_2}
 \end{figure}
 
@@ -240,14 +240,14 @@ These results reveal which model responses are constrained by the structure and 
 \begin{figure}[p]
   \centering
   \includegraphics{chap3/figures/fig3.pdf}
-  \titlecaption{Parameter and sensitivity identifiability for increasing error}{Increasing $\xi$ results in a corresponding decrease in the confidence of the parameter and sensitivity estimates. Violin plots of the parameter values (left) and relative period sensitivities (right) show the distribution of values from each parameter estimation. In the plots, a box plot is superimposed above a kernel density plot to convey the distribution of values. The whiskers used extend to the most extreme data point within 1.5x the inner quartile range. Sensitivities in which the 5$^\text{th}$ and 95$^\text{th}$ percentile values span the x-axis are deemed non-identifiable (red), as the model's response direction can not be accurately estimated.  Higher $\xi$ also results in wider parameter distributions.}
+  \titlecaption{Parameter and sensitivity identifiability for increasing error}{Increasing $\xi$ results in a corresponding decrease in the confidence of the parameter and sensitivity estimates. Violin plots of the parameter values (left) and relative period sensitivities (right) show the distribution of values from each parameter estimation. In the plots, a box plot is superimposed above a kernel density plot to convey the distribution of values. The whiskers used extend to the most extreme data point within 1.5x the inner quartile range. Sensitivities in which the 5$^\text{th}$ and 95$^\text{th}$ percentile values span the x-axis are deemed non-identifiable (red), as the model's response direction can not be accurately estimated.  Higher $\xi$ also results in wider parameter distributions. Figure reprinted from \cite{St.John2013}.}
   \label{fig:3_3}
 \end{figure}
 
 \begin{figure}[p]
   \centering
   \includegraphics{chap3/figures/fig4.pdf}
-  \titlecaption{Effect of high-resolution sampling on identifiability}{ Lower values of $\cal M$ result in less constrained parameter and sensitivity values. Similar to \fref{fig:3_3}, violin plots of the parameters (left) and sensitivities (right) show the distribution from each parameter estimation for decreasing $\cal M$. These results highlight the importance of high-resolution time sampling in generating sensitivity information for oscillatory models.}
+  \titlecaption{Effect of high-resolution sampling on identifiability}{ Lower values of $\cal M$ result in less constrained parameter and sensitivity values. Similar to \fref{fig:3_3}, violin plots of the parameters (left) and sensitivities (right) show the distribution from each parameter estimation for decreasing $\cal M$. These results highlight the importance of high-resolution time sampling in generating sensitivity information for oscillatory models. Figure reprinted from \cite{St.John2013}.}
   \label{fig:3_4}
 \end{figure}
 
@@ -330,7 +330,7 @@ The second model (\fref{mod:hirota2}) considered  contains independent parameter
 \begin{figure}[p]
   \centering
   \includegraphics{chap3/figures/fig5.pdf}
-  \titlecaption{Identifiability comparison of two model structures}{ ({\bfseries A}) Bootstrap parameter estimations on two model structures using literature time-series data with estimated errors (box plots). Resulting regions of model trajectories are shaded between the 5$^\text{th}$ and 95$^\text{th}$ percentile.  {\itshape Per} species are shown in purple, {\itshape Cry1} in red, and {\itshape Cry2} in green. While both models were able to approximately reproduce the same dynamic response, the expanded model was better able to capture differences between the {\itshape Cry1} and {\itshape Cry2} profiles. ({\bfseries B}) Parameter and sensitivity identifiability for the base and expanded models.  Violin plots show the parameter and sensitivity distributions, with unidentifiable sensitivities (90\% confidence level) highlighted in red.  Despite containing more parameters, the expanded model shows better parameter identifiability and higher confidence in its predicted sensitivities. The PER translation rate (1) and PER-CRY association rate (2) sensitivities are consistent across model equations and are highlighted.}
+  \titlecaption{Identifiability comparison of two model structures}{ ({\bfseries A}) Bootstrap parameter estimations on two model structures using literature time-series data with estimated errors (box plots). Resulting regions of model trajectories are shaded between the 5$^\text{th}$ and 95$^\text{th}$ percentile.  {\itshape Per} species are shown in purple, {\itshape Cry1} in red, and {\itshape Cry2} in green. While both models were able to approximately reproduce the same dynamic response, the expanded model was better able to capture differences between the {\itshape Cry1} and {\itshape Cry2} profiles. ({\bfseries B}) Parameter and sensitivity identifiability for the base and expanded models.  Violin plots show the parameter and sensitivity distributions, with unidentifiable sensitivities (90\% confidence level) highlighted in red.  Despite containing more parameters, the expanded model shows better parameter identifiability and higher confidence in its predicted sensitivities. The PER translation rate (1) and PER-CRY association rate (2) sensitivities are consistent across model equations and are highlighted. Figure reprinted from \cite{St.John2013}.}
   \label{fig:3_5}
 \end{figure}
 
@@ -351,7 +351,7 @@ Since the original cost function was concerned mostly with optimizing stoichiome
 \begin{figure}[p]
   \centering
   \includegraphics{chap3/figures/fig6.pdf}
-  \titlecaption{Time-series dynamics of fitted models}{Model trajectories for each of the considered models. The original model (purple) shows the time series dynamics for the previously published parameter set, used in Figures 1-4. In these plots, the original model's period and amplitudes were rescaled to best match the experimental data, shown in black (without changing the dynamic profiles). The refitted model (red, dashed) was generated by optimizing the dynamic profile to time series data using the parameter estimation routine described in Supplemental Text 1. The expanded model (green, dashed) consists of a similar network structure, but with independent kinetic parameters for each rate expression (see Supplemental Text 2). These plots show that parameter optimization through nonlinear programming is able to more accurately fit gene and protein expression profiles.}
+  \titlecaption{Time-series dynamics of fitted models}{Model trajectories for each of the considered models. The original model (purple) shows the time series dynamics for the previously published parameter set, used in Figures 1-4. In these plots, the original model's period and amplitudes were rescaled to best match the experimental data, shown in black (without changing the dynamic profiles). The refitted model (red, dashed) was generated by optimizing the dynamic profile to time series data using the parameter estimation routine described in Supplemental Text 1. The expanded model (green, dashed) consists of a similar network structure, but with independent kinetic parameters for each rate expression (see Supplemental Text 2). These plots show that parameter optimization through nonlinear programming is able to more accurately fit gene and protein expression profiles. Figure reprinted from \cite{St.John2013}.}
   \label{fig:3_6}
 \end{figure}
 
