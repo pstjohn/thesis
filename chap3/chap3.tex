@@ -13,15 +13,15 @@ A cell's behavior is governed by the dynamic and selective expression of its gen
 These rates, which change with environmental conditions and are often impossible to measure accurately {\itshape in vivo} or {\itshape in vitro}, determine the function of a regulatory pathway. 
 While studying the roles of individual proteins can often provide some insight on how a particular function is achieved, this approach is limited in explaining complicated cellular phenomena at the scale of dozens to hundreds of interacting genes. 
 With the aid of mathematical models, it is increasingly possible to create {\itshape in silico} realizations of genetic regulatory networks to examine their dynamic properties.
-For example, in the previous chapter, we presented a mathematical model of gene regulation for circadian rhythms, using new data from small molecule modulators to gain further insight into clock dynamics.
+For example, the previous chapter presented a mathematical model of gene regulation for circadian rhythms that used new data from small molecule modulators to gain further insight into clock dynamics.
 
 Essential to understanding how genetic circuits operate is connecting how inputs (i.e., environmental changes, extracellular signals) are processed to give the appropriate outputs (protein expression, cellular response). 
 % In some cases these quantities may be changes to oscillatory profiles: for example, seasonal changes in day length leading to flowering or hibernation. 
 Models of genetic regulatory networks, often sets of ordinary differential equations (ODEs), contain many unknown parameters that must be estimated from experimental data \cite{Gutenkunst2007}. 
 Derivatives of the model output with respect to changes in input, known as local sensitivities, are frequently validated experimentally or used to predict potential targets for pharmaceuticals \cite{Kell2006}. 
-In \fref{chap:model}, we used local sensitivities within the cost function to ensure the model matched previously known experimental results.
+In \fref{chap:model}, local sensitivities were used within the cost function to ensure the model matched previously known experimental results.
 However, since sensitivities can change drastically with respect to the particular parameter values chosen, the confidence associated with parameter and sensitivity values is an important consideration in model analysis and design.
-
+ were used
 \subsection{Identifiability analysis}
 
 {\itshape Practical identifiability analysis} is concerned with calculating confidence intervals in parameter estimates resulting from uncertainty in experimental data \cite{Raue2009}. 
@@ -107,10 +107,10 @@ where $i$ and $\tau_n$ are selected for the appropriate finite element and sampl
 The objective function $\Phi({\bm x},{\bm p})$ is thus:
 \begin{equation} \label{eq:cost}
   \Phi({\bm x},{\bm p}) = \sum_n^{\cal M} \left(\frac{{\bm x}^{\cal K}(t_n) -
-\zdata(t_n)}{{\bm \sigma}_n}\right)^2
+\zdata(t_n)}{{\bm s}_n}\right)^2
 \end{equation}
-where ${\bm \sigma}_{n}$ is the measurement error associated with measurement $n$. 
-Since ${\bm x}$ and $\bm\sigma$ are vectors, the division in \fref{eq:cost} must be performed element-wise. 
+where ${\bm s}_{n}$ is the measurement error associated with measurement $n$. 
+Since ${\bm x}$ and $\bm s$ are vectors, the division in \fref{eq:cost} must be performed element-wise. 
 This cost function was taken from a similar multiple-shooting approach to parameter estimation \cite{Bock2007}. 
 
 Since the cost function (\fref{eq:cost}) and equality constraints (\fref{eq:collocation}, \fref{eq:cont}, and \fref{eq:periodic}) now satisfy continuity and differentiability requirements \cite{Floudas1995}, parameter estimation can now be accomplished via constrained nonlinear programming (NLP) instead of a global search strategy. 
@@ -144,7 +144,7 @@ approximate values for $\bm p$ can be obtained by solving the simpler unconstrai
 \begin{equation}
   \min_{\bm p} \sum_i^{{\cal N}}\sum_j^{{\cal K}}\left(\frac{d\tilde{\bm x}(t_{ij})}{dt} - {\bm f}(\tilde{\bm x}(t_{ij}),{\bm p})\right)^2
 \end{equation}
-in which $t_{ij}$ is the same as in \ref{eq:approxz} and the bounds on $p$ are the same as in \fref{eq:bounds}.
+in which $t_{ij}$ is the same as in \fref{eq:approxz} and the bounds on $p$ are the same as in \fref{eq:bounds}.
 
 \subsection{Numerical calculation of sensitivity coefficients}
 
@@ -195,7 +195,7 @@ Given time-series experimental measurements $\hat{x}_i(t_j)$ for each state vari
   \popt := \arg\min_{\bm p} \sum_i^{states} \sum_j^{data} \frac{\left(\hat{x}_i(t_j) - x_i(t_j,{\bm p})\right)^2}{ {\sigma}_{ij}^2}.
 \end{equation}
 Here ${\sigma}_{ij}$ is the standard deviation associated with the measured mean of state $i$ at time $j$. 
-Using the data points $\hat{x}_i(t_j)$ to generate a suitable initial guess, parameter estimation may proceed via a nonlinear programming approach as described in \ref{sec:idmethods}. 
+Using the data points $\hat{x}_i(t_j)$ to generate a suitable initial guess, parameter estimation may proceed via a nonlinear programming approach as described in \fref{sec:idmethods}. 
 In this chapter, we assume that all states are measured to demonstrate how initial guesses can be generated directly from the input data. 
 However, for systems with unmeasured states, initial guesses for the trajectory and parameter values can be provided by another approach, such as a global optimization routine, as described in \fref{sec:gas}. 
 A bootstrap method was implemented by repeatedly sampling input data distributions to calculate a population of optimal parameter fits.
@@ -226,7 +226,7 @@ However, the overall shape of the oscillatory profiles remained relatively simil
 \begin{figure}[p]
   \centering
   \includegraphics{chap3/figures/fig2.pdf}
-  \titlecaption{Time-course profiles of the state trajectories for {\itshape Per mRNA}}{({\bfseries A}) Increasing relative error, $\xi$, with ${\cal M} = 20$. Possible state variable values are shown as shaded regions, obtained by filling between the 5$^\text{th}$ and 95$^\text{th}$ percentile for values at each time for 2000 independent parameter estimations. Increasing $\xi$ results in larger deviations from the original model trajectory, shown as a dashed black line.\\ ({\bfseries B}) Decreasing number of measurement points, $\cal M$, each with $\xi = 0.15$.  Higher $\cal M$ results in trajectories closer to the true trajectory. Figure reprinted from \cite{St.John2013}.}
+  \titlecaption{Time-course profiles of the state trajectories for {\itshape Per mRNA}}{({\bfseries A}) Increasing relative error, $\xi$, with ${\cal M} = 20$. Possible state variable values are shown as shaded regions, obtained by filling between the 5$^\text{th}$ and 95$^\text{th}$ percentile for values at each time for 2000 independent parameter estimations. Increasing $\xi$ results in larger deviations from the original model trajectory, shown as a dashed black line. ({\bfseries B}) Decreasing number of measurement points, $\cal M$, each with $\xi = 0.15$.  Higher $\cal M$ results in trajectories closer to the true trajectory. Figure reprinted from \cite{St.John2013}.}
   \label{fig:3_2}
 \end{figure}
 
@@ -266,7 +266,7 @@ The second model (\fref{mod:hirota2}) considered  contains independent parameter
 
 \begin{model}[h]
   \centering
-  \titlecaption{An expanded parameterization of \fref{mod:hirota}}{These equations have similar reaction stoichiometry to those in table \ref{mod:hirota}, but with more parametric degrees of freedom. This model showed better time-series performance than the more constrained model when fit to time-series data.}
+  \titlecaption{An expanded parameterization of \fref{mod:hirota}}{These equations have similar reaction stoichiometry to those in \fref{mod:hirota}, but with more parametric degrees of freedom. This model showed better time-series performance than the more constrained model when fit to time-series data.}
 
   \begin{align*}
     \frac{d\mathrm{\bf p}}{dt} &= \frac{\mathit{Vm}_{1}}{1 + \mathit{Vm}_{1} \; {\left(\frac{\mathrm{\bf C1N} + \mathrm{\bf C2N} \; \mathit{M}_{1}}{\mathit{Ki}_{1}}\right)}^{3}} - \frac{\mathit{k}_{1} \; \mathrm{\bf p}}{1 + \frac{\mathrm{\bf p}}{\mathit{Km}_{1}}} \\
@@ -350,8 +350,8 @@ Since the original cost function was concerned mostly with optimizing stoichiome
 
 \begin{figure}[p]
   \centering
-  \includegraphics{chap3/figures/fig6.pdf}
-  \titlecaption{Time-series dynamics of fitted models}{Model trajectories for each of the considered models. The original model (purple) shows the time series dynamics for the previously published parameter set, used in Figures 1-4. In these plots, the original model's period and amplitudes were rescaled to best match the experimental data, shown in black (without changing the dynamic profiles). The refitted model (red, dashed) was generated by optimizing the dynamic profile to time series data using the parameter estimation routine described in Supplemental Text 1. The expanded model (green, dashed) consists of a similar network structure, but with independent kinetic parameters for each rate expression (see Supplemental Text 2). These plots show that parameter optimization through nonlinear programming is able to more accurately fit gene and protein expression profiles. Figure reprinted from \cite{St.John2013}.}
+  \includegraphics[width=0.8\textwidth]{chap3/figures/fig6.pdf}
+  \titlecaption{Time-series dynamics of fitted models}{Model trajectories for each of the considered models. The original model (purple) shows the time series dynamics for the previously published parameter set, used in Figures 1-4. In these plots, the original model's period and amplitudes were rescaled to best match the experimental data, shown in black (without changing the dynamic profiles). The refitted model (red, dashed) was generated by optimizing the dynamic profile to time series data using the parameter estimation routine described in \fref{sec:coll}. The expanded model (green, dashed) consists of a similar network structure, but with independent kinetic parameters for each rate expression (\fref{mod:hirota2}). These plots show that parameter optimization through nonlinear programming is able to more accurately fit gene and protein expression profiles. Figure reprinted from \cite{St.John2013}.}
   \label{fig:3_6}
 \end{figure}
 
@@ -361,7 +361,7 @@ Increasingly, mathematical models are being used to study biological systems whe
 This is especially useful in oscillatory systems with long periods, such as circadian rhythms, where a perturbed {\itshape in vitro} or {\itshape in vivo} system must be measured for multiple days before changes can be reliably determined.
  
 However, since errors in model responses can arise from either incorrect structure or measurement noise, our confidence in {\itshape in silico} predictions is limited. 
-Here we have developed a bootstrap approach suitable for periodic systems, and extended it to include uncertainty in predicted responses. 
+Here a bootstrap approach suitable for periodic systems has been developed and extended to include uncertainty in predicted responses. 
 With this method, errors due to local parameter effects can be identified, even in models with complicated dynamics. 
 Furthermore, by considering multiple variations in model assumptions, we have demonstrated that more trustworthy model predictions can be found.
 
