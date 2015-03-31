@@ -27,9 +27,8 @@ However, since {\itshape in vitro} experiments typically measure entire cultures
 Even when individual cells can be recorded, stochastic noise hinders accurate amplitude determination.
 As a result, two studies using similar perturbations to understand the mechanism of light-induced amplitude reduction reached differing conclusions, in which either single-cell amplitude reduction or population-level desynchrony was identified as the dominant factor \cite{Pulivarthy2007, Ukai2007}.
 
-\subsection{Role of mathematical modeling}
-Mathematical models have long been used to understand the results of circadian experiments \cite{Leloup2003, Becker-Weimann2004}, aided by definitions and computational techniques designed to match modeling predictions to experimental data.
-One such definition is the response function, a general technique that maps a change in an output variable to a temporary change in parameters \cite{Rand2004}.
+\subsection{Response functions}
+Response functions are general techniques that maps a change in an output variable to a temporary change in parameters \cite{Rand2004}.
 For instance, the phase response curve (PRC) has been used to characterize the entrainment behavior of both experimental and mathematical systems \cite{Daan1976, Taylor2008, Pfeuty2011}, and in analyzing the synchrony of populations of oscillators \cite{Kim2014}.
 Accurate and efficient numerical routines for finding infinitesimal PRCs have therefore been developed \cite{Kramer1984, Gunawan2006, Taylor2008a}.
 In addition to changes in phase, phase-dependent changes in amplitude are an important factor in understanding circadian rhythms.
@@ -413,21 +412,6 @@ The continuous approximation is therefore able to capture the population-level d
   \label{fig:5s2}
 \end{figure}
 
-\begin{figure}[tbp]
-  \centering
-  \includegraphics[width=0.75\textwidth]{chap5/figures/figure_S3a.pdf}
-  \titlecaption{Validation of continuous methods with the Oregonator model}{ ({\bfseries A}) The Oregonator model (\fref{mod:oregon}) was tested as an example of a mass-action limit cycle oscillator. A population of 2000 oscillators was perturbed at size different mean phases, $\mu$, by increasing the $\mathit{c2}$ parameter by $50\%$ for $d=\pi$ (highlighted region). Only the average $\mathit{Y2}$ variable is plotted. Figure reprinted from \cite{St.John2014a}.}
-  \label{fig:5s3a}
-\end{figure}
-
-\begin{figure}[tbp]
-  \centering
-  \includegraphics[width=0.75\textwidth]{chap5/figures/figure_S3b.pdf}
-  \titlecaption{Validation of continuous methods with the model from Hirota {\itshape et al.,} 2012}{ ({\bfseries A}) ({\bfseries B}) The model described in \cite{Hirota2012} (\fref{mod:hirota}) was similarly tested at a variety of mean phases by reducing the $\mathit{vdp}$ parameter by $28.5\%$ and plotting the resulting $\mathit{c2}$ state variable (as in \fref{fig:55}). Parameters for the continuous approximations were found by estimating the phase, initial standard deviation, period, and phase diffusivity of the control population. Figure reprinted from \cite{St.John2014a}.}
-  \label{fig:5s3b}
-\end{figure}
-
-
 \begin{model}[p]
   \titlecaption{The Oregonator model \cite{Field1974}}{The parameters used are as presented in \cite{Gillespie1977}. Used in \fref{fig:5s3a} as an example of a limit cycle oscillator using only mass-action kinetics. Figure reprinted from \cite{St.John2014a}.}
   \label{mod:oregon}
@@ -464,6 +448,22 @@ intermediate variables $Y$ are considered, as:
     \bottomrule\end{supertabular}
 \end{center}
 \end{model}
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.75\textwidth]{chap5/figures/figure_S3a.pdf}
+  \titlecaption{Validation of continuous methods with the Oregonator model}{The Oregonator model (\fref{mod:oregon}) was tested as an example of a mass-action limit cycle oscillator. A population of 2000 oscillators was perturbed at size different mean phases, $\mu$, by increasing the $\mathit{c2}$ parameter by $50\%$ for $d=\pi$ (highlighted region). Only the average $\mathit{Y2}$ variable is plotted. Figure reprinted from \cite{St.John2014a}.}
+  \label{fig:5s3a}
+\end{figure}
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.75\textwidth]{chap5/figures/figure_S3b.pdf}
+  \titlecaption{Validation of continuous methods with the model from Hirota {\itshape et al.,} 2012}{The model described in \cite{Hirota2012} (\fref{mod:hirota}) was similarly tested at a variety of mean phases by reducing the $\mathit{vdp}$ parameter by $28.5\%$ and plotting the resulting $\mathit{c2}$ state variable (as in \fref{fig:55}). Parameters for the continuous approximations were found by estimating the phase, initial standard deviation, period, and phase diffusivity of the control population. Figure reprinted from \cite{St.John2014a}.}
+  \label{fig:5s3b}
+\end{figure}
+
+
 
 We next demonstrate the usefulness of single-cell and population level ARCs in predicting the mean response of a population.
 Using a detailed single-cell model (\fref{mod:hirota}), we calculate the response of the system, specifically the average CRY2 protein expression level, to a temporary increase in {\itshape Per} transcription rate.
@@ -561,5 +561,5 @@ For such instances, we hope that the mathematical theory presented here will per
 
 One result from this chapter, which has previously been discussed in the circadian literature \cite{Rougemont2007}, is that in noninteracting populations, stochastic noise at the single-cell level affects the damping rate of a population of oscillators. 
 Stochastic noise is often a relevant circadian parameter, as it describes the precision of the underlying oscillators. 
-In the following chapter, we show how population-level recordings, even those from high-throughput circadian screens, can be used to gain estimates of stochastic noise at the single-cell level. 
+The following chapter discusses how population-level recordings, even those from high-throughput circadian screens, can be used to gain estimates of stochastic noise at the single-cell level. 
 Using such an approach, it is possible to gain genome-wide insight into how noise is regulated in the cell-autonomous feedback loop. 
