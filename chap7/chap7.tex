@@ -7,7 +7,7 @@ Another theme throughout this thesis has been the development and subsequent imp
 Specifically, the identifiability scheme discussed in \fref{chap:id} was used to make the predictions described in \fref{chap:longdaysin}, and many of the ideas described in \fref{chap:arc} were used as the motivations behind the more data-driven analysis in \fref{chap:decay}.
 
 Thanks in part to my Mitsubishi Chemical fellowship, each chapter in this thesis largely follows from the work in the preceding it.
-However, as results often present many possible paths for follow-up work, several interesting potential projects were passed over due to lack of time or experimental support.
+Throughout this process, many interesting possibilities for further analysis were considered.
 This chapter describes several such opportunities for future studies.
 
 \section{Experimental validation of the amplitude response to metabolic stimulation}\label{sec:chida}
@@ -32,8 +32,8 @@ Ultimately, however, the data presented in \cite{Yamajuku2012} did not prove to 
 In particular, we noted that the amplitude response due to the application of the vehicle (comparing black lines before and after the pulse, \fref{fig:yamajuku}) seems to be as significant as the amplitude change due to the application of insulin.
 This is not surprising, as peripheral oscillators as acutely sensitive to changes in temperature and culture medium, which is often enough to resynchronize the population of oscillators \cite{Izumo2006}.
 
-We therefore sought to re-create these experiments in collaboration with Andrew Liu and Chidambaram Ramanathan at the University of Memphis.
-We also hoped that by knocking out different components of the signal transduction pathway between insulin and the core clock, we might be able to elucidate a mechanism by which the amplitude response curves were occurring.
+The recreation of these results, using careful methods to prevent perturbations from the experimental protocol may lead further insight into the interplay between circadian and energetic regulatory networks.
+By knocking out different components of the signal transduction pathway between insulin and the core clock, it may be possible to elucidate a mechanism by which the amplitude response curves were occurring.
 
 \subsection{Metabolic-circadian connections}
 The literature on signalling networks connecting metabolic and circadian regulators is very dense.
@@ -86,11 +86,11 @@ Such a tool could be used to compare the phase-dependent changes in phase and am
 
 \subsection{Summary}
 
-While potentially an exciting area of research, the amplitude response characterization work has largely stalled to due experimental difficulty.
+While potentially an exciting area of research, the amplitude response characterization work poses significant experimental difficulty.
 In particular, since medium changes have such a profound effect on cultured cells, it is important to perform as few disturbances as possible during the incubation period.
 Unlike with studies using light as a temporary perturbation, it is likely impossible to remove exogenous inputs after their application, a requirement for finding their phase-dependent effect.
 Perhaps with a more cleverly designed experimental protocol, such as coupling the induction of insulin to a light-activated promoter, such an experiment would be possible to perform accurately.
-Until such time, however, the amplitude response theory will likely be primarily applicable to experimental work involving light-mediated changes.
+Until such time, however, the amplitude response theory discussed in \fref{chap:arc} will likely be primarily applicable to experimental work involving light-mediated changes.
 
 % \section{Amplitude maximization through therapeutic treatment}
 % \subsection{Optimal control strategies to maximize peripheral clock amplitude}
@@ -99,8 +99,10 @@ Until such time, however, the amplitude response theory will likely be primarily
 \section{Further extensions to the population phase response theory}\label{sec:prd}
 
 In \fref{chap:arc}, we pull together definitions from a variety of different sub-fields to create a model of a population of noisy oscillators, each following their own limit cycle dynamics. 
-In several cases, there were further analytical treatments which could have solved in greater detail, and perhaps solutions exist in the voluminous literature on phase oscillators.
-Regardless, in this section, we present some unfinished derivations and thoughts on phase populations undergoing perturbations.
+In several cases, there were further analytical treatments which could have solved in greater detail.
+Some of these analytical derivations would likely be necessary for future studies considering noisy systems, in which the PRC can not be assumed to be a continuous function.
+In this section, we present some unfinished derivations on phase populations undergoing temporary perturbations.
+We hope these derivations will prove useful for future studies looking to model the responses of experimental systems to light or pharmacological modulation.
 
 \subsection{Infinitesimal population PRCs and ARCs for limiting cases}
 In \fref{chap:arc}, amplitude response curves at the population-level are calculated numerically by performing a change of variables of the initial probability density function $p(\theta)$ to the probability after perturbation, $\hat{p}(\theta)$.
@@ -223,8 +225,9 @@ Finding an analytical solution to
 \[
   \int_0^{2\pi} p(\theta_i) g(\theta_i, \theta_f) \; d\theta_i,
 \]
-possibly by using a series expansion of the mean and variance of the phase response distribution, would allow the relationship between the variance and derivative of the PRD at the fixed points to be determined.
-Even if an analytical solution was not possible, a numerical investigation into the effect of noise in entraining signals.
+might be accomplished by using a series expansion of the mean and variance of the phase response distribution.
+Such a solution would allow the relationship between the variance and derivative of the PRD at the fixed points to be determined.
+Even if an analytical solution was not possible, a numerical investigation into the effect of noise in entraining signals would prove useful in finding threshold levels of single-cell noise which would still permit synchronization.
 
 \subsubsection{Quantifying phase response distributions}
 
