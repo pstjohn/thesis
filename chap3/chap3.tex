@@ -156,7 +156,7 @@ First, initial conditions and oscillatory period are verified by solving the bou
 \end{equation}
 where $\dot{{\bm x}}_0(0)$ denotes the time-derivative of the first state variable, evaluated at $t=0$. 
 This BVP is solved using Newton's method, employing the SUNDIALS packages CVODES for ODE integration and KINSOL for the Newton iterations \cite{Hindmarsh2005}.
-Time-dependent parametric sensitivities (\fref{eq:senslimit}), are obtained by using the staggered-direct method from the CVODES integrator \cite{Serban2005}. 
+Time-dependent parametric sensitivities (\fref{eq:senslimit}), are obtained by using the staggered-direct method from the CVODES integrator. 
 
 \subsection{Generation of data for bootstrap methods}
 For each run, two thousand simulated measurements, $\hat{x}_i(t_j)$, were generated from the true data, $\tilde{x}_i(t_j)$, using a normal distribution with $\mu = \tilde{x}_i(t_j)$ and $\sigma_{ij} = \xi\;\tilde{x}_i(t_j) + \eta\;\max_j{\tilde{x}_i(t_j)}$, in which $\xi$ is the relative and $\eta$ is the absolute error. 
