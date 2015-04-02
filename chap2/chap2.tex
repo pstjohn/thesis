@@ -83,7 +83,7 @@ The period of the clock is thus governed by the nuclear CRY1/CRY2 ratio, where h
 
 \begin{figure}[bt]
   \centering
-  \includegraphics[width=\textwidth]{chap2/figures/nucleartimecourse.pdf}
+  \includegraphics[width=0.8\textwidth]{chap2/figures/nucleartimecourse.pdf}
   \titlecaption{Repressor degradation profiles}{Time course plots of the simulated total nuclear repressor concentration for the degradation model under various clock conditions. The relative contribution of CRY1 and CRY2 are shaded green and orange, respectively. Longer periods occur when a higher percentage of the nuclear complex is CRY1, taking longer to degrade. Figure reprinted from \cite{Yang2014}.}
   \label{fig:nucleartimecourse}
 \end{figure}
@@ -105,7 +105,7 @@ Additional assumptions made while formulating the model equations are listed bel
   \item The degradation kinetics of the nuclear proteins are assumed to follow Michaelis-Menten kinetics. Because both $\bm{C1N}$ and $\bm{C2N}$ are thought to be degraded by the same pathway in the nucleus, kinetic equations using the {\it pseudo} steady-state hypothesis were derived for two substrates sharing the same enzyme. As a result, each CRY isoform acts as an inhibitor to the other's degradation. This mechanism is summarized in \fref{fig:shareddeg}.
 \end{itemize}
 
-\begin{figure}[tbp]
+\begin{figure}[bp]
   \centering
   \includegraphics[width=0.5\textwidth]{chap2/figures/cryseperatedegradation.pdf}
   \titlecaption{Degradation of both CRY isoforms is regulated by the same enzyme}{In developing the model equations for \fref{mod:hirota}, a key assumption was that both isoforms of Cryptochrome were degraded by the same enzyme. Without such a scheme, the shortest periods were obtained by maximizing degradation through equal nuclear entry of both isoforms.}
@@ -270,7 +270,7 @@ This procedure is iterated for up to 2000 generations, or until convergence crit
 
 \bottomrule
 \endfoot
-1  & {\it per} mRNA peak-trough ratio $$\frac{y_\text{max}(\text{\it Per})}{y_\text{min}(\text{\it Per})}$$                                                & 0.5 & $> 20$  \cite{Lee2001}           & large       & large      \\
+1  & {\it Per} mRNA peak-trough ratio $$\frac{y_\text{max}(\text{\it Per})}{y_\text{min}(\text{\it Per})}$$                                                & 0.5 & $> 20$  \cite{Lee2001}           & large       & large      \\
 2  & {\it Cry1} mRNA peak-trough ratio $$\frac{y_\text{max}(\text{\it Cry1})}{y_\text{min}(\text{\it Cry1})}$$                                             & 0.5 & $2.155$ \cite{Lee2001}           & 8.942       & 3.748      \\
 3  & {\it Cry2} mRNA peak-trough ratio $$\frac{y_\text{max}(\text{\it Cry2})}{y_\text{min}(\text{\it Cry2})}$$                                             & 0.5 & $2.236$ \cite{Lee2001}           & 7.813       & 3.484      \\
 4  & PER protein peak to trough ratio $$\frac{y_\text{max}(\text{PER})}{y_\text{min}(\text{PER})}$$                                                        & 5   & $> 20$  \cite{Lee2001}           & large       & large      \\
@@ -370,7 +370,7 @@ Experimental evidence indicates that stabilization of CRY can either lengthen th
 Assuming equal effect on both isoforms of CRY, the model confirms that cytoplasmic stabilization results in period shortening, since excess CRY expedites the nuclear import of the PER:CRY repressive complex. 
 However, stabilizing nuclear CRY (\fref{fig:nucleartimecourse}, last column) yields the appropriate period lengthening observed experimentally. 
 We therefore predicted that KL001 acts primarily in the nucleus, potentially through the FBXL3 degradation pathway. 
-Additionally, the model predicts that the compound’s effect on $\text{\it Cry1}^{-/-}$ and $\text{\it Cry2}^{-/-}$ systems would be similar to its effect on the wild type clock, causing dose-dependent period lengthening (\fref{fig:40662prediction}, left and right).
+Additionally, the model predicts that the compound’s effect on $\text{\it Cry1}^{-/-}$ and $\text{\it Cry2}^{-/-}$ systems would be similar to its effect on the wild type clock, causing dose-dependent period lengthening (\fref{fig:40662prediction}, left and right columns).
 
 
 \begin{figure}[bt]
@@ -389,8 +389,7 @@ We further investigated the effect of KL001 in SCN explants, which show robust r
 Both {\it Cry1} and {\it Cry2} knockout SCN exhibited dose-dependent period lengthening by the compound treatment. 
 Thus, in a single {\it Cry} knockout, stabilization of either nuclear CRY1 and CRY2 causes period lengthening, confirming model predictions.
 Furthermore, the period-lengthening response of KL001 was abolished in cells treated with FBXL3 siRNA, further confirming that the period effect of KL001 is mediated by inhibiting FBXL3-CRY interactions (\fref{fig:fbxl3data}).
-This prediction was further verified in subsequent structural biology work \cite{Nangle2013}.
-
+This prediction was subsequently verified via structural biology, in which KL001 was shown to interfere directly with the binding of FBXL3 and CRY1 \cite{Nangle2013}. 
 \begin{figure}[tbp]
   \centering
   \includegraphics{chap2/figures/fbxl3kl001data.pdf}
@@ -400,16 +399,9 @@ This prediction was further verified in subsequent structural biology work \cite
 
 \begin{figure}[p]
   \centering
-  \includegraphics[width=0.5\textwidth]{chap2/figures/crysimultaneousknockdown.pdf}
-  \titlecaption{Simultaneous knockdown of {\it Cry1} and {\it Cry2}}{Period contours (\% change) resulting from simultaneous {\it in silico} siRNA knockdowns of {\it Cry1} (x-axis) and {\it Cry2} (y-axis). The plot shows that the CRY1/CRY2 ratio determines the period, independent of total CRY, for perturbations up to twice the normal mRNA degradation rate.}
+  \includegraphics[width=0.7\textwidth]{chap2/figures/crysimultaneousknockdown.pdf}
+  \titlecaption{Simultaneous knockdown of {\it Cry1} and {\it Cry2}}{Period contours (\% change) resulting from simultaneous {\it in silico} siRNA knockdowns of {\it Cry1} (x-axis) and {\it Cry2} (y-axis). Since moving along the $y=x$ line remains close to the $100\%$ period contour, the CRY1/CRY2 ratio largely determines the period, independent of total CRY, for perturbations up to twice the normal mRNA degradation rate.}
   \label{fig:simultaneouskdown}
-\end{figure}
-
-\begin{figure}[p]
-  \centering
-  \includegraphics[width=0.6\textwidth]{chap2/figures/firstordersens.pdf}
-  \titlecaption{First order relative period sensitivities}{Dimensionless period sensitivities with respect to the kinetic parameters in the degradation-based model. Perturbations to most clock rates result in noticeable changes to the free-running period. Many of the most sensitive parameters are transcriptional rates, which can be easily changed through mutation of DNA promoter regions.}
-  \label{fig:firstordersens}
 \end{figure}
 
 \section{Discussion}
@@ -420,6 +412,13 @@ Sensitivity analysis of our mathematical model (\fref{fig:firstordersens}) revea
 Since many studies have linked entrainment to non-natural periods with long-term health problems, a mechanism to align the clock’s natural period to that of the environment would be advantageous. 
 It is therefore possible that the period control afforded by CRY1/CRY2 balancing is a deliberately conserved design principle of the circadian clock, which confers period robustness against random mutations of clock components. 
 Indeed, the presence of independent control of the cytosolic CRY2 levels suggests that the biological clock can control its period through simple post-translational modifications \cite{Kurabayashi2010}. 
+
+\begin{figure}[tb]
+  \centering
+  \includegraphics[width=0.7\textwidth]{chap2/figures/firstordersens.pdf}
+  \titlecaption{First order relative period sensitivities}{Dimensionless period sensitivities with respect to the kinetic parameters in the degradation-based model. Perturbations to most clock rates result in noticeable changes to the free-running period. Many of the most sensitive parameters are transcriptional rates, which can be easily changed through mutation of DNA promoter regions.}
+  \label{fig:firstordersens}
+\end{figure}
 
 \subsection{Summary}
 Due to the high dimensionality of the model equations and sparsity of the experimental data, it is likely that more than one set of parameters would fit the cost function defined in \fref{tab:cost}. 

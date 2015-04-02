@@ -195,7 +195,7 @@ Trajectories for the second state variable, $Y(\tilde{t})$, and the correspondin
 
 \begin{figure}[tbp]
   \begin{center}
-    \includegraphics[width=.75\textwidth]{chap5/figures/figure_1_b.pdf}
+    \includegraphics[width=0.9\textwidth]{chap5/figures/figure_1_b.pdf}
   \end{center}
   \titlecaption{Amplitude metrics at the single-cell level measure transient deviations from the limit cycle}{The same perturbation applied at two different phases can result in opposite amplitude effects. The state-space representation ({\bfseries B}) reveals the path both perturbations take to return to the limit cycle. The time-series representation ({\bfseries C}) shows how the perturbation in blue results in an amplitude decrease, while the one in red results in an amplitude increase. ({\bfseries D}) This amplitude change is quantified by integrating $h(\tilde{t})$, the difference in variance from each solution to the limit cycle as defined in \fref{eq:ampchangedefinition}, from $t=0 \to \infty$. Here the shaded region indicates the area under the curve, $\Delta A$, for the perturbations shown in red and blue. Model adapted from \cite{Novak2008}. Figure reprinted from \cite{St.John2014a}.}
   \label{fig:51b}
@@ -211,7 +211,7 @@ The behavior at this singularity point is indicated by a sharp dip in the ARC fo
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=.75\textwidth]{chap5/figures/figure_2.pdf}
+  \includegraphics[width=0.9\textwidth]{chap5/figures/figure_2.pdf}
   \titlecaption{Phase and amplitude response curves describe how a single oscillator will respond to a perturbation}{({\bfseries A-B}) The phase and amplitude response curves for three perturbations of increasing strengths demonstrate the transition from type 1 phase resetting for a weak stimulus (blue) to type 0 phase resetting from a strong stimulus (red). ({\bfseries C}) The state space representation for the perturbations of varying strengths demonstrate how the trajectories return to the limit cycle. For the particular perturbation shown in green, the trajectory starts very close to the singularity, and therefore takes a long time to recover. ({\bfseries D}) For an oscillator perturbed to the singularity, a strong amplitude reduction ensues. Here, the oscillator with an initial phase $\theta \approx \nicefrac{3\pi}{2}$ is perturbed by $\Delta x = 1.1$ at $\tilde{t} = 0$. Several cycles are required for normal amplitudes to be restored, corresponding to a dip in the ARC (C, green). Figure reprinted from \cite{St.John2014a}.}
   \label{fig:52}
 \end{figure}
@@ -362,7 +362,7 @@ While each cell's expression level follows the limit cycle, the population ampli
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=.75\textwidth]{chap5/figures/figure_3.pdf}
+  \includegraphics[width=.9\textwidth]{chap5/figures/figure_3.pdf}
   \titlecaption{Synchrony affects population-level amplitude}{ ({\bfseries A}) Stochastic fluctuations cause a population of cells to gradually desynchronize with time. The phase probability density, $p(\theta, \tilde{t})$, gradually widens as it advances in phase according to the mean period. ({\bfseries B}) The mean amplitude from a population of oscillators is determined by the probability density function $p(\theta, \tilde{t})$ and the oscillator's limit cycle $x^\gamma(\theta)$. As time passes, population-level rhythms resemble an exponentially damped sinusoid. Figure reprinted from \cite{St.John2014a}.}
   \label{fig:53}
 \end{figure}
@@ -407,7 +407,7 @@ The continuous approximation is therefore able to capture the population-level d
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=.75\textwidth]{chap5/figures/figure_S2.pdf}
+  \includegraphics[width=.9\textwidth]{chap5/figures/figure_S2.pdf}
   \titlecaption{Approximation of an explicit stochastic population by continuous methods}{({\bfseries A}) A population of 225 stochastic oscillators was simulated using the Gillespie stochastic simulation algorithm (SSA). The mean protein expression, $Y$, is plotted as a function of time. A $50\%$ reduction in the protein translation rate to each of the oscillators is applied from $\hat{t} = -\nicefrac{\pi}{4} \to 0$, resulting in both single-cell and population-level amplitude change (red solid line). This population is approximated by the continuous methods described in this manuscript, in which the decay parameter $d=0.025$ is estimated to match the stochastic-induced desynchrony of the control population (black solid line). The initial standard deviation $\sigma_0 = 0.48$ is similarly matched to the stochastic population. The resulting predicted unperturbed and perturbed trajectories, $\bar{x}(\hat{t})$ and $\hat{x}(\hat{t})$ respectively, closely match the stochastically modeled values.  ({\bfseries B}) Phase histograms for the stochastic population are shown at several phases, both before and after the desynchronizing perturbation.  Phase probability-density functions for the continuous approximation are also shown, with close agreement between stochastic and continuous simulations. This close approximation validates the use of ODE models and phase-diffusion populations in deriving amplitude and phase-response behavior for networks of uncoupled cells. Figure reprinted from \cite{St.John2014a}.}
   \label{fig:5s2}
 \end{figure}
@@ -451,14 +451,14 @@ intermediate variables $Y$ are considered, as:
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=0.75\textwidth]{chap5/figures/figure_S3a.pdf}
+  \includegraphics[width=0.9\textwidth]{chap5/figures/figure_S3a.pdf}
   \titlecaption{Validation of continuous methods with the Oregonator model}{The Oregonator model (\fref{mod:oregon}) was tested as an example of a mass-action limit cycle oscillator. A population of 2000 oscillators was perturbed at size different mean phases, $\mu$, by increasing the $\mathit{c2}$ parameter by $50\%$ for $d=\pi$ (highlighted region). Only the average $\mathit{Y2}$ variable is plotted. Figure reprinted from \cite{St.John2014a}.}
   \label{fig:5s3a}
 \end{figure}
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=0.75\textwidth]{chap5/figures/figure_S3b.pdf}
+  \includegraphics[width=0.9\textwidth]{chap5/figures/figure_S3b.pdf}
   \titlecaption{Validation of continuous methods with the model from Hirota {\itshape et al.,} 2012}{The model described in \cite{Hirota2012} (\fref{mod:hirota}) was similarly tested at a variety of mean phases by reducing the $\mathit{vdp}$ parameter by $28.5\%$ and plotting the resulting $\mathit{c2}$ state variable (as in \fref{fig:55}). Parameters for the continuous approximations were found by estimating the phase, initial standard deviation, period, and phase diffusivity of the control population. Figure reprinted from \cite{St.John2014a}.}
   \label{fig:5s3b}
 \end{figure}
@@ -474,7 +474,7 @@ In the ARC plot, however, the shape of the single-cell and population-based ARC 
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=.75\textwidth]{chap5/figures/figure_4.pdf}
+  \includegraphics[width=.9\textwidth]{chap5/figures/figure_4.pdf}
   \titlecaption{Response curves describe different types of amplitude change}{A population of cells is simulated using a detailed model of circadian rhythms (\fref{mod:hirota}). Each cell in the population is subjected to a $20\%$ increase in the $\mathit{vtp}$ parameter ({\itshape Per} transcription rate) for $d=\nicefrac{\pi}{2}$, inducing both a phase and amplitude change. ({\bfseries A}) The phase response curves are shown for both the single limit cycle oscillator and population average, left. The population-level ARC is shown together with the single-cell amplitude response, with both curves normalized to $\sigma=1$. ({\bfseries B-C}) Population-level rhythms, $\hat{x}(\tilde{t})$ resulting from perturbations given at the indicated phases in A (red and cyan lines, respectively). The population transitions from the unperturbed population, $\bar{x}(\tilde{t})$, to the steady-state perturbed population, $\hat{x}_{ss}(\tilde{t})$. ({\bfseries B}) A perturbation at this phase yields a transient amplitude reduction resulting from perturbations at the single-cell level, however, there is little change in population synchrony. Population-level rhythms are therefore transiently damped before regaining normal amplitudes. ({\bfseries C}) Oscillators are desynchronized, but with a transient increase in limit cycle amplitude. It therefore takes some time before the amplitude reduction from desynchrony is realized. Figure reprinted from \cite{St.John2014a}.}
   \label{fig:54}
 \end{figure}
@@ -504,7 +504,7 @@ In order to find parameters for the phase density function, we assumed an initia
 
 \begin{figure}[tbp]
   \centering
-    \includegraphics[width=.75\textwidth]{chap5/figures/figure_5.pdf}
+    \includegraphics[width=.9\textwidth]{chap5/figures/figure_5.pdf}
     \titlecaption{Method allows direct comparison between model results and experimental bioluminescence profiles}{({\bfseries A}) Response curves for the parameter perturbation used to model the first light pulse in (B). The initial phase of the system is chosen to coincide with the strong dip in the population-level ARC (left). ({\bfseries B}) De-noised bioluminescence data from Ukai {\itshape et al.} 2007 (top) demonstrates population-level amplitude change resulting from two light pulses \cite{Ukai2007}. Circadian oscillations are suppressed by the first light pulse and rescued by the second. These perturbations were reproduced {\itshape in silico} (bottom) using the model from Hirota {\itshape et al.} 2012. The experimental results are qualitatively captured by the model, demonstrating the suitability of the method in capturing bioluminescence experiments. The relative amplitude of the model equations has been scaled to match that of the normalized bioluminescence profiles. ({\bfseries C}) Example probability density functions for the model trajectory shown in (A). The initial population (red) is effectively desynchronized (orange) following the first light pulse. Figure reprinted from \cite{St.John2014a}.}
     \label{fig:55}
 \end{figure}

@@ -43,9 +43,11 @@
 % For figure captions
 \providecommand{\titlecaption}[2]{\caption[#1]{{\bf #1.} #2}}
 
-% For dummy text
-\usepackage{blindtext}
+% Make subsections more clear
+\usepackage{titlesec}
 
+\titleformat{\subsubsection}
+  {\itshape\bfseries}{\thesubsubsection}{1em}{}
 
 % Imports/macros for chapter 2
 \usepackage{booktabs}

@@ -356,10 +356,20 @@ PER regulation through CKI is therefore partitioned to the accumulating phase, c
 CRY regulation through FBXL3 is partitioned independently to the repressive phase, controlling the length of time until CLOCK-BMAL1-dependent transcription resumes (\fref{fig:46}). 
 This independence was reproduced {\it in silico} by the simultaneous reduction of nuclear CRY degradation and PER-CRY nuclear import (figure~\ref{fig:45}B). 
 
+\subsubsection{Quantification of linear additivity}
+
 In order to quantify this biological independence, changes in period obtained from the simultaneous reduction in both FBXL3 and CKI activity were compared to the expected period change if both processes were linearly additive.
 $R^2$ values for figure~\ref{fig:45}B were calculated by comparing the actual results $f(x,y)$ to linearly additive surfaces $\hat{f}(x,y)$.
 The linearly additive surface takes the form $\hat{f}(x,y) = g(x) + h(y)$, where $g(x) = f(x,1)$ and $h(y) = f(1,y)$ (\fref{fig:4S5}). 
-The $f(\cdot)$ and $g(\cdot)$ functions were found by interpolating the x- and y- axis of figure~\ref{fig:45}B, respectively.
+The $f(\cdot)$ and $g(\cdot)$ functions were found by interpolating the x- and y- axis of figure~\ref{fig:45}B, respectively, in which a knockdown is only present on one of the two activities.
+The differences between the actual period changes and the period changes predicted by an additive model were quantified by using an $R^2$ value,
+\[
+  R^2 = 1 - \frac{\int_{x,y} f(x,y) - \hat{f}(x,y)\; dxdy}{\int_{x,y} f(x,y) - \mu\; dxdy},
+\]
+in which
+\[
+  \mu = \frac{1}{\Delta x \Delta y}\int_{x,y} \hat{f}(x,y) \; dxdy.
+\]
 $R^2$ calculations were restricted to the range $x,y \in [0.4, 1.1]$ to omit bifurcation regions.
 $R^2 = 0.924$ and $0.999$ for period change and {\itshape Per} mRNA amplitude, respectively, indicating net changes to clock kinetics from perturbations to both rates can be closely explained by simply adding together the individual effects from each pathway (\fref{fig:4S5}).
 
