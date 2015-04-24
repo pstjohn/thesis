@@ -3,15 +3,15 @@
 \section{Background}
 
 In the previous chapter, mathematical definitions governing the response of a population of oscillators to a temporary perturbation were discussed.
-Temporary perturbations, arising perhaps from a single dose of drug which is quickly cleared from the body, are promising routes for increasing amplitude in peripheral tissues.
+Temporary perturbations, arising perhaps from a single dose of drug that is quickly cleared from the body, are promising routes for increasing amplitude in peripheral tissues.
 However, because of the experimental difficulty associated with studying such perturbations in a high-throughput manner, most research has focused on studying the effects of constant concentrations of drugs or gene knockdowns.
-This chapter takes a closer look at the insight into clock kinetics which might be gained from such existing studies, specifically with regard to transcriptional noise.
+This chapter takes a closer look at the insight into clock kinetics that might be gained from such existing studies, specifically with regard to transcriptional noise.
 
 \subsection{Motivation}
-As most organisms exist in an environment which changes predictably with a 24-hour period, highly optimized genetic circuits turn on and off the production of key regulatory proteins to anticipate the day/night cycle.
+As most organisms exist in an environment that changes predictably with a 24-hour period, highly optimized genetic circuits turn on and off the production of key regulatory proteins to anticipate the day/night cycle.
 In humans, the demands of a modern society have required that we deviate from this evolutionarily prescribed sleep and feeding schedule, resulting in increased long-term risks of metabolic disease.
-There is therefore a desire to find pharmacological treatments which would restore the normal functioning of our circadian clock despite irregular behavioral schedules.
-One aspect of these treatments which is often overlooked in searching for candidate drugs is how these treatments might affect the accuracy of the circadian timing system.
+There is therefore a desire to find pharmacological treatments that would restore the normal functioning of our circadian clock despite irregular behavioral schedules.
+One aspect of these treatments that is often overlooked in searching for candidate drugs is how these treatments might affect the accuracy of the circadian timing system.
 Since each cell in the body keeps its own internal time, increasing the sloppiness of the clock machinery can result in tissues not being able to agree on what time to turn on protein production.
 Recording the time of each cell is possible but difficult; as a result single-cell approaches cannot be scaled up to high-throughput searches.
 In this chapter, we show that it is possible to estimate how much the noise of a system has changed by looking only at the averaged protein production of an entire population of cells.
@@ -20,7 +20,7 @@ Such an approach allows us to analyze prior data for high-throughput screens, an
 \subsection{Transcriptional noise}
 A detailed understanding of the underlying transcriptional mechanisms is essential for the development of circadian therapeutics to be successful. 
 The functional roles of different genes in circadian regulation have traditionally been studied using behavioral-level data and genetic knockout experiments \cite{Vitaterna1994}.
-Bioluminescence-based cellular circadian reporters offer a more direct view of the gene regulatory network \cite{Balsalobre1998} and are amenable to high-throughput screens, allowing genome-wide exploration into factors which affect circadian rhythmicity \cite{Zhang2009}.
+Bioluminescence-based cellular circadian reporters offer a more direct view of the gene regulatory network \cite{Balsalobre1998} and are amenable to high-throughput screens, allowing genome-wide exploration into factors that affect circadian rhythmicity \cite{Zhang2009}.
 Additionally, cultured circadian reporter cells allow the change in transcriptional amplitude following a perturbation to be quantified.
 This additional parameter has proven useful in differentiating between perturbations with the same effect on period \cite{St.John2014} and has aided the search for small-molecule therapeutics to boost clock amplitude \cite{Chen2013}.
 
@@ -28,9 +28,9 @@ Bioluminescence rhythms at the cell culture or tissue-level are the result of th
 Transcription at the single-cell level is strongly affected by the low molecular counts of the mRNA and protein species involved. 
 As a result, bioluminescence traces of individual cells are stochastic, with significant variability in both amplitude and period length \cite{Welsh2004}. 
 It is currently thought that coupling between circadian oscillations outside the SCN, such as in peripheral tissues {\itshape in vivo} or cultured reporter cells {\itshape in vitro}, is very weak or absent entirely \cite{Guenthner2014, Noguchi2013}.
-Additionally, it has been shown that in cell cultures which lack cell-to-cell coupling, stochastic noise at the single-cell level is manifested in damped oscillations at the population-level as individual oscillators gradually drift out of phase \cite{Nagoshi2004, Welsh2004}. 
+Additionally, it has been shown that in cell cultures that lack cell-to-cell coupling, stochastic noise at the single-cell level is manifested in damped oscillations at the population-level as individual oscillators gradually drift out of phase \cite{Nagoshi2004, Welsh2004}. 
 
-Despite the averaging which occurs at the population-level, cell-autonomous stochastic noise plays an important role in determining the function of the circadian oscillator.
+Despite the averaging that occurs at the population-level, cell-autonomous stochastic noise plays an important role in determining the function of the circadian oscillator.
 A recent study showed that stochasticity is critical to the population-level response to a neuropeptide and forms the basis for how the SCN entrains to light-mediated cues \cite{An2013}.
 Additional studies have argued that the basis of single-cell rhythmicity depends on stochastic noise, as models of deterministically damped oscillators, when simulated stochastically, better capture the noise characteristics seen in single-cell fibroblast data \cite{Westermark2009}.
 Despite the importance of single-cell stochasticity in circadian rhythms, measuring stochastic noise currently requires careful preparation, recording, and image processing of individual cells \cite{Leise2012}. 
@@ -148,8 +148,8 @@ Parameters were therefore normalized on a plate-by-plate basis using a robust z-
 \]
 where $M(\cdot)$ denotes the median of a vector, and $p_i$ contains all the points in one plate, and $\cal P$ is the number of plates.
 We removed outlier points prior to calculating the moments of the distributions, Pearson correlation coefficients, and performing the multivariable linear regression.
-Outliers were defined as points which contained a z-metric (in either period, phase, amplitude, or damping rate) with an absolute value greater than eight.
-We chose the ``control'' wells to be those which contained no siRNA, as these proved to be more numerous than those containing reference siRNA perturbations and were clustered similarly to the highest-density regions of the perturbed fits.
+Outliers were defined as points that contained a z-metric (in either period, phase, amplitude, or damping rate) with an absolute value greater than eight.
+We chose the ``control'' wells to be those that contained no siRNA, as these proved to be more numerous than those containing reference siRNA perturbations and were clustered similarly to the highest-density regions of the perturbed fits.
 
 \begin{figure}[tbp]
   \begin{center}
@@ -163,7 +163,7 @@ We chose the ``control'' wells to be those which contained no siRNA, as these pr
   \begin{center}
     \includegraphics[width=0.9\textwidth]{chap6/figures/zhang_wells.pdf}
   \end{center}
-  \titlecaption{Well-to-well variation in the Zhang {\itshape et al.,} 2009 genome-wide siRNA screen}{Similar to \fref{fig:plate_variation}, dots indicate the median value of each parameter in each well, with lines extending from the $5^\text{th}$ to $95^\text{th}$ percentile. Well position did not seem to affect the fitted values, particularly in the middle regions which contained the siRNA knockdown library. Wells on either end showed significant variation, but these are likely due to the spotting of long- and short-period controls in the same position on each plate.}
+  \titlecaption{Well-to-well variation in the Zhang {\itshape et al.,} 2009 genome-wide siRNA screen}{Similar to \fref{fig:plate_variation}, dots indicate the median value of each parameter in each well, with lines extending from the $5^\text{th}$ to $95^\text{th}$ percentile. Well position did not seem to affect the fitted values, particularly in the middle regions that contained the siRNA knockdown library. Wells on either end showed significant variation, but these are likely due to the spotting of long- and short-period controls in the same position on each plate.}
 \label{fig:well_variation}
 \end{figure}
 
@@ -189,7 +189,7 @@ Cells were sorted into two groups, a low-noise group and a high-noise group, bas
 Example rhythms from cells in both groups are shown in figure~\ref{fig:fibroblast_noise}A.
 Because the cells were not synchronized at the start of the recording, this effect is replicated {\itshape in silico} by shifting each series in time to align their start phases.
 Population-level bioluminescence traces were then found by averaging the cellular PER2::LUC signal in each group.
-Both populations displayed averaged rhythms which resembled a damped sinusoid, similar to those seen in bioluminescence recordings of entire cell cultures.
+Both populations displayed averaged rhythms that resembled a damped sinusoid, similar to those seen in bioluminescence recordings of entire cell cultures.
 Fitting the averaged expression of each group with a damped sinusoid revealed that the low-noise group also had a lower damping rate (figure~\ref{fig:fibroblast_noise}B).
 The significance of this difference was confirmed via a bootstrap analysis (figure~\ref{fig:fibroblast_noise}C), where cells were randomly assigned in each bootstrap trial to either the low-noise or the high-noise group.
 
@@ -367,7 +367,7 @@ These results reinforce the notion that the population-level damping rate descri
 \bottomrule
 \end{tabular}
 \end{center} 
-\titlecaption{Multivariable linear regression results}{Fit statistics which demonstrate the effect of each other fitted parameter on damping rate. Of particular note is the perturbation type categorical variable, which demonstrates that the presence of siRNA perturbation increases damping rate on average, controlling for changes in other variables. Higher amplitude is also correlated with higher damping rate. However, in total damping rate is poorly predicted by the other fitted variables ($R^2 = 0.169$), indicating it describes an independent oscillatory feature.}
+\titlecaption{Multivariable linear regression results}{Fit statistics that demonstrate the effect of each other fitted parameter on damping rate. Of particular note is the perturbation type categorical variable, which demonstrates that the presence of siRNA perturbation increases damping rate on average, controlling for changes in other variables. Higher amplitude is also correlated with higher damping rate. However, in total damping rate is poorly predicted by the other fitted variables ($R^2 = 0.169$), indicating it describes an independent oscillatory feature.}
 \label{tab:ols_reg}
 \end{table}
 
@@ -378,7 +378,7 @@ These results reinforce the notion that the population-level damping rate descri
 The ability of a population of oscillators to maintain robust oscillations is a function both of its initial amplitude as well as its damping rate.
 A robust oscillator is therefore one with high amplitude and low stochastic noise.
 Scatter plots of the control and perturbed distributions are shown in figure~\ref{fig:outlier_dist}A-B, which indicate that few outlier points reside in the lower damping rate, higher amplitude quadrant.
-In order to find perturbations which confidently change robustness, we grouped the siRNA perturbations by target gene and performed a two-sample Hotelling's $T^2$ test against the control population.
+In order to find perturbations that confidently change robustness, we grouped the siRNA perturbations by target gene and performed a two-sample Hotelling's $T^2$ test against the control population.
 The resulting significant gene perturbations ($75\%$ of all genes) are shown in figure~\ref{fig:outlier_dist}C.
 Quantifying the distribution in outliers by quadrant, it is clear that only a small minority of perturbations ($3.3\%$) simultaneously increase amplitude and decrease stochastic noise.
 It therefore appears that the unperturbed clock optimizes some trade-off between high amplitude and low stochastic noise, such that it is unlikely the knockdown of a single gene will make oscillations more robust. 
@@ -389,7 +389,7 @@ It therefore appears that the unperturbed clock optimizes some trade-off between
   \end{center}
   \titlecaption{Effects of siRNA knockdowns on amplitude and damping rate}{Clock robustness is a function of both amplitude and damping rate.
   Distributions in amplitude and damping rate for control wells ({\bfseries A}) or perturbed wells ({\bfseries B}) indicate that perturbations tend to shift the clock towards regions of higher damping rate or lower amplitude. Green dots in each figure indicates the mean of the control population.
-({\bfseries C}) Averaged effect of siRNA knockdown after grouping the perturbed population by Gene ID. Only those genes which were significantly different from the control distribution are shown (Hotelling's $T^2$ test, $\alpha = 0.01$).
+({\bfseries C}) Averaged effect of siRNA knockdown after grouping the perturbed population by Gene ID. Only those genes that were significantly different from the control distribution are shown (Hotelling's $T^2$ test, $\alpha = 0.01$).
 ({\bfseries D}) Radial histogram of the significant gene perturbations shown in (C). The area of each slice is proportional to the frequency of perturbations away from the mean in that direction. Very few gene knockdowns result in both higher amplitude and lower damping rate (red slices, lower right quadrant).
 }
 \label{fig:outlier_dist}
@@ -428,9 +428,9 @@ Additionally, since this chapter is mainly concerned with changes in the damping
 \section{Discussion}
 
 In this chapter, we have described a method by which changes to stochastic noise can be estimated from population-level circadian bioluminescence recordings.
-As high amplitude circadian oscillations are important for maintaining metabolic health, many studies have sought to find small molecule candidates which increase oscillatory amplitude \cite{Chen2013}.
+As high amplitude circadian oscillations are important for maintaining metabolic health, many studies have sought to find small molecule candidates that increase oscillatory amplitude \cite{Chen2013}.
 In the search for circadian clock therapeutics, high-throughput methods are frequently used to screen for such drugs, often neglecting potential effects on cell-autonomous noise.
 While we have demonstrated a method by which the effects of small molecules on noise can be inferred from high-throughput methods, we have also shown that the potential improvement of clock robustness may be limited.
-Amplitudes of circadian rhythms may therefore be best increased by small molecule therapies which act transiently to synchronize peripheral oscillators.
+Amplitudes of circadian rhythms may therefore be best increased by small molecule therapies that act transiently to synchronize peripheral oscillators.
 While such a method would require accurate alignment of drug administration to the correct circadian phase, a recent {\itshape in silico} study has demonstrated the potential effectiveness of such an approach in improving amplitudes in peripheral tissues \cite{St.John2014a}.
-Finally, the ability to extract an additional biologically relevant parameter from existing datasets will likely prove useful for many studies, as it allows further differentiation between perturbations which might otherwise have identical effects on bioluminescence rhythms.
+Finally, the ability to extract an additional biologically relevant parameter from existing datasets will likely prove useful for many studies, as it allows further differentiation between perturbations that might otherwise have identical effects on bioluminescence rhythms.
