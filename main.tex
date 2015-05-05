@@ -1,4 +1,4 @@
-\documentclass[12pt,letterpaper,oneside]{book}
+\documentclass[12pt,letterpaper,twoside]{book}
 \usepackage[top=1in, bottom=1in, left=1.25in, right=1in, footskip=.25in, includehead]{geometry}
 \usepackage{fancyhdr}
 % \usepackage{showframe}
@@ -101,12 +101,20 @@
 % This command is great to only print out a certain chapter, keeping references etc from other chapters.
 % \includeonly{chap6/chap6, chap7/chap7}
 
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \newpage}
+
 \begin{document}
 \sloppy % somewhat counter-intuitively, this makes latex respect the page margins more rigorously.
 \doublespace
 \frontmatter
-\pagestyle{mainmatter}
 \include{preamble/titlepage}
+\afterpage{\blankpage}
+\pagestyle{mainmatter}
 \include{preamble/signature}
 \include{preamble/copyright}
 \include{preamble/acknowledgement}
